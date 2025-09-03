@@ -1,0 +1,49 @@
+ami collabrotor has created a brunch named minhaz and pushed it on github i pulled now when i command git branch its only showing the main brunch how can i merge or how can i get his code
+
+
+ChatGPT said:
+Okay Sabiha, I see what’s happening — when you run git branch without any flags, Git only shows local branches.
+
+Since your collaborator created a branch called minhaz and pushed it to GitHub, it’s currently a remote branch for you. You need to fetch it first, then check it out.
+
+Steps to get your collaborator’s branch
+1️⃣ Fetch all remote branches from GitHub
+bash
+Copy
+Edit
+git fetch origin
+2️⃣ See all branches (local + remote)
+bash
+Copy
+Edit
+git branch -a
+You should now see something like:
+
+bash
+Copy
+Edit
+* main
+  remotes/origin/main
+  remotes/origin/minhaz
+3️⃣ Switch to the minhaz branch
+bash
+Copy
+Edit
+git checkout minhaz
+If this says branch doesn’t exist locally, create it tracking the remote branch:
+
+bash
+Copy
+Edit
+git checkout -b minhaz origin/minhaz
+4️⃣ Merge minhaz branch into main (optional)
+If you just want the changes from minhaz into main:
+
+bash
+Copy
+Edit
+git checkout main
+git merge origin/minhaz
+💡 Tip: If you just pulled (git pull) while on main, you won’t get the minhaz branch’s code unless you merge it or switch to it.
+
+If you want, I can give you a one-line command that fetches and checks out the minhaz branch in one go. Would you like that?
