@@ -82,7 +82,12 @@ const FoodTab = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 py-10 lg:py-24 p-8 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 py-10 lg:py-24 relative overflow-hidden">
+
+
+      <div className="container mx-auto">
+
+
       {/* Floating Vegetables */}
       {floatingVeggies.map((veggie) => (
         <div
@@ -117,10 +122,9 @@ const FoodTab = () => {
             onClick={() => setActiveTab(tab.name)}
             className={`
               flex flex-col items-center p-4 rounded-md transition-all duration-300 cursor-pointer hover:text-white transform hover:bg-red-700 hover:scale-110 hover:shadow-xl
-              ${
-                activeTab === tab.name
-                  ? tab.color + " text-white shadow-lg scale-105"
-                  : "bg-white text-[#2a435d] hover:bg-gray-50"
+              ${activeTab === tab.name
+                ? tab.color + " text-white shadow-lg scale-105"
+                : "bg-white text-[#2a435d] hover:bg-gray-50"
               }
               w-28 h-24 group relative overflow-hidden
             `}
@@ -144,26 +148,26 @@ const FoodTab = () => {
       </div>
 
       {/* Menu Items Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container relative z-10">
         {menuItems.map((item, index) => (
           <div
             key={index}
             className="bg-white flex items-center justify-center gap-10 rounded-3xl p-3 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden"
           >
             {/* Item Image */}
-<div>
+            <div>
               <div
-              className={`h-[100px] w-[100px] rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}
-            >
-              <Image
-                src={item.image}
-                alt="vegetable"
-                height={100}
-                width={100}
-                className="h-full w-full object-cover"
-              />
+                className={`h-[100px] w-[100px] rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}
+              >
+                <Image
+                  src={item.image}
+                  alt="vegetable"
+                  height={100}
+                  width={100}
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
-</div>
 
             {/* Item Details */}
             <div className="text-left">
@@ -187,6 +191,7 @@ const FoodTab = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
           </div>
         ))}
+      </div>
       </div>
 
       <style jsx>{`

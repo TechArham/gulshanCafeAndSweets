@@ -1,11 +1,15 @@
-import React from "react";
+'use client'
+import React from 'react';
+import Navbar from '../Components/Common/Navbar';
+import DineInPage from '../Components/RestaurantOrderingSystem/pages/DineInPage';
 
-const page = () => {
+export default function DineIn() {
   return (
-    <div>
-        <h1> dine-in</h1>
+    <div className="min-h-screen bg-gray-50">
+
+      <Navbar />
+      <DineInPage />
+   
     </div>
   );
-};
-
-export default page;
+}

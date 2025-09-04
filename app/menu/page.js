@@ -1,23 +1,17 @@
-import React from "react";
-import Footer from "../Components/Common/Footer";
+"use client";
+import { ReactLenis } from "lenis/react";
+import Topbar from "../Components/Common/Topbar";
 import Navbar from "../Components/Common/Navbar";
-import RestaurantOrderingSystem from "../Components/RestaurantOrderingSystem/RestaurantOrderingSystem";
-// import MenuHeader from "../Components/Menu/MenuHeader";
-// import MenuOne from "../Components/Menu/MenuOne";
-// import MenuTwo from "../Components/Menu/MenuTwo";
-// import MenuThree from "../Components/Menu/MenuThree";
-const page = () => {
-  return (
-    <div>
-      <Navbar />
-      <RestaurantOrderingSystem/>
-      {/* <MenuHeader />
-      <MenuOne />
-      <MenuTwo />
-      <MenuThree /> */}
-      <Footer />
-    </div>
-  );
-};
+import MenuPage from "../Components/RestaurantOrderingSystem/pages/MenuPage";
 
-export default page;
+export default function Menu() {
+    return (
+
+        <main className="">
+            <Navbar />
+            <MenuPage />
+          
+        </main>
+
+    );
+}

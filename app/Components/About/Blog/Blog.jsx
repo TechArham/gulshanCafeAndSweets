@@ -65,24 +65,24 @@ const blogPosts = [
 
 const Blog = () => {
   return (
-<div className='bg-white'>
-      <div className="container mx-auto max-w-7xl pb-24 px-5">
-      <div className="text-center mb-12">
-        <div className="inline-block">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gray-800">Blog & </span>
-            <span className="text-red-500">News</span>
-          </h2>
+    <div className='bg-white'>
+      <div className="container pb-24">
+        <div className="text-center mb-12">
+          <div className="inline-block">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-gray-800">Blog & </span>
+              <span className="text-red-500">News</span>
+            </h2>
+          </div>
+          <div className="w-24 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
         </div>
-        <div className="w-24 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
-      </div>
 
-      <Swiper
-        spaceBetween={30}
-        pagination={{ clickable: true }}
-        modules={[Pagination]}
-        className="mySwiper"
-                  breakpoints={{
+        <Swiper
+          spaceBetween={30}
+          pagination={{ clickable: true }}
+          modules={[Pagination]}
+          className="mySwiper"
+          breakpoints={{
             0: {
               slidesPerView: 1, // Mobile devices
               spaceBetween: 20,
@@ -104,15 +104,15 @@ const Blog = () => {
               spaceBetween: 40,
             },
           }}
-      >
-        {blogPosts.map((post) => (
-          <SwiperSlide key={post.id}>
-            <BlogCard {...post} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        >
+          {blogPosts.map((post) => (
+            <SwiperSlide key={post.id}>
+              <BlogCard {...post} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
-</div>
   );
 };
 

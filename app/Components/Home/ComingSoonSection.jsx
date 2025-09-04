@@ -103,8 +103,8 @@ const ComingSoonSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <div className="grid lg:grid-cols-2 gap-12 items-center container">
           {/* Left Side - Burger Image */}
           <div className="relative flex justify-center lg:justify-end">
             {/* Burger */}

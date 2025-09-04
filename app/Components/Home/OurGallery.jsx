@@ -24,7 +24,7 @@ const OurGallery = () => {
       id: 3,
       title: "Sesame chicken",
       description: "Crispy Sesame Chicken with a Sweet & Savory Glaze",
-            buttonColor: "bg-red-600 hover:bg-red-600",
+      buttonColor: "bg-red-600 hover:bg-red-600",
 
       image: "/bg-side-3.jpg",
       size: "col-span-1",
@@ -35,7 +35,7 @@ const OurGallery = () => {
       title: "Special Misty",
       description:
         "Traditional Bengali sweet, rich in flavor and made with love.",
-            buttonColor: "bg-red-600 hover:bg-red-600",
+      buttonColor: "bg-red-600 hover:bg-red-600",
 
       image: "/misty.webp",
       size: "col-span-1",
@@ -46,7 +46,7 @@ const OurGallery = () => {
       title: "Vegetable Fried Rice",
       description:
         "Flavorful fried rice tossed with fresh vegetables and aromatic spices.",
-            buttonColor: "bg-red-600 hover:bg-red-600",
+      buttonColor: "bg-red-600 hover:bg-red-600",
 
       image: "/Beef-Fried-Rice.jpg",
       size: "col-span-1",
@@ -65,7 +65,7 @@ const OurGallery = () => {
 
   return (
     <div className="bg-gray-50 p-4 md:p-8 lg:py-24">
-      <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto">
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {promotions.map((promo, index) => (

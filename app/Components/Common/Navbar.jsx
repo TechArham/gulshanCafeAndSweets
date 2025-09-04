@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
   // Navigation menu items
   const navItems = [
     { name: "Home", href: "/", hasDropdown: false },
-        { name: "Menu", href: "/menu", hasDropdown: false },
+    { name: "Menu", href: "/menu", hasDropdown: false },
     {
       name: "Order",
       href: "/rder ",
@@ -60,17 +61,24 @@ const Navbar = () => {
     <>
       {/* Navbar */}
       <nav
-        className={`transition-all h-[100px] duration-300 items-center sticky top-0 z-50 bg-white shadow-md ${
-          isScrolled
-            ? "bg-White backdrop-blur-md shadow-lg"
-            : "bg-White shadow-sm"
-        }`}
+        className={`transition-all py-1 sm:py-2 duration-300 items-center sticky top-0 z-50 bg-white shadow-md ${isScrolled
+          ? "bg-White backdrop-blur-md shadow-lg"
+          : "bg-White shadow-sm"
+          }`}
       >
-        <div className="max-w-7xl mx-auto px-4 pt-5 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
-              <Image src="/logo.png" height={200} width={200} alt="Logo" />
+            <div className="flex-shrink-0 flex rounded-2xl items-center">
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  height={60}
+                  width={60}
+                  alt="Logo"
+                  className="rounded-2xl shadow-md sm:h-20 sm:w-20 h-12 w-12"
+                />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -131,18 +139,16 @@ const Navbar = () => {
                 <span className="sr-only">Open main menu</span>
                 <div className="relative w-6 h-6">
                   <Menu
-                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
-                      isMobileMenuOpen
-                        ? "opacity-0 rotate-180"
-                        : "opacity-100 rotate-0"
-                    }`}
+                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${isMobileMenuOpen
+                      ? "opacity-0 rotate-180"
+                      : "opacity-100 rotate-0"
+                      }`}
                   />
                   <X
-                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
-                      isMobileMenuOpen
-                        ? "opacity-100 rotate-0"
-                        : "opacity-0 -rotate-180"
-                    }`}
+                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${isMobileMenuOpen
+                      ? "opacity-100 rotate-0"
+                      : "opacity-0 -rotate-180"
+                      }`}
                   />
                 </div>
               </button>
@@ -153,34 +159,31 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-50" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-black transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-50" : "opacity-0"
+            }`}
           onClick={closeMobileMenu}
         />
 
         {/* Mobile Menu Panel */}
         <div
-          className={`fixed top-0 left-0 h-full w-80 max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
-            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 h-full w-80 max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200">
-            <div className="text-2xl font-bold">
+          <div className="flex items-center justify-between p-3 border-b border-gray-200">
+            <div className="text-lg sm:text-xl font-bold">
               <span className="text-red-500">Gulshan Cafe and Sweets</span>
             </div>
             <button
               onClick={closeMobileMenu}
               className="p-2 rounded-md text-gray-700 hover:text-red-500 hover:bg-gray-100 transition-colors duration-200"
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             </button>
           </div>
 
@@ -189,11 +192,10 @@ const Navbar = () => {
             {navItems.map((item, index) => (
               <div
                 key={item.name}
-                className={`transform transition-all duration-300 ${
-                  isMobileMenuOpen
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-4 opacity-0"
-                }`}
+                className={`transform transition-all duration-300 ${isMobileMenuOpen
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-4 opacity-0"
+                  }`}
                 style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <button
@@ -207,9 +209,8 @@ const Navbar = () => {
                   <span className="font-medium text-left">{item.name}</span>
                   {item.hasDropdown && (
                     <ChevronDown
-                      className={`h-4 w-4 transition-transform ${
-                        openDropdown === item.name ? "rotate-180" : ""
-                      }`}
+                      className={`h-4 w-4 transition-transform ${openDropdown === item.name ? "rotate-180" : ""
+                        }`}
                     />
                   )}
                 </button>

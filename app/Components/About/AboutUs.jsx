@@ -4,11 +4,11 @@ import Image from "next/image";
 const AboutUs = () => {
   return (
     <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Image Collage */}
           <div className="relative order-2 lg:order-1">
-            <Image src='/exparience.png' height={500} width={500} alt='Img'/>
+            <Image src='/exparience.png' height={500} width={500} alt='Img' />
           </div>
 
           {/* Right Side - Content */}
@@ -39,7 +39,7 @@ const AboutUs = () => {
               {/* Buffet Service */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-50 rounded-full flex items-center justify-center">
-                  <Image src='/6.png' height={25} width={25} alt='Img'/>
+                  <Image src='/6.png' height={25} width={25} alt='Img' />
                 </div>
                 <div className="flex-1">
                   <h4 className="text-lg font-semibold text-gray-800 mb-2">
@@ -55,7 +55,7 @@ const AboutUs = () => {
               {/* Online Booking */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-50 rounded-full flex items-center justify-center">
-                  <Image src='/5.png' height={25} width={25} alt='Img'/>
+                  <Image src='/5.png' height={25} width={25} alt='Img' />
                 </div>
                 <div className="flex-1">
                   <h4 className="text-lg font-semibold text-gray-800 mb-2">

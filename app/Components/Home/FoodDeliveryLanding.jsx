@@ -52,9 +52,8 @@ const FoodDeliveryLanding = () => {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index === currentSlide ? "bg-red-500" : "bg-gray-300"
-                }`}
+                className={`w-2 h-2 rounded-full transition-colors duration-200 ${index === currentSlide ? "bg-red-500" : "bg-gray-300"
+                  }`}
               />
             )
           )}
@@ -70,7 +69,7 @@ const FoodDeliveryLanding = () => {
               <img
                 src="/delivery-img.png"
                 alt="Delicious burger meal"
-                className="w-full max-w-md mx-auto"
+                className="w-full container mx-auto"
               />
 
               {/* Floating elements */}

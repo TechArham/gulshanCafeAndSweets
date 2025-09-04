@@ -2,8 +2,8 @@ import React from 'react';
 import Image from "next/image";
 const OurChefSection = () => {
   return (
-    <div className="bg-white py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-white py-28 relative overflow-hidden">
+      <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <div className="flex items-center justify-center lg:justify-start">

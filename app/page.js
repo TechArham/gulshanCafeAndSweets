@@ -11,9 +11,8 @@ import Navbar from "./Components/Common/Navbar";
 import Topbar from "./Components/Common/Topbar";
 export default function Home() {
   return (
-    <ReactLenis root>
       <main className="">
-        <Topbar/>
+        {/* <Topbar /> */}
         <Navbar />
         <HomeHeader />
         <FoodTab />
@@ -23,6 +22,6 @@ export default function Home() {
         <Testimonial />
         <Footer />
       </main>
-    </ReactLenis>
+    
   );
 }

@@ -16,146 +16,146 @@ const RestaurantMenu = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Floating Start
-    const [floatingVeggies, setFloatingVeggies] = useState([]);
-  
+  const [floatingVeggies, setFloatingVeggies] = useState([]);
+
   const vegetables = [
     { image: "/34.png" },
     { image: "/15.png" },
     { image: "/25.png" },
   ];
-  
-    useEffect(() => {
-      // Create only 3 fixed veggies
-      const positions = [
 
-        { x: 6, y: 80 }, // left side
-        { x: 2, y: 20 }, // left side
-        { x: 90, y: 80 }, // right side
-      ];
-  
-      const initialVeggies = vegetables.map((veg, i) => ({
-        id: i,
-        veggie: veg.image,
-        x: positions[i].x,
-        y: positions[i].y,
-        rotation: Math.random() * 360,
-        scale: 0.8 + Math.random() * 0.4,
-        animationDuration: 3 + Math.random() * 4,
-      }));
-  
-      setFloatingVeggies(initialVeggies);
-    }, []);
-      // Floating End
+  useEffect(() => {
+    // Create only 3 fixed veggies
+    const positions = [
+
+      { x: 6, y: 80 }, // left side
+      { x: 2, y: 20 }, // left side
+      { x: 90, y: 80 }, // right side
+    ];
+
+    const initialVeggies = vegetables.map((veg, i) => ({
+      id: i,
+      veggie: veg.image,
+      x: positions[i].x,
+      y: positions[i].y,
+      rotation: Math.random() * 360,
+      scale: 0.8 + Math.random() * 0.4,
+      animationDuration: 3 + Math.random() * 4,
+    }));
+
+    setFloatingVeggies(initialVeggies);
+  }, []);
+  // Floating End
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-const menuItems = {
-  vegetable: [
-    { name: "Mix Vegetable", price: "$6.00" },
-    { name: "Chana Daal", price: "$6.00" },
-    { name: "Aloo Bhaji", price: "$6.00" },
-    { name: "Shak Bhaji", price: "$6.00" },
-    { name: "Cabbage Bhaji", price: "$6.00" },
-    { name: "Daal", price: "$4.00" },
-    { name: "Begun Vaja (1p)", price: "$2.00" },
-    { name: "Aloo Bhorta", price: "$2.00" },
-    { name: "Shutki Bhorta", price: "$3.00" },
-    { name: "Maach Bhorta", price: "$3.00" },
-    { name: "Tomoto Bhorta", price: "$3.00" },
-    { name: "Begun Bhorta", price: "$3.00" },
-    { name: "Shrimp Bhorta", price: "$4.00" },
-    { name: "Dim Bhorta", price: "$3.00" },
-    { name: "Bins Bhorta", price: "$3.00" },
-  ],
-  "bread and rice": [
-    { name: "Naan Bread", price: "$2.00" },
-    { name: "Garlic Naan", price: "$3.00" },
-    { name: "Onion Khulsa", price: "$3.00" },
-    { name: "Khima Naan", price: "$5.00" },
-    { name: "Porota", price: "$2.00" },
-    { name: "Ruti", price: "$1.50" },
-    { name: "Chapathi Rooti", price: "$2.00" },
-    { name: "White Rice", price: "$2.00" },
-    { name: "Polao", price: "$3.00" },
-  ],
-  misty: [
-    { name: "Rosogullah", price: "$8.00" },
-    { name: "Balu Shahi", price: "$8.00" },
-    { name: "Kalo Jam", price: "$8.00" },
-    { name: "Golap Jam", price: "$8.00" },
-    { name: "Panthua", price: "$8.00" },
-    { name: "Kacha Gullah", price: "$9.00" },
-    { name: "Borbi Sondesh", price: "$9.00" },
-    { name: "Gurer Sondesh", price: "$9.00" },
-    { name: "Chom Chom", price: "$8.00" },
-    { name: "Jilapi", price: "$7.00" },
-    { name: "Nimki", price: "$8.00" },
-    { name: "Murali", price: "$6.00" },
-  ],
-  "dessert and drinks": [
-    { name: "Firni", price: "$3.00/$5.00" },
-    { name: "Rice Pudding", price: "$3.00" },
-    { name: "Egg Pudding 1pc", price: "$3.00" },
-    { name: "Custard", price: "$4.00" },
-    { name: "Faloa Daa", price: "$6.00" },
-    { name: "Milk Semai", price: "$4.00" },
-    { name: "Mango Lacci", price: "$5.00" },
-    { name: "Semai", price: "$3.00" },
-    { name: "Deshi Doi", price: "$5.00" },
-    { name: "Ros Moai", price: "$3.00" },
-    { name: "Burhani 1(gl)", price: "$2.00" },
-    { name: "Bottle Water", price: "$1.00" },
-    { name: "Soda Can", price: "$1.00" },
-    { name: "Tea", price: "$1.00" },
-  ],
-  // "halal chinese": [
-  //   { name: "Vegetable Fried Rice", price: "$10.00" },
-  //   { name: "Shrimp Fried Rice", price: "$10.00" },
-  //   { name: "Egg Fried Rice", price: "$10.00" },
-  //   { name: "Chilli Chicken", price: "$12.00" },
-  //   { name: "Sesame Chicken", price: "$12.00" },
-  //   { name: "Chicken Chow Mein", price: "$12.00" },
-  //   { name: "Chinese Vegetable (Chicken/Shrimp)", price: "$10.00" },
-  //   { name: "Noodles", price: "$12.00" },
-  //   { name: "Thai Soup", price: "$8.00" },
-  //   { name: "Chicken Soup", price: "$8.00" },
-  //   { name: "Vegetable Corn Soup", price: "$8.00" },
-  // ],
-  // "breakfast combo": [
-  //   {
-  //     name: "Porota/Naan/Rooti, Vaji-Daal Mix, Cup of Tea",
-  //     price: "$6.00",
-  //   },
-  //   {
-  //     name: "Porota/Rooti, Haluwa or Misty, Cup of Tea",
-  //     price: "$6.00",
-  //   },
-  //   {
-  //     name: "Bhuna Khichuri, Fried Egg, and Cup of Tea",
-  //     price: "$12.00",
-  //   },
-  // ],
-  // "lunch & dinner combo": [
-  //   {
-  //     name: "Ruhi/Koi/Pangas, Any two bhorta, Daal/Mix Vegetable",
-  //     price: "$14.00",
-  //   },
-  //   {
-  //     name: "Shorshe Elish/Elisher Jul/Elisher Dupeyaju, Any two Bhorta, Daal/Mix Vegetable",
-  //     price: "$16.00",
-  //   },
-  //   {
-  //     name: "Beef Bhuna/Kala Bhuna/Goat Rejala, Any two Bhorta, Daal/Mix Vegetable",
-  //     price: "$15.00",
-  //   },
-  //   {
-  //     name: "Chicken Roast/Chicken Khurma/Chicken Curry, Daal/Mix Vegetable",
-  //     price: "$15.00",
-  //   },
-  // ],
-};
+  const menuItems = {
+    vegetable: [
+      { name: "Mix Vegetable", price: "$6.00" },
+      { name: "Chana Daal", price: "$6.00" },
+      { name: "Aloo Bhaji", price: "$6.00" },
+      { name: "Shak Bhaji", price: "$6.00" },
+      { name: "Cabbage Bhaji", price: "$6.00" },
+      { name: "Daal", price: "$4.00" },
+      { name: "Begun Vaja (1p)", price: "$2.00" },
+      { name: "Aloo Bhorta", price: "$2.00" },
+      { name: "Shutki Bhorta", price: "$3.00" },
+      { name: "Maach Bhorta", price: "$3.00" },
+      { name: "Tomoto Bhorta", price: "$3.00" },
+      { name: "Begun Bhorta", price: "$3.00" },
+      { name: "Shrimp Bhorta", price: "$4.00" },
+      { name: "Dim Bhorta", price: "$3.00" },
+      { name: "Bins Bhorta", price: "$3.00" },
+    ],
+    "bread and rice": [
+      { name: "Naan Bread", price: "$2.00" },
+      { name: "Garlic Naan", price: "$3.00" },
+      { name: "Onion Khulsa", price: "$3.00" },
+      { name: "Khima Naan", price: "$5.00" },
+      { name: "Porota", price: "$2.00" },
+      { name: "Ruti", price: "$1.50" },
+      { name: "Chapathi Rooti", price: "$2.00" },
+      { name: "White Rice", price: "$2.00" },
+      { name: "Polao", price: "$3.00" },
+    ],
+    misty: [
+      { name: "Rosogullah", price: "$8.00" },
+      { name: "Balu Shahi", price: "$8.00" },
+      { name: "Kalo Jam", price: "$8.00" },
+      { name: "Golap Jam", price: "$8.00" },
+      { name: "Panthua", price: "$8.00" },
+      { name: "Kacha Gullah", price: "$9.00" },
+      { name: "Borbi Sondesh", price: "$9.00" },
+      { name: "Gurer Sondesh", price: "$9.00" },
+      { name: "Chom Chom", price: "$8.00" },
+      { name: "Jilapi", price: "$7.00" },
+      { name: "Nimki", price: "$8.00" },
+      { name: "Murali", price: "$6.00" },
+    ],
+    "dessert and drinks": [
+      { name: "Firni", price: "$3.00/$5.00" },
+      { name: "Rice Pudding", price: "$3.00" },
+      { name: "Egg Pudding 1pc", price: "$3.00" },
+      { name: "Custard", price: "$4.00" },
+      { name: "Faloa Daa", price: "$6.00" },
+      { name: "Milk Semai", price: "$4.00" },
+      { name: "Mango Lacci", price: "$5.00" },
+      { name: "Semai", price: "$3.00" },
+      { name: "Deshi Doi", price: "$5.00" },
+      { name: "Ros Moai", price: "$3.00" },
+      { name: "Burhani 1(gl)", price: "$2.00" },
+      { name: "Bottle Water", price: "$1.00" },
+      { name: "Soda Can", price: "$1.00" },
+      { name: "Tea", price: "$1.00" },
+    ],
+    // "halal chinese": [
+    //   { name: "Vegetable Fried Rice", price: "$10.00" },
+    //   { name: "Shrimp Fried Rice", price: "$10.00" },
+    //   { name: "Egg Fried Rice", price: "$10.00" },
+    //   { name: "Chilli Chicken", price: "$12.00" },
+    //   { name: "Sesame Chicken", price: "$12.00" },
+    //   { name: "Chicken Chow Mein", price: "$12.00" },
+    //   { name: "Chinese Vegetable (Chicken/Shrimp)", price: "$10.00" },
+    //   { name: "Noodles", price: "$12.00" },
+    //   { name: "Thai Soup", price: "$8.00" },
+    //   { name: "Chicken Soup", price: "$8.00" },
+    //   { name: "Vegetable Corn Soup", price: "$8.00" },
+    // ],
+    // "breakfast combo": [
+    //   {
+    //     name: "Porota/Naan/Rooti, Vaji-Daal Mix, Cup of Tea",
+    //     price: "$6.00",
+    //   },
+    //   {
+    //     name: "Porota/Rooti, Haluwa or Misty, Cup of Tea",
+    //     price: "$6.00",
+    //   },
+    //   {
+    //     name: "Bhuna Khichuri, Fried Egg, and Cup of Tea",
+    //     price: "$12.00",
+    //   },
+    // ],
+    // "lunch & dinner combo": [
+    //   {
+    //     name: "Ruhi/Koi/Pangas, Any two bhorta, Daal/Mix Vegetable",
+    //     price: "$14.00",
+    //   },
+    //   {
+    //     name: "Shorshe Elish/Elisher Jul/Elisher Dupeyaju, Any two Bhorta, Daal/Mix Vegetable",
+    //     price: "$16.00",
+    //   },
+    //   {
+    //     name: "Beef Bhuna/Kala Bhuna/Goat Rejala, Any two Bhorta, Daal/Mix Vegetable",
+    //     price: "$15.00",
+    //   },
+    //   {
+    //     name: "Chicken Roast/Chicken Khurma/Chicken Curry, Daal/Mix Vegetable",
+    //     price: "$15.00",
+    //   },
+    // ],
+  };
 
 
   const categories = [
@@ -181,7 +181,10 @@ const menuItems = {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 py-16 px-4  overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 py-16 overflow-hidden relative">
+     
+      <div className="container mx-auto">
+        
       {/* Floating Vegetables */}
       {floatingVeggies.map((veggie) => (
         <div
@@ -200,12 +203,11 @@ const menuItems = {
       <div className="absolute top-28 right-0">
         <Image src="/37.png" alt="vegetable" height={200} width={200} />
       </div>
-      <div className="max-w-7xl mx-auto">
+      <div className="container">
         {/* Header Section */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
+          className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
         >
           <div className="inline-block">
             <h3 className="text-red-500 font-script text-xl mb-4 transform hover:scale-105 transition-transform duration-300">
@@ -231,11 +233,10 @@ const menuItems = {
             return (
               <div
                 key={category.id}
-                className={`bg-white rounded-2xl group shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-10 opacity-0"
-                }`}
+                className={`bg-white rounded-2xl group shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden ${isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-10 opacity-0"
+                  }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {/* Category Header */}
@@ -274,9 +275,8 @@ const menuItems = {
 
         {/* Full Menu Button */}
         <div
-          className={`text-center transition-all duration-1000 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
+          className={`text-center transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           style={{ transitionDelay: "600ms" }}
         >
           <button className="group inline-flex cursor-pointor items-center px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:from-red-600 hover:to-orange-600">
@@ -287,6 +287,11 @@ const menuItems = {
           </button>
         </div>
       </div>
+      </div>
+
+
+
+
       <style jsx>{`
         @keyframes float {
           0% {

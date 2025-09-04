@@ -6,29 +6,29 @@ import React, { useState, useEffect } from "react";
 
 const Testimonial = () => {
 
-      const [floatingVeggies, setFloatingVeggies] = useState([]);
-    
-      const vegetables = [{ image: "/Leaf2.png" }, { image: "/34.png" }];
-    
-      useEffect(() => {
-        // Create only 3 fixed veggies
-        const positions = [
-          { x: 2, y: 20 }, // left side
-          { x: 90, y: 40 }, // right side
-        ];
-    
-        const initialVeggies = vegetables.map((veg, i) => ({
-          id: i,
-          veggie: veg.image,
-          x: positions[i].x,
-          y: positions[i].y,
-          rotation: Math.random() * 360,
-          scale: 0.8 + Math.random() * 0.4,
-          animationDuration: 3 + Math.random() * 4,
-        }));
-    
-        setFloatingVeggies(initialVeggies);
-      }, []);
+  const [floatingVeggies, setFloatingVeggies] = useState([]);
+
+  const vegetables = [{ image: "/Leaf2.png" }, { image: "/34.png" }];
+
+  useEffect(() => {
+    // Create only 3 fixed veggies
+    const positions = [
+      { x: 2, y: 20 }, // left side
+      { x: 90, y: 40 }, // right side
+    ];
+
+    const initialVeggies = vegetables.map((veg, i) => ({
+      id: i,
+      veggie: veg.image,
+      x: positions[i].x,
+      y: positions[i].y,
+      rotation: Math.random() * 360,
+      scale: 0.8 + Math.random() * 0.4,
+      animationDuration: 3 + Math.random() * 4,
+    }));
+
+    setFloatingVeggies(initialVeggies);
+  }, []);
   const testimonials = [
     {
       id: 1,
@@ -88,13 +88,12 @@ const Testimonial = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 container">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className={`bg-white rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group ${
-                index === 0 ? "animate-slide-left" : "animate-slide-right"
-              }`}
+              className={`bg-white rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group ${index === 0 ? "animate-slide-left" : "animate-slide-right"
+                }`}
               style={{ animationDelay: `${index * 0.3}s` }}
             >
               {/* Hover Background */}
