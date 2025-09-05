@@ -596,6 +596,18 @@ export const menuData = {
             description: "Chicken combo with sides",
         },
     ],
+
+    featuredItems: [
+        {
+            id: 83,
+            name: "Choco Meal",
+            category: "Fast Food",
+            priceRange: "13 - 19",
+            image: "/coffee.jpg", // Using coffee image as placeholder for the crepes
+            description: "Delicious chocolate-drizzled crepes with fresh fruits and accompaniments",
+            price: 16.0,
+        },
+    ],
 };
 
 export const categoryDisplayNames = {
@@ -606,6 +618,7 @@ export const categoryDisplayNames = {
     mishti: "Mishti (Sweets)",
     breakfastCombo: "Breakfast Combo",
     dessertsAndDrinks: "Desserts & Drinks",
-    lunchDinnerCombo: "Lunch/Dinner Combo"
+    lunchDinnerCombo: "Lunch/Dinner Combo",
+    featuredItems: "Featured Items"
 };
 

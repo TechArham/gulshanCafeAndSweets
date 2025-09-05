@@ -9,12 +9,15 @@ import CategoryNav from '../components/CategoryNav';
 import CategoryFilter from '../components/CategoryFilter';
 import MenuGrid from '../components/MenuGrid';
 import CartSidebar from '../components/CartSidebar';
+import MenuHero from '../components/MenuHero';
 
 // Import data and utilities
 import { menuData, categoryDisplayNames } from '../data/menuData';
 import { useRef } from 'react';
 
 const MenuPage = () => {
+
+
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const {
@@ -53,13 +56,22 @@ const MenuPage = () => {
     };
 
     return (
-        <div className="bg-gray-50 min-h-screen">
+        <div className="bg-white min-h-screen">
+            {/* Menu Hero Section */}
+            <MenuHero
+                title="Menu 01"
+                subtitle="gulshanCafeAndSweets"
+                showDeliveryIllustration={true}
+            />
 
 
-            {/* Category Filter */}
             <CategoryFilter showTableInfo={false} />
 
-            <div className={`min-h-screen container mx-auto flex ${isScrolled ? 'pt-40' : 'pt-4'}`}>
+            <CartSidebar />
+
+
+            <div className={`min-h-screen container z-10 mx-auto flex ${isScrolled ? 'pt-40' : 'pt-4'}`}>
+
                 <div className="flex-1 transition-all duration-300 ease-in-out pb-24 lg:pb-4">
                     <MenuGrid
                         menuData={menuData}
@@ -72,7 +84,6 @@ const MenuPage = () => {
                     />
                 </div>
 
-                <CartSidebar />
 
 
 

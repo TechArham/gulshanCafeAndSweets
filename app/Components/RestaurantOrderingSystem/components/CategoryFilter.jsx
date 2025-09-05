@@ -119,7 +119,7 @@ const CategoryFilter = ({ showTableInfo = false }) => {
     }, [categories]);
 
     return (
-        <div className={`bg-white border-b z-20 border-gray-200 transition-all duration-300 ${isScrolled ? 'fixed top-0 left-0 right-0  shadow-lg' : 'relative'
+        <div className={`bg-white  border-gray-200 transition-all duration-300 ${isScrolled ? ' border-b z-0 fixed top-0 left-0 right-0  shadow-lg  pt-0 ' : 'relative  pt-20'
             }`}>
 
 
