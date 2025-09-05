@@ -3,43 +3,57 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const ComingSoonSection = () => {
-  // Set target date (you can change this to your desired launch date)
-  const targetDate = new Date("2024-12-31T23:59:59").getTime();
 
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+    const [floatingVeggies, setFloatingVeggies] = useState([]);
+  
+    const vegetables = [
+      { image: "/26.png" },
+      { image: "/chili.png" },
+      { image: "/sm-tomatto.png" },
+      { image: "/tomato.png" },
+    ];
+  
+    useEffect(() => {
+      // Create only 3 fixed veggies
+      const positions = [
+        { x: 12, y: 70 }, // left side
+        { x: 2, y: 20 }, // left side
+        { x: 90, y: 40 }, // right side
+        { x: 70, y: 8 }, // right side
+      ];
+  
+      const initialVeggies = vegetables.map((veg, i) => ({
+        id: i,
+        veggie: veg.image,
+        x: positions[i].x,
+        y: positions[i].y,
+        rotation: Math.random() * 360,
+        scale: 0.8 + Math.random() * 0.4,
+        animationDuration: 3 + Math.random() * 4,
+      }));
+  
+      setFloatingVeggies(initialVeggies);
+    }, []);
+  
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor(
-            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          ),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
-      } else {
-        setTimeLeft({ days: 10, hours: 29, minutes: 34, seconds: 54 });
-        clearInterval(timer);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  const formatTime = (time) => String(time).padStart(2, "0");
 
   return (
     <div className="relative bg-black min-h-screen overflow-hidden">
+      {/* Floating Vegetables */}
+      {floatingVeggies.map((veggie) => (
+        <div
+          key={veggie.id}
+          className="absolute pointer-events-none opacity-80"
+          style={{
+            left: `${veggie.x}%`,
+            top: `${veggie.y}%`,
+            transform: `rotate(${veggie.rotation}deg) scale(${veggie.scale})`,
+            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
+          }}
+        >
+          <Image src={veggie.veggie} alt="vegetable" height={60} width={60} />
+        </div>
+      ))}
       {/* Animated Stars Background */}
       <div className="absolute inset-0">
         {[...Array(100)].map((_, i) => (
@@ -54,52 +68,6 @@ const ComingSoonSection = () => {
             }}
           />
         ))}
-      </div>
-
-      {/* Floating Food Ingredient Images */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Tomato */}
-        <div
-          className="absolute top-20 left-10 animate-bounce"
-          style={{ animationDelay: "0s", animationDuration: "3s" }}
-        >
-          <Image height="100" width="100" alt="icon" src="/Leaf2.png" />
-        </div>
-
-        {/* Cheese Slice */}
-        <div
-          className="absolute bottom-32 left-16 animate-float"
-          style={{ animationDelay: "2s" }}
-        >
-          <Image height="100" width="100" alt="icon" src="/25.png" />
-        </div>
-
-        {/* Onion Ring */}
-        <div
-          className="absolute top-1/2 left-32 animate-bounce"
-          style={{ animationDelay: "0.5s", animationDuration: "3.5s" }}
-        >
-          {/* Lettuce Leaf */}
-          <div
-            className="absolute top-40 left-20 animate-bounce"
-            style={{ animationDelay: "1s", animationDuration: "4s" }}
-          >
-            <Image height="100" width="100" alt="icon" src="/26.png" />
-          </div>
-        </div>
-
-        {/* Pickles */}
-        <div
-          className="absolute top-20 right-20 animate-bounce"
-          style={{ animationDelay: "2s", animationDuration: "4s" }}
-        >
-          <Image height="60" width="60" alt="icon" src="/26.png" />
-        </div>
-
-        {/* Fork and Knife */}
-        <div className="absolute bottom-20 right-32 opacity-30">
-          <Image height="60" width="60" alt="icon" src="/26.png" />
-        </div>
       </div>
 
       {/* Main Content */}
@@ -155,7 +123,7 @@ const ComingSoonSection = () => {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl  font-extrabold text-white leading-tight">
                 DELICIOUS
                 <br />
-                BURGER {' '}
+                BURGER{" "}
                 <span className="bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
                   FOOD
                 </span>
@@ -208,34 +176,27 @@ const ComingSoonSection = () => {
         </svg>
       </button>
 
-      {/* Custom Animations */}
       <style jsx>{`
         @keyframes float {
-          0%,
-          100% {
+          0% {
             transform: translateY(0px) rotate(0deg);
           }
-          50% {
-            transform: translateY(-20px) rotate(180deg);
-          }
-        }
-
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-          0%,
           100% {
-            opacity: 0.3;
-          }
-          50% {
-            opacity: 1;
+            transform: translateY(-20px) rotate(10deg);
           }
         }
 
-        .animate-twinkle {
-          animation: twinkle 2s ease-in-out infinite;
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
         }
       `}</style>
     </div>

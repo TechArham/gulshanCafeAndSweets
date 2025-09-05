@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 const FoodTab = () => {
   const [activeTab, setActiveTab] = useState("Pizza");
@@ -85,7 +86,7 @@ const FoodTab = () => {
     <div className="bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 py-10 lg:py-24 relative overflow-hidden">
 
 
-      <div className="container mx-auto">
+      <div className="container max-w-6xl mx-auto">
 
 
       {/* Floating Vegetables */}
@@ -191,7 +192,17 @@ const FoodTab = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
           </div>
         ))}
-      </div>
+        </div>
+        
+<div className='text-center mx-auto mt-9'>
+                    <button className="group inline-flex cursor-pointor items-center px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:from-red-600 hover:to-orange-600">
+                    <span className="mr-3 text-lg">FULL MENU</span>
+                    <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center group-hover:bg-opacity-30 transition-all duration-300">
+                      <FaRegArrowAltCircleDown className="w-6 h-6  text-red-700" />
+                    </div>
+                  </button>
+</div>
+
       </div>
 
       <style jsx>{`
