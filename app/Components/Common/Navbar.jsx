@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
+import { IoSearch, IoCallOutline } from "react-icons/io5";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
     { name: "Menu", href: "/menu", hasDropdown: false },
     {
       name: "Order",
-      href: "/rder ",
+      href: "/order",
       hasDropdown: true,
       dropdownItems: [
         { name: "Dine-in", href: "/dine-in" },
@@ -61,65 +62,69 @@ const Navbar = () => {
     <>
       {/* Navbar */}
       <nav
-        className={`transition-all py-1 sm:py-2 duration-300 items-center sticky top-0 z-50 bg-white shadow-md ${isScrolled
-          ? "bg-White backdrop-blur-md shadow-lg"
-          : "bg-White shadow-sm"
-          }`}
+        className={`transition-all duration-300 sticky top-0 z-50 text-white shadow-md 
+        ${
+          isScrolled
+            ? "bg-black backdrop-blur-md shadow-lg"
+            : "bg-black shadow-sm"
+        } 
+        h-20`} // 👈 Fixed navbar height (80px)
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex-shrink-0 flex rounded-2xl items-center">
-              <Link href="/">
-                <Image
-                  src="/logo.png"
-                  height={60}
-                  width={60}
-                  alt="Logo"
-                  className="rounded-2xl shadow-md sm:h-20 sm:w-20 h-12 w-12"
-                />
-              </Link>
-            </div>
+        <div className="px-6 md:px-20 h-full flex items-center">
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-start gap-10">
+              {/* Logo */}
+              <div className="flex-shrink-0 flex rounded-2xl items-center">
+                <Link href="/">
+                  <Image src="/logoo.png" height={160} width={160} alt="Logo" />
+                </Link>
+              </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                {navItems.map((item) => (
-                  <div key={item.name} className="relative group">
-                    <a
-                      href={item.href}
-                      className="text-red-600 hover:text-red-500 px-3 py-2 text-lg font-bold transition-colors duration-200 flex items-center"
-                    >
-                      {item.name}
-                      {item.hasDropdown && (
-                        <ChevronDown className="ml-1 h-4 w-4 group-hover:rotate-180 transition-transform duration-200" />
-                      )}
-                    </a>
+              {/* Desktop Navigation */}
+              <div className="hidden lg:block">
+                <div className="ml-10 flex items-baseline space-x-8">
+                  {navItems.map((item) => (
+                    <div key={item.name} className="relative group">
+                      <a
+                        href={item.href}
+                        className="text-white hover:text-red-500 px-3 py-2 text-lg font-bold transition-colors duration-200 flex items-center"
+                      >
+                        {item.name}
+                        {item.hasDropdown && (
+                          <ChevronDown className="ml-1 h-4 w-4 group-hover:rotate-180 transition-transform duration-200" />
+                        )}
+                      </a>
 
-                    {/* Dropdown Menu */}
-                    {item.hasDropdown && item.dropdownItems && (
-                      <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                        <div className="py-2">
-                          {item.dropdownItems.map((subItem) => (
-                            <a
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-500 transition-colors"
-                            >
-                              {subItem.name}
-                            </a>
-                          ))}
+                      {/* Dropdown Menu */}
+                      {item.hasDropdown && item.dropdownItems && (
+                        <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                          <div className="py-2">
+                            {item.dropdownItems.map((subItem) => (
+                              <a
+                                key={subItem.name}
+                                href={subItem.href}
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-500 transition-colors"
+                              >
+                                {subItem.name}
+                              </a>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* CTA Button (Desktop) */}
             <div className="hidden lg:block ">
               <div className="flex items-center gap-8">
+                <div className="flex items-center gap-4">
+                  <IoCallOutline className="text-white text-3xl" />
+                  <p className="text-white">Call : +880 123 456 88</p>
+                </div>
+                <IoSearch className="text-white text-3xl" />
                 <FaCartPlus className="text-white text-3xl" />
                 <a
                   href="/reservation"
@@ -139,16 +144,18 @@ const Navbar = () => {
                 <span className="sr-only">Open main menu</span>
                 <div className="relative w-6 h-6">
                   <Menu
-                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${isMobileMenuOpen
-                      ? "opacity-0 rotate-180"
-                      : "opacity-100 rotate-0"
-                      }`}
+                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
+                      isMobileMenuOpen
+                        ? "opacity-0 rotate-180"
+                        : "opacity-100 rotate-0"
+                    }`}
                   />
                   <X
-                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${isMobileMenuOpen
-                      ? "opacity-100 rotate-0"
-                      : "opacity-0 -rotate-180"
-                      }`}
+                    className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
+                      isMobileMenuOpen
+                        ? "opacity-100 rotate-0"
+                        : "opacity-0 -rotate-180"
+                    }`}
                   />
                 </div>
               </button>
@@ -159,20 +166,23 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${
+          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-50" : "opacity-0"
-            }`}
+          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+            isMobileMenuOpen ? "opacity-50" : "opacity-0"
+          }`}
           onClick={closeMobileMenu}
         />
 
         {/* Mobile Menu Panel */}
         <div
-          className={`fixed top-0 left-0 h-full w-80 max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+          className={`fixed top-0 left-0 h-full w-80 max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-3 border-b border-gray-200">
@@ -192,10 +202,11 @@ const Navbar = () => {
             {navItems.map((item, index) => (
               <div
                 key={item.name}
-                className={`transform transition-all duration-300 ${isMobileMenuOpen
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-4 opacity-0"
-                  }`}
+                className={`transform transition-all duration-300 ${
+                  isMobileMenuOpen
+                    ? "translate-x-0 opacity-100"
+                    : "-translate-x-4 opacity-0"
+                }`}
                 style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <button
@@ -209,8 +220,9 @@ const Navbar = () => {
                   <span className="font-medium text-left">{item.name}</span>
                   {item.hasDropdown && (
                     <ChevronDown
-                      className={`h-4 w-4 transition-transform ${openDropdown === item.name ? "rotate-180" : ""
-                        }`}
+                      className={`h-4 w-4 transition-transform ${
+                        openDropdown === item.name ? "rotate-180" : ""
+                      }`}
                     />
                   )}
                 </button>

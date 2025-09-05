@@ -6,7 +6,7 @@ const OurGallery = () => {
       id: 1,
       title: "Chicken Chow Mein",
       description: "Stir-fried noodles with tender chicken",
-      buttonColor: "bg-red-600 hover:bg-red-600",
+      buttonColor: "bg-red-600 hover:bg-red-700",
       image: "/Chicken-Chow-Mein-1.jpg",
       size: "col-span-2",
       price: "$6.00",
@@ -15,7 +15,7 @@ const OurGallery = () => {
       id: 2,
       title: "Ilish Fish",
       description: "Fresh & Crunchy Veggie Delight",
-      buttonColor: "bg-red-600 hover:bg-red-600",
+      buttonColor: "bg-red-600 hover:bg-red-700",
       image: "/fish.jpg",
       size: "col-span-1",
       price: "$6.00",
@@ -24,8 +24,7 @@ const OurGallery = () => {
       id: 3,
       title: "Sesame chicken",
       description: "Crispy Sesame Chicken with a Sweet & Savory Glaze",
-      buttonColor: "bg-red-600 hover:bg-red-600",
-
+      buttonColor: "bg-red-600 hover:bg-red-700",
       image: "/bg-side-3.jpg",
       size: "col-span-1",
       price: "$6.00",
@@ -35,8 +34,7 @@ const OurGallery = () => {
       title: "Special Misty",
       description:
         "Traditional Bengali sweet, rich in flavor and made with love.",
-      buttonColor: "bg-red-600 hover:bg-red-600",
-
+      buttonColor: "bg-red-600 hover:bg-red-700",
       image: "/misty.webp",
       size: "col-span-1",
       price: "$6.00",
@@ -46,8 +44,7 @@ const OurGallery = () => {
       title: "Vegetable Fried Rice",
       description:
         "Flavorful fried rice tossed with fresh vegetables and aromatic spices.",
-      buttonColor: "bg-red-600 hover:bg-red-600",
-
+      buttonColor: "bg-red-600 hover:bg-red-700",
       image: "/Beef-Fried-Rice.jpg",
       size: "col-span-1",
       price: "$6.00",
@@ -56,7 +53,7 @@ const OurGallery = () => {
       id: 6,
       title: "Hot Coffee",
       description: "Special hot Coffee",
-      buttonColor: "bg-red-600 hover:bg-red-600",
+      buttonColor: "bg-red-600 hover:bg-red-700",
       image: "/coffee.png",
       size: "col-span-2",
       price: "$6.00",
@@ -68,22 +65,25 @@ const OurGallery = () => {
       <div className="container mx-auto">
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {promotions.map((promo, index) => (
+          {promotions.map((promo) => (
             <div
               key={promo.id}
-              className={`relative ${promo.size} h-64 overflow-hidden shadow-lg transform transition-all duration-300 hover:overflow-hidden hover:scale-105 hover:shadow-2xl cursor-pointer group`}
+              className={`relative ${promo.size} h-64 shadow-lg group overflow-hidden hover:cursor-pointer  transition-shadow duration-300`}
             >
-              {/* Background Image */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 group-hover:overflow-hidden overflow-hidden"
-                style={{ backgroundImage: `url(${promo.image})` }}
-              ></div>
+              <div className="absolute inset-0">
+                <img
+                  src={promo.image}
+                  alt={promo.title}
+                  className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-115 hover:cursor-pointer will-change-transform"
+                  draggable={false}
+                />
+              </div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+              {/* Dark overlay that fades in on hover */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
 
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center p-6 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-10 text-center">
+              {/* Content on top of image */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-6 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-20 text-center">
                 <h2 className="text-2xl md:text-3xl text-white font-extrabold mb-2">
                   {promo.title}
                 </h2>
@@ -91,7 +91,7 @@ const OurGallery = () => {
                   {promo.description}
                 </p>
                 <button
-                  className={`text-xs font-bold py-2 px-4 rounded ${promo.buttonColor} transition-all duration-300 transform hover:scale-105`}
+                  className={`text-xs font-bold py-2 px-4 rounded ${promo.buttonColor} transition-all duration-300 transform hover:scale-105 z-30`}
                 >
                   ORDER NOW
                 </button>
@@ -101,7 +101,7 @@ const OurGallery = () => {
         </div>
       </div>
 
-      {/* Custom Animations */}
+      {/* Optional small animations (kept from your original) */}
       <style jsx>{`
         @keyframes fade-in {
           from {
