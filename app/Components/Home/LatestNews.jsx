@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Calendar, User, Eye } from 'lucide-react';
 import Image from "next/image";
+import Link from "next/link";
 const LatestNews = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -63,7 +64,7 @@ const LatestNews = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white py-20 overflow-hidden relative">
+    <div className="bg-gradient-to-br from-gray-50 to-white py-20 overflow-hidden relative px-4">
 
       <div className="container mx-auto">
 
@@ -145,7 +146,7 @@ const LatestNews = () => {
                   </p>
 
                   {/* Button */}
-                  <button
+                  <Link href='/order'
                     className={`w-full py-3 border-2 border-red-500 text-red-500 px-6 font-semibold rounded-lg transition-all duration-500 transform flex items-center justify-center group-hover:scale-105 group-hover:bg-red-500 group-hover:text-white`}
                   >
                     <span className="mr-2">ORDER NOW</span>
@@ -153,7 +154,7 @@ const LatestNews = () => {
                       className={`w-4 h-4 transition-transform font-semibold duration-300 ${hoveredCard === item.id ? "translate-x-2" : ""
                         }`}
                     />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
