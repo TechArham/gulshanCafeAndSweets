@@ -20,7 +20,7 @@ const CategoryFilter = ({ showTableInfo = false }) => {
 
     // Icon mapping for categories with more variety
     const categoryIcons = {
-        'all': Utensils,
+
         'vegetable': Carrot,
         'halalChinese': Soup,
         'SuperDeliciousDeal': Cake,
@@ -84,8 +84,12 @@ const CategoryFilter = ({ showTableInfo = false }) => {
     const checkScrollPosition = () => {
         if (scrollContainerRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-            setCanScrollLeft(scrollLeft > 0);
-            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+            const hasScrollableContent = scrollWidth > clientWidth;
+            const leftCanScroll = hasScrollableContent && scrollLeft > 0;
+            const rightCanScroll = hasScrollableContent && scrollLeft < scrollWidth - clientWidth - 1;
+
+            setCanScrollLeft(leftCanScroll);
+            setCanScrollRight(rightCanScroll);
         }
     };
 
@@ -118,8 +122,35 @@ const CategoryFilter = ({ showTableInfo = false }) => {
         }
     }, [categories]);
 
+    // Check scroll position after component mounts
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            checkScrollPosition();
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    // Check scroll position on window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setTimeout(() => {
+                checkScrollPosition();
+            }, 100);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Force check scroll position when categories change
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            checkScrollPosition();
+        }, 200);
+        return () => clearTimeout(timer);
+    }, [categories]);
+
     return (
-        <div className={`bg-white  border-gray-200 transition-all duration-300 ${isScrolled ? ' border-b z-0 fixed top-0 left-0 right-0  shadow-lg  pt-0 ' : 'relative  pt-20'
+        <div className={`bg-white  z-40 border-gray-200 transition-all duration-300 ${isScrolled ? ' border-b z-40 fixed top-0 left-0 right-0  shadow-lg  pt-0 ' : 'relative  pt-10'
             }`}>
 
 
@@ -151,146 +182,57 @@ const CategoryFilter = ({ showTableInfo = false }) => {
                     </div>
                 )}
 
-                {/* Desktop Layout */}
-                <div className="hidden lg:block">
-
-
-                    <div className="flex  w-full  justify-center mb-6">
-                        {/* Search Bar - Right Corner */}
-                        <div className="w-full mx-10">
+                {/* Unified Layout for All Devices */}
+                <div className="w-full">
+                    {/* Search Bar */}
+                    <div className="flex w-full justify-center mb-6">
+                        <div className="w-full mx-4 sm:mx-6 lg:mx-10">
                             <div className="relative w-full">
                                 <Search
-                                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                    className="absolute left-3 top-1/2 transform -translate-y-1/2 shadow-lg text-gray-400"
                                     size={16}
                                 />
                                 <input
-                                    type="text"
+                                    type="search"
                                     placeholder="Search menu items..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full pl-9 pr-4 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-orange-500 text-black focus:bg-white transition-colors outline-none text-sm"
+                                    className="w-full pl-9 pr-4 py-2 sm:py-3 lg:py-3.5 text-sm sm:text-base lg:text-md bg-gray-100 rounded-lg focus:ring-2 focus:ring-orange-500 text-black focus:bg-white transition-colors outline-none"
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className="relative flex items-center">
-                        {/* Left Arrow */}
-                        {canScrollLeft && (
-                            <button
-                                onClick={scrollLeft}
-                                className="absolute left-0 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                                <ChevronLeft size={18} className="text-gray-600" />
-                            </button>
-                        )}
-
-                        {/* Categories Container */}
-                        <div
-                            ref={scrollContainerRef}
-                            className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-hide mx-10"
-                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                        >
-                            <button
-                                onClick={() => setActiveCategory('all')}
-                                className={`px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center space-x-1.5 ${activeCategory === 'all'
-                                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg transform scale-105'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
-                                    }`}
-                            >
-                                <Utensils size={14} />
-                                <span>All</span>
-                            </button>
-                            {categories.map((category) => {
-                                const IconComponent = getCategoryIcon(category);
-                                return (
-                                    <button
-                                        key={category}
-                                        onClick={() => setActiveCategory(category)}
-                                        className={`px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center space-x-1.5 ${activeCategory === category
-                                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg transform scale-105'
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
-                                            }`}
-                                    >
-                                        <IconComponent size={14} />
-                                        <span>{categoryDisplayNames?.[category] || category}</span>
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        {/* Right Arrow */}
-                        {canScrollRight && (
-                            <button
-                                onClick={scrollRight}
-                                className="absolute right-0 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                                <ChevronRight size={18} className="text-gray-600" />
-                            </button>
-                        )}
-                    </div>
-
-                </div>
-
-                {/* Mobile Layout */}
-                <div className="lg:hidden">
-                    {/* Search Bar - Top */}
-                    <div className="mb-5">
-                        <div className="relative">
-                            <Search
-                                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                                size={16}
-                            />
-                            <input
-                                type="text"
-                                placeholder="Search menu items..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-9 pr-4 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-orange-500 text-black focus:bg-white transition-colors outline-none text-sm"
-                            />
-                        </div>
-                    </div>
-
                     {/* Categories */}
-                    <div className="relative flex items-center">
+                    <div className="relative flex items-center mx-4 sm:mx-6 lg:mx-10">
                         {/* Left Arrow */}
                         {canScrollLeft && (
                             <button
                                 onClick={scrollLeft}
-                                className="absolute left-0 z-10 bg-white border border-gray-300 shadow-lg rounded-full p-1.5 hover:bg-gray-50 transition-colors cursor-pointer"
+                                className="absolute left-0 z-20 bg-orange-500 shadow-lg rounded-full p-2 sm:p-2.5 lg:p-3 transition-colors cursor-pointer hover:bg-orange-600"
                             >
-                                <ChevronLeft size={14} className="text-gray-600" />
+                                <ChevronLeft size={18} className="text-white" />
                             </button>
                         )}
 
                         {/* Categories Container */}
                         <div
                             ref={scrollContainerRef}
-                            className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-hide mx-8"
+                            className="flex items-center space-x-3 sm:space-x-4 lg:space-x-6 overflow-x-auto pb-2 scrollbar-hide w-full px-8 sm:px-10 lg:px-12"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
-                            <button
-                                onClick={() => setActiveCategory('all')}
-                                className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center space-x-1 ${activeCategory === 'all'
-                                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                    }`}
-                            >
-                                <Utensils size={12} />
-                                <span>All</span>
-                            </button>
                             {categories.map((category) => {
                                 const IconComponent = getCategoryIcon(category);
                                 return (
                                     <button
                                         key={category}
                                         onClick={() => setActiveCategory(category)}
-                                        className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center space-x-1 ${activeCategory === category
-                                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg'
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                        className={`px-3 py-2 sm:px-4 sm:py-2.5 lg:px-5 lg:py-3.5 rounded-lg sm:rounded-xl cursor-pointer font-medium sm:font-semibold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center space-x-1.5 sm:space-x-2 ${activeCategory === category
+                                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white transform scale-105'
+                                            : 'bg-gray-100 text-black hover:bg-gray-200 hover:scale-105'
                                             }`}
                                     >
-                                        <IconComponent size={12} />
+                                        <IconComponent size={14} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                                         <span>{categoryDisplayNames?.[category] || category}</span>
                                     </button>
                                 );
@@ -301,9 +243,9 @@ const CategoryFilter = ({ showTableInfo = false }) => {
                         {canScrollRight && (
                             <button
                                 onClick={scrollRight}
-                                className="absolute right-0 z-10 border border-gray-300 bg-white rounded-full p-1 sm:p-1.5 hover:bg-gray-50 transition-colors cursor-pointer"
+                                className="absolute right-0 z-20 bg-orange-500 shadow-lg rounded-full p-2 sm:p-2.5 lg:p-3 transition-colors cursor-pointer hover:bg-orange-600"
                             >
-                                <ChevronRight size={12} className="text-gray-600 sm:w-3.5 sm:h-3.5" />
+                                <ChevronRight size={18} className="text-white" />
                             </button>
                         )}
                     </div>

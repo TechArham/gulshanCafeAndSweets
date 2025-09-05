@@ -10,6 +10,7 @@ import CategoryFilter from '../components/CategoryFilter';
 import MenuGrid from '../components/MenuGrid';
 import CartSidebar from '../components/CartSidebar';
 import MenuHero from '../components/MenuHero';
+import FeaturedSection from '../components/FeaturedSection';
 
 // Import data and utilities
 import { menuData, categoryDisplayNames } from '../data/menuData';
@@ -70,7 +71,7 @@ const MenuPage = () => {
             <CartSidebar />
 
 
-            <div className={`min-h-screen container z-10 mx-auto flex ${isScrolled ? 'pt-40' : 'pt-4'}`}>
+            <div className={`min-h-screen container z-10 mx-auto flex ${isScrolled ? 'pt-40' : 'pt-4 lg:pt-4'}`}>
 
                 <div className="flex-1 transition-all duration-300 ease-in-out pb-24 lg:pb-4">
                     <MenuGrid
@@ -82,6 +83,9 @@ const MenuPage = () => {
                         addToCart={addToCart}
                         categoryRefs={categoryRefs}
                     />
+
+                    {/* Featured Section */}
+                    <FeaturedSection />
                 </div>
 
 
@@ -103,15 +107,22 @@ const MenuPage = () => {
                     </div>
                 )}
 
-                {/* Mobile Cart Trigger */}
+                {/* Mobile Floating Cart Button */}
                 {getTotalItems(cart || []) > 0 && (
-                    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-3 sm:p-4 z-30">
+                    <div className="lg:hidden fixed left-0 top-1/2 transform -translate-y-1/2 z-30">
                         <button
                             onClick={() => setSidebarOpen(true)}
-                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-xl sm:rounded-2xl font-semibold flex items-center justify-between text-sm sm:text-base cursor-pointer"
+                            className="bg-gradient-to-r from-orange-500 to-red-500 text-white cursor-pointer p-4 rounded-r-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 active:scale-95 relative group"
                         >
-                            <span>View Cart ({getTotalItems(cart || [])} items)</span>
-                            <span>${getTotalPrice(cart || []).toFixed(2)}</span>
+                            <div className="flex flex-col items-center">
+                                <ShoppingCart size={24} className="mb-1 group-hover:animate-bounce" />
+                                <div className="text-xs font-bold">{getTotalItems(cart || [])}</div>
+                            </div>
+
+                            {/* Pulse animation for new items */}
+                            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold animate-pulse">
+                                {getTotalItems(cart || [])}
+                            </div>
                         </button>
                     </div>
                 )}

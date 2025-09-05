@@ -15,6 +15,9 @@ const CartSidebar = () => {
         getTotalPrice
     } = useRestaurantStore();
 
+    // Debug logging
+    console.log('CartSidebar render:', { sidebarOpen, cartLength: cart?.length });
+
     const removeItem = (itemId) => {
         updateQuantity(itemId, 0);
     };
@@ -27,17 +30,25 @@ const CartSidebar = () => {
     return (
         <Menu
             isOpen={sidebarOpen}
-            onStateChange={(state) => setSidebarOpen(state.isOpen)}
+            onStateChange={(state) => {
+                console.log('Menu state change:', state);
+                setSidebarOpen(state.isOpen);
+            }}
             right
             width={380}
             customBurgerIcon={false}
             customCrossIcon={false}
+            disableAutoFocus={false}
+            disableCloseOnEsc={false}
             styles={{
                 bmMenuWrap: {
                     position: 'fixed',
-                    height: '100%',
+                    height: '100vh',
+                    width: '100vw',
                     top: 0,
                     right: 0,
+                    left: 0,
+                    bottom: 0,
                     zIndex: 1000
                 },
                 bmMenu: {
@@ -45,7 +56,12 @@ const CartSidebar = () => {
                     padding: '0',
                     fontSize: '1.15em',
                     boxShadow: '-5px 0 25px rgba(0,0,0,0.15)',
-                    borderLeft: '1px solid rgba(251, 146, 60, 0.1)'
+                    borderLeft: '1px solid rgba(251, 146, 60, 0.1)',
+                    height: '100vh',
+                    width: '380px',
+                    position: 'absolute',
+                    right: 0,
+                    top: 0
                 },
                 bmMorphShape: {
                     fill: '#373a47'
@@ -62,8 +78,16 @@ const CartSidebar = () => {
                     padding: '0'
                 },
                 bmOverlay: {
-                    background: 'rgba(0, 0, 0, 0.3)',
-                    backdropFilter: 'blur(4px)'
+                    background: 'rgba(0, 0, 0, 0.5)',
+                    backdropFilter: 'blur(6px)',
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: 999
                 }
             }}
         >
