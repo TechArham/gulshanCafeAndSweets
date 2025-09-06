@@ -185,7 +185,7 @@ const CategoryFilter = ({ showTableInfo = false }) => {
                 {/* Unified Layout for All Devices */}
                 <div className="w-full">
                     {/* Search Bar */}
-                    <div className="flex w-full justify-center mb-6">
+                    {/* <div className="flex w-full justify-center mb-6">
                         <div className="w-full mx-4 sm:mx-6 lg:mx-10">
                             <div className="relative w-full">
                                 <Search
@@ -201,7 +201,7 @@ const CategoryFilter = ({ showTableInfo = false }) => {
                                 />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Categories */}
                     <div className="relative flex items-center mx-4 sm:mx-6 lg:mx-10">

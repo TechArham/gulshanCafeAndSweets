@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaShoppingCart, FaCheck } from 'react-icons/fa';
 
 const FoodItemCard = ({
     item,
@@ -13,6 +13,14 @@ const FoodItemCard = ({
     buttonText = "View options",
     imageHeight = "h-48"
 }) => {
+    const [isAdded, setIsAdded] = useState(false);
+
+    const handleAddToCart = () => {
+        onAddToCart(item, category);
+        setIsAdded(true);
+        // Reset the success state after 2 seconds
+        setTimeout(() => setIsAdded(false), 2000);
+    };
     return (
         <div className="bg-white   group rounded-xl shadow-sm border border-gray-200 hover:shadow-xl transition-all duration-300 transform  group  relative overflow-hidden">
             {/* Food Image Section */}
@@ -54,13 +62,24 @@ const FoodItemCard = ({
 
                     {/* Action Button */}
                     <button
-                        onClick={() => onAddToCart(item, category)}
-                        className=" cursor-pointer flex items-center justify-center space-x-2 bg-white border border-red-500 text-red-500 px-5  py-1.5  rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 font-semibold"
+                        onClick={handleAddToCart}
+                        className={`cursor-pointer flex items-center justify-center space-x-2 px-5 py-1.5 rounded-full transition-all duration-300 font-semibold ${
+                            isAdded 
+                                ? 'bg-green-500 border border-green-500 text-white' 
+                                : 'bg-white border border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
+                        }`}
                     >
-                       
-                        <FaShoppingCart className='w-4 h-4' />
-
-                        <span className=' text-sm'>Order Now</span>
+                        {isAdded ? (
+                            <>
+                                <FaCheck className='w-4 h-4' />
+                                <span className='text-sm'>Added!</span>
+                            </>
+                        ) : (
+                            <>
+                                <FaShoppingCart className='w-4 h-4' />
+                                <span className='text-sm'>Add To Cart</span>
+                            </>
+                        )}
                     </button>
                 </div>
 

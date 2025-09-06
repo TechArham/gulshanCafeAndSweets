@@ -37,9 +37,9 @@ export const useRestaurantStore = create(
                         newCart = [...state.cart, { ...item, quantity: 1 }];
                     }
 
-                    // Auto-open sidebar on both desktop and mobile
-                    console.log('Adding to cart and opening sidebar:', { item: item.name, sidebarOpen: true });
-                    return { cart: newCart, sidebarOpen: true };
+                    // Add item to cart but don't auto-open sidebar
+                    console.log('Adding to cart:', { item: item.name, quantity: existingItem ? existingItem.quantity + 1 : 1 });
+                    return { cart: newCart };
                 });
             },
 
