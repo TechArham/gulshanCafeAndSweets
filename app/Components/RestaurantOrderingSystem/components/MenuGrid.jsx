@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getFilteredItems } from '../utils/helpers';
 import { useRestaurantStore } from '../store/restaurantStore';
 import FoodItemCard from './FoodItemCard';
+import DineInFoodItemCard from './DineInFoodItemCard';
 
 const MenuGrid = ({
     menuData,
@@ -10,7 +11,8 @@ const MenuGrid = ({
     visibleItems,
     sidebarOpen,
     addToCart,
-    categoryRefs
+    categoryRefs,
+    cardType = 'vertical' // 'vertical' for MenuPage, 'horizontal' for DineInPage
 }) => {
     const { activeCategory } = useRestaurantStore();
     const [itemsToShow, setItemsToShow] = useState(8);
@@ -55,21 +57,40 @@ const MenuGrid = ({
                         </h2>
 
                         {/* Grid with responsive columns */}
-                        <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                        <div className={`grid gap-4 sm:gap-6 lg:gap-8 ${
+                            cardType === 'horizontal' 
+                                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
+                                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                        }`}>
                             {displayedItems.map((item) => (
-                                <FoodItemCard
-                                    key={item.id}
-                                    item={item}
-                                    category={category}
-                                    categoryDisplayNames={categoryDisplayNames}
-                                    onAddToCart={addToCart}
-                                    promotionalBanner="$5.00 OFF UPTO $50.00"
-                                    showPromotionalBanner={true}
-                                    rating={4.8}
-                                    showRating={true}
-                                    buttonText="View options"
-                                    imageHeight="h-48"
-                                />
+                                cardType === 'horizontal' ? (
+                                    <DineInFoodItemCard
+                                        key={item.id}
+                                        item={item}
+                                        category={category}
+                                        categoryDisplayNames={categoryDisplayNames}
+                                        onAddToCart={addToCart}
+                                        promotionalBanner="$5.00 OFF UPTO $50.00"
+                                        showPromotionalBanner={true}
+                                        rating={4.8}
+                                        showRating={true}
+                                        buttonText="Order Now"
+                                    />
+                                ) : (
+                                    <FoodItemCard
+                                        key={item.id}
+                                        item={item}
+                                        category={category}
+                                        categoryDisplayNames={categoryDisplayNames}
+                                        onAddToCart={addToCart}
+                                        promotionalBanner="$5.00 OFF UPTO $50.00"
+                                        showPromotionalBanner={true}
+                                        rating={4.8}
+                                        showRating={true}
+                                        buttonText="View options"
+                                        imageHeight="h-48"
+                                    />
+                                )
                             ))}
                         </div>
 

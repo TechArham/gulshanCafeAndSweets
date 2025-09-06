@@ -125,6 +125,7 @@ const DineInPage = () => {
                         sidebarOpen={sidebarOpen}
                         addToCart={addToCart}
                         categoryRefs={categoryRefs}
+                        cardType="horizontal"
                     />
                 </div>
 
