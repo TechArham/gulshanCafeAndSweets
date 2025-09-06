@@ -54,11 +54,10 @@ const DineInFoodItemCard = ({
                 {/* Order Button */}
                 <button
                     onClick={handleAddToCart}
-                    className={`cursor-pointer flex items-center justify-center space-x-2 px-5 py-1.5 rounded-full transition-all duration-300 font-semibold ${
-                        isAdded 
-                            ? 'bg-green-500 border border-green-500 text-white' 
-                            : 'bg-white border border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
-                    }`}
+                    className={`cursor-pointer flex items-center justify-center space-x-2 px-5 py-1.5 rounded-full transition-all duration-300 font-semibold ${isAdded
+                        ? 'bg-green-500 border border-green-500 text-white'
+                        : 'bg-white border border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
+                        }`}
                 >
                     {isAdded ? (
                         <>
@@ -68,7 +67,7 @@ const DineInFoodItemCard = ({
                     ) : (
                         <>
                             <FaShoppingCart className='w-4 h-4' />
-                            <span className='text-sm'>Order Now</span>
+                            <span className='text-sm'>Add To Cart</span>
                         </>
                     )}
                 </button>

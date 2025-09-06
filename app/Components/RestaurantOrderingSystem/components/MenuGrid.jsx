@@ -57,11 +57,10 @@ const MenuGrid = ({
                         </h2>
 
                         {/* Grid with responsive columns */}
-                        <div className={`grid gap-4 sm:gap-6 lg:gap-8 ${
-                            cardType === 'horizontal' 
-                                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
-                                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-                        }`}>
+                        <div className={`grid gap-4 sm:gap-6 lg:gap-8 ${cardType === 'horizontal'
+                            ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                            }`}>
                             {displayedItems.map((item) => (
                                 cardType === 'horizontal' ? (
                                     <DineInFoodItemCard
