@@ -72,12 +72,10 @@ const DineInPage = () => {
         <div className="bg-gray-50 min-h-screen">
 
 
-
-
             <CategoryFilter showTableInfo={true} />
             <CartSidebar />
 
-            <div className={`min-h-screen container mx-auto flex ${isScrolled ? 'pt-40' : 'pt-4'} ${sidebarOpen ? 'lg:pr-96' : ''} relative z-10`}>
+            <div className={`min-h-screen container mx-auto flex ${isScrolled ? 'pt-[16rem]' : 'pt-4'}  relative z-10`}>
                 <div className="flex-1 transition-all duration-300 ease-in-out pb-24 lg:pb-4 bg-gray-50">
                     <MenuGrid
                         menuData={menuData}
