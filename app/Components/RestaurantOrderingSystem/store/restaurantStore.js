@@ -13,11 +13,13 @@ export const useRestaurantStore = create(
                 email: "",
             },
             orderId: null,
-            activeCategory: "vegetable",
+            activeCategory: "SuperDeliciousDeal",
             searchTerm: "",
             sidebarOpen: false,
             categoryNavOpen: false,
-            visibleItems: 20,
+            visibleItems: 8,
+            itemsPerPage: 8,
+            currentPage: 1,
 
             // Cart actions
             addToCart: (item, category) => {
@@ -35,11 +37,8 @@ export const useRestaurantStore = create(
                         newCart = [...state.cart, { ...item, quantity: 1 }];
                     }
 
-                    // Auto-open sidebar on desktop
-                    if (typeof window !== "undefined" && window.innerWidth >= 1024) {
-                        return { cart: newCart, sidebarOpen: true };
-                    }
-
+                    // Add item to cart but don't auto-open sidebar
+                    console.log('Adding to cart:', { item: item.name, quantity: existingItem ? existingItem.quantity + 1 : 1 });
                     return { cart: newCart };
                 });
             },
@@ -106,6 +105,14 @@ export const useRestaurantStore = create(
                 set({ visibleItems: count });
             },
 
+            setCurrentPage: (page) => {
+                set({ currentPage: page });
+            },
+
+            setItemsPerPage: (count) => {
+                set({ itemsPerPage: count });
+            },
+
             // Order actions
             submitOrder: () => {
                 const { cart, orderDetails } = get();
@@ -135,7 +142,9 @@ export const useRestaurantStore = create(
                     categoryNavOpen: false,
                     searchTerm: "",
                     visibleItems: 20,
-                    activeCategory: "vegetable",
+                    activeCategory: "SuperDeliciousDeal",
+                    itemsPerPage: 8,
+                    currentPage: 1,
                 });
             },
 

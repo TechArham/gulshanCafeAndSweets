@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getFilteredItems } from '../utils/helpers';
 import { useRestaurantStore } from '../store/restaurantStore';
+import FoodItemCard from './FoodItemCard';
 
 const MenuGrid = ({
     menuData,
@@ -12,6 +13,12 @@ const MenuGrid = ({
     categoryRefs
 }) => {
     const { activeCategory } = useRestaurantStore();
+    const [itemsToShow, setItemsToShow] = useState(8);
+
+    // Reset items to show when category changes
+    useEffect(() => {
+        setItemsToShow(8);
+    }, [activeCategory]);
 
     // Get categories to display based on active filter
     const getCategoriesToShow = () => {
@@ -23,70 +30,60 @@ const MenuGrid = ({
 
     const categoriesToShow = getCategoriesToShow();
 
+    const handleShowMore = () => {
+        setItemsToShow(prev => prev + 8);
+    };
+
     return (
-        <div className="p-4 relative z-30">
+        <div className="p-2 sm:p-4 lg:p-6 relative z-30">
             {categoriesToShow.map((category) => {
-                const filteredItems = getFilteredItems(category, menuData, searchTerm, visibleItems);
+                const allItems = getFilteredItems(category, menuData, searchTerm, 1000); // Get all items
+                const displayedItems = allItems.slice(0, itemsToShow);
+                const hasMoreItems = allItems.length > itemsToShow;
 
                 // Don't show category if no items match the filter
-                if (filteredItems.length === 0) return null;
+                if (displayedItems.length === 0) return null;
 
                 return (
                     <div
                         key={category}
                         ref={(el) => (categoryRefs.current[category] = el)}
-                        className="mb-8"
+                        className="mb-6 sm:mb-8 lg:mb-12"
                     >
-                        <h2 className="text-2xl font-bold text-gray-800 mb-6 mt-6 first:mt-0 flex items-center">
-                            <span className="w-2 h-8 bg-gradient-to-b from-orange-500 to-red-500 rounded-full mr-3"></span>
+                        <h2 className=" text-3xl lg:text-4xl font-bold text-gray-800 mb-2 py-6 sm:py-8 lg:py-10 first:mt-0 flex items-center justify-center text-center px-4">
                             {categoryDisplayNames?.[category] || category}
                         </h2>
-                        <div
-                            className={`grid gap-4 sm:gap-6 lg:gap-8 ${sidebarOpen
-                                ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3"
-                                : "grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                                }`}
-                        >
-                            {filteredItems.map((item) => (
-                                <div
+
+                        {/* Grid with responsive columns */}
+                        <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                            {displayedItems.map((item) => (
+                                <FoodItemCard
                                     key={item.id}
-                                    className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group border border-gray-100 relative z-30"
-                                >
-                                    <div className="flex flex-col h-full">
-                                        <div className="flex-shrink-0 mb-4">
-                                            <div className="relative overflow-hidden rounded-xl">
-                                                <img
-                                                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                            </div>
-                                        </div>
-                                        <div className="flex-1 flex flex-col">
-                                            <h3 className="font-bold text-lg text-gray-800 mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
-                                                {item.name}
-                                            </h3>
-                                            <div className="flex items-center justify-between mb-4">
-                                                <span className="text-2xl font-bold text-orange-600">
-                                                    ${item.price.toFixed(2)}
-                                                </span>
-                                                <div className="flex items-center space-x-1 text-yellow-500">
-                                                    <span className="text-sm">⭐</span>
-                                                    <span className="text-sm font-medium">4.8</span>
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={() => addToCart(item, category)}
-                                                className="mt-auto bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-4 rounded-xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 cursor-pointer shadow-lg hover:shadow-xl"
-                                            >
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                    item={item}
+                                    category={category}
+                                    categoryDisplayNames={categoryDisplayNames}
+                                    onAddToCart={addToCart}
+                                    promotionalBanner="$5.00 OFF UPTO $50.00"
+                                    showPromotionalBanner={true}
+                                    rating={4.8}
+                                    showRating={true}
+                                    buttonText="View options"
+                                    imageHeight="h-48"
+                                />
                             ))}
                         </div>
+
+                        {/* Show More Button */}
+                        {hasMoreItems && (
+                            <div className="flex justify-center mt-6 sm:mt-8">
+                                <button
+                                    onClick={handleShowMore}
+                                    className="px-6 py-2 sm:px-8 sm:py-3 border-2 border-red-500 text-red-500 cursor-pointer rounded-full font-semibold hover:bg-red-500 hover:text-white transition-all duration-300 text-sm sm:text-base"
+                                >
+                                    Show More
+                                </button>
+                            </div>
+                        )}
                     </div>
                 );
             })}

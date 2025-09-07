@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono,Oswald  } from "next/font/google";
+import { Geist, Geist_Mono, Oswald, Quicksand } from "next/font/google";
 import "./globals.css";
 
 
@@ -19,6 +19,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const quicksand = Quicksand({
+  variable: "--font-quicksand",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata = {
   title: "Gulshan Cafe and Sweets",
   description: "Delicious food, sweets, and catering services in Gulshan.",
@@ -31,7 +38,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  ${oswald.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${quicksand.variable} antialiased`}
       >
         {children}
       </body>

@@ -31,6 +31,12 @@ module.exports = {
         dark: "#111827", // dark background
         light: "#F3F4F6", // light background
       },
+      fontFamily: {
+        'quicksand': ['var(--font-quicksand)', 'sans-serif'],
+        'rt-body': ['var(--rt-body-font)'],
+        'rt-heading': ['var(--rt-heading-font)'],
+        'rt-menu': ['var(--rt-menu-font)'],
+      },
     },
   },
   plugins: [],
