@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 @theme {
   --color-primary: #451952;
   --color-secondary: #ae445a;
@@ -10,11 +11,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --rt-body-font: 'Quicksand', sans-serif;
-  --rt-heading-font: 'Quicksand', sans-serif;
-  --rt-menu-font: 'Quicksand', sans-serif;
+  --rt-body-font: "Quicksand", sans-serif;
+  --rt-heading-font: "Quicksand", sans-serif;
+  --rt-menu-font: "Quicksand", sans-serif;
 }
-
 
 @theme inline {
   --color-background: var(--background);
@@ -22,6 +22,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-quicksand: var(--font-quicksand);
+  --font-barlow-condensed: var(--font-barlow-condensed);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,3 +50,18 @@ body {
   display: none;
   /* Safari and Chrome */
 }
+
+.shapeCss {
+  /* width:100%;
+    height: 100%;
+    background: #FF0099; */
+  border-radius: 35% 31% 35% 31% / 90% 90% 90% 81%;
+}
+
+/* .header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+} */
