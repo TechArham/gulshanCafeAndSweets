@@ -1,7 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { ShoppingCart } from 'lucide-react';
+
+import { ShoppingBasket } from 'lucide-react';
 import { useRestaurantStore } from '../store/restaurantStore';
 
 // Import components
@@ -9,6 +10,8 @@ import CategoryFilter from '../components/CategoryFilter';
 import MenuGrid from '../components/MenuGrid';
 import CartSidebar from '../components/CartSidebar';
 import OnboardingModal from '../components/OnboardingModal';
+import TableChangeModal from '../components/TableChangeModal';
+import InitialTableModal from '../components/InitialTableModal';
 
 // Import data and utilities
 import { menuData, categoryDisplayNames } from '../data/menuData';
@@ -21,6 +24,7 @@ const DineInPage = () => {
 
     const {
         cart,
+        orderDetails,
         sidebarOpen,
         setSidebarOpen,
         updateQuantity,
@@ -58,6 +62,17 @@ const DineInPage = () => {
         }
     }, []);
 
+    // Show initial table selection modal if no table is selected
+    useEffect(() => {
+        if (!orderDetails.tableNumber) {
+            // Dispatch event to open initial table modal after a short delay
+            const timer = setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('openInitialTableModal'));
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [orderDetails.tableNumber]);
+
 
     const handleBackToLanding = () => {
         router.push('/');
@@ -73,7 +88,7 @@ const DineInPage = () => {
 
 
             <CategoryFilter showTableInfo={true} />
-            <CartSidebar />
+            <CartSidebar showTableInfo={true} />
 
             <div className={`min-h-screen container mx-auto flex ${isScrolled ? 'pt-[16rem]' : 'pt-4'}  relative z-10`}>
                 <div className="flex-1 transition-all duration-300 ease-in-out pb-24 lg:pb-4 bg-gray-50">
@@ -91,22 +106,82 @@ const DineInPage = () => {
 
 
 
+
+
+
                 {/* Desktop Floating Cart Button */}
+
                 {!sidebarOpen && getTotalItems(cart || []) > 0 && (
                     <div
                         onClick={() => setSidebarOpen(true)}
-                        className="hidden lg:block fixed top-1/2 right-0 transform -translate-y-1/2 bg-orange-500 text-white p-4   rounded-l-2xl shadow-xl cursor-pointer hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
+                        className="hidden lg:block  fixed top-[45%]  right-0 transform -translate-y-1/2  bg-orange-500 text-white  pb-1 rounded-l-xl  shadow-xl border border-r-0 cursor-pointer backdrop-blur-2xl  border-gray-200 hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
                     >
-                        <div className="flex flex-col items-center">
-                            <ShoppingCart size={24} className="mb-2" />
-                            <div className="text-sm font-bold">{getTotalItems(cart || [])}</div>
-                            <div className="text-sm font-bold">
+                        <div className="flex flex-col items-center ">
+                            {/* Shopping Cart Icon */}
+
+
+                            <div className="   rounded-xl px-2 py-1 w-full relative flex flex-col items-center ">
+                                {/* Red Blink Dot */}
+                                <ShoppingBasket size={24} className="text-white" />
+                                {/* Items Count */}
+                                <div className="text-white font-bold text-lg">
+                                    {getTotalItems(cart || [])} items
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            {/* Total Price */}
+                            <div className="text-black bg-white px-2 py-1 rounded-xl  font-bold text-sm">
                                 ${getTotalPrice(cart || []).toFixed(2)}
                             </div>
                         </div>
                     </div>
                 )}
 
+
+
+                {/* Mobile Floating Cart Button */}
+                {!sidebarOpen && getTotalItems(cart || []) > 0 && (
+                    <div
+                        onClick={() => setSidebarOpen(true)}
+                        className="lg:hidden fixed top-[45%] left-0 transform -translate-y-1/2  bg-orange-500 text-white  pb-1 rounded-r-xl  shadow-xl border border-l-0 cursor-pointer backdrop-blur-2xl  border-gray-200 hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
+                    >
+                        <div className="flex flex-col items-center ">
+                            {/* Shopping Cart Icon */}
+
+
+                            <div className="   rounded-xl px-2 py-1 w-full relative flex flex-col items-center ">
+                                {/* Red Blink Dot */}
+                                <ShoppingBasket size={24} className="text-white" />
+                                {/* Items Count */}
+                                <div className="text-white font-bold text-lg">
+                                    {getTotalItems(cart || [])} items
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            {/* Total Price */}
+                            <div className="text-black bg-white px-2 py-1 rounded-xl  font-bold text-sm">
+                                ${getTotalPrice(cart || []).toFixed(2)}
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+
+
+
+
+
+                {/* 
                 {getTotalItems(cart || []) > 0 && (
                     <div className="lg:hidden fixed bottom-0 left-0  border-gray-200 right-0 bg-white border-t shadow-lg p-3 sm:p-4 z-30">
                         <button
@@ -117,14 +192,22 @@ const DineInPage = () => {
                             <span>${getTotalPrice(cart || []).toFixed(2)}</span>
                         </button>
                     </div>
-                )}
+                )} */}
+
+
             </div>
 
 
             {/* Onboarding Modal */}
-            {showOnboarding && (
+            {/* {showOnboarding && (
                 <OnboardingModal onComplete={handleOnboardingComplete} />
-            )}
+            )} */}
+
+            {/* Initial Table Modal - for first-time users */}
+            <InitialTableModal />
+
+            {/* Table Change Modal - for changing existing table info */}
+            <TableChangeModal />
         </div>
     );
 };

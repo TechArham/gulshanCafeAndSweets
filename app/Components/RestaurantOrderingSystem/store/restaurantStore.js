@@ -11,6 +11,23 @@ export const useRestaurantStore = create(
                 name: "",
                 phone: "",
                 email: "",
+                // Billing Address
+                billingAddress: {
+                    street: "",
+                    city: "",
+                    state: "",
+                    zipCode: "",
+                    country: "USA"
+                },
+                // Shipping Address
+                shippingAddress: {
+                    street: "",
+                    city: "",
+                    state: "",
+                    zipCode: "",
+                    country: "USA"
+                },
+                sameAsBilling: true
             },
             orderId: null,
             activeCategory: "SuperDeliciousDeal",
@@ -68,10 +85,20 @@ export const useRestaurantStore = create(
             },
 
             // Order details actions
-            updateOrderDetails: (details) => {
-                set((state) => ({
-                    orderDetails: { ...state.orderDetails, ...details }
-                }));
+            updateOrderDetails: (field, value) => {
+                set((state) => {
+                    if (typeof field === 'object') {
+                        // If field is an object, merge it with orderDetails
+                        return {
+                            orderDetails: { ...state.orderDetails, ...field }
+                        };
+                    } else {
+                        // If field is a string, update that specific field
+                        return {
+                            orderDetails: { ...state.orderDetails, [field]: value }
+                        };
+                    }
+                });
             },
 
             // Navigation actions

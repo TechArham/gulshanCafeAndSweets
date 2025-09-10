@@ -156,28 +156,46 @@ const CategoryFilter = ({ showTableInfo = false }) => {
 
             <div className="container mx-auto px-4 py-3">
                 {/* Table Info Bar - Only show on dine-in page */}
-                {showTableInfo && orderDetails.tableNumber && (
+                {showTableInfo && (
                     <div className="mb-4">
                         <div className="flex items-center justify-center space-x-6 text-sm">
-                            <div className="flex items-center space-x-2">
-                                <MapPin size={16} className="text-orange-500" />
-                                <span className="font-medium text-gray-900">Table {orderDetails.tableNumber}</span>
-                            </div>
-                            {orderDetails.name && (
+                            {orderDetails.tableNumber ? (
+                                <>
+                                    <div className="flex items-center space-x-2">
+                                        <MapPin size={16} className="text-orange-500" />
+                                        <span className="font-medium text-gray-900">Table {orderDetails.tableNumber}</span>
+                                    </div>
+                                    {orderDetails.name && (
+                                        <div className="flex items-center space-x-2">
+                                            <Users size={16} className="text-orange-500" />
+                                            <span className="text-gray-600">{orderDetails.name}</span>
+                                        </div>
+                                    )}
+                                    <button
+                                        onClick={() => {
+                                            // Dispatch event to open table modal
+                                            window.dispatchEvent(new CustomEvent('openTableModal'));
+                                        }}
+                                        className="text-orange-500 hover:text-orange-600 text-sm font-medium px-3 py-1 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer"
+                                    >
+                                        Change
+                                    </button>
+                                </>
+                            ) : (
                                 <div className="flex items-center space-x-2">
-                                    <Users size={16} className="text-orange-500" />
-                                    <span className="text-gray-600">{orderDetails.name}</span>
+                                    <MapPin size={16} className="text-orange-500" />
+                                    <span className="text-gray-600">No table selected</span>
+                                    <button
+                                        onClick={() => {
+                                            // Dispatch event to open table modal
+                                            window.dispatchEvent(new CustomEvent('openTableModal'));
+                                        }}
+                                        className="text-orange-500 hover:text-orange-600 text-sm font-medium px-3 py-1 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer"
+                                    >
+                                        Select Table
+                                    </button>
                                 </div>
                             )}
-                            <button
-                                onClick={() => {
-                                    // Dispatch event to open table modal
-                                    window.dispatchEvent(new CustomEvent('openTableModal'));
-                                }}
-                                className="text-orange-500 hover:text-orange-600 text-sm font-medium px-3 py-1 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer"
-                            >
-                                Change
-                            </button>
                         </div>
                     </div>
                 )}

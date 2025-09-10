@@ -32,10 +32,11 @@ module.exports = {
         light: "#F3F4F6", // light background
       },
       fontFamily: {
-        'quicksand': ['var(--font-quicksand)', 'sans-serif'],
-        'rt-body': ['var(--rt-body-font)'],
-        'rt-heading': ['var(--rt-heading-font)'],
-        'rt-menu': ['var(--rt-menu-font)'],
+        'barlow-condensed': ['var(--font-barlow-condensed)', 'sans-serif'],
+        'rt-body': ['var(--rt-body-font)', 'sans-serif'],
+        'rt-heading': ['var(--rt-heading-font)', 'sans-serif'],
+        'rt-menu': ['var(--rt-menu-font)', 'sans-serif'],
+        'sans': ['var(--font-barlow-condensed)', 'sans-serif'],
       },
     },
   },

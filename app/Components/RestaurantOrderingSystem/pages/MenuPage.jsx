@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, ShoppingCart, ArrowLeft } from 'lucide-react';
+import { Search, ShoppingCart, ArrowLeft, ShoppingBasket } from 'lucide-react';
 import { useRestaurantStore } from '../store/restaurantStore';
 
 // Import components
@@ -91,54 +91,68 @@ const MenuPage = () => {
 
 
 
+
                 {/* Desktop Floating Cart Button */}
+
                 {!sidebarOpen && getTotalItems(cart || []) > 0 && (
                     <div
                         onClick={() => setSidebarOpen(true)}
-                        className="hidden lg:block fixed top-1/2 left-0 transform -translate-y-1/2 bg-orange-500 text-white px-6 py-4 rounded-r-2xl shadow-xl cursor-pointer hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
+                        className="hidden lg:block  fixed top-[45%]  right-0 transform -translate-y-1/2  bg-orange-500 text-white  pb-1 rounded-l-xl  shadow-xl border border-r-0 cursor-pointer backdrop-blur-2xl  border-gray-200 hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
                     >
-                        <div className="flex flex-col items-center space-y-2">
+                        <div className="flex flex-col items-center ">
                             {/* Shopping Cart Icon */}
-                            <div className="relative">
-                                <ShoppingCart size={24} className="text-white" />
+
+
+                            <div className="   rounded-xl px-2 py-1 w-full relative flex flex-col items-center ">
                                 {/* Red Blink Dot */}
-                                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                <ShoppingBasket size={24} className="text-white" />
+                                {/* Items Count */}
+                                <div className="text-white font-bold text-lg">
+                                    {getTotalItems(cart || [])} items
+                                </div>
                             </div>
 
-                            {/* Items Count */}
-                            <div className="text-white font-bold text-lg">
-                                {getTotalItems(cart || [])}
-                            </div>
+
+
+
+
 
                             {/* Total Price */}
-                            <div className="text-white font-bold text-sm">
+                            <div className="text-black bg-white px-2 py-1 rounded-xl  font-bold text-sm">
                                 ${getTotalPrice(cart || []).toFixed(2)}
                             </div>
                         </div>
                     </div>
                 )}
 
+
+
                 {/* Mobile Floating Cart Button */}
                 {!sidebarOpen && getTotalItems(cart || []) > 0 && (
                     <div
                         onClick={() => setSidebarOpen(true)}
-                        className="lg:hidden fixed top-1/2 left-0 transform -translate-y-1/2 bg-orange-500 text-white px-6 py-4 rounded-r-2xl shadow-xl cursor-pointer hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
+                        className="lg:hidden fixed top-[45%] left-0 transform -translate-y-1/2  bg-orange-500 text-white  pb-1 rounded-r-xl  shadow-xl border border-l-0 cursor-pointer backdrop-blur-2xl  border-gray-200 hover:bg-orange-600 transition-all duration-300 z-40 hover:scale-105"
                     >
-                        <div className="flex flex-col items-center space-y-2">
+                        <div className="flex flex-col items-center ">
                             {/* Shopping Cart Icon */}
-                            <div className="relative">
-                                <ShoppingCart size={24} className="text-white" />
+
+
+                            <div className="   rounded-xl px-2 py-1 w-full relative flex flex-col items-center ">
                                 {/* Red Blink Dot */}
-                                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                <ShoppingBasket size={24} className="text-white" />
+                                {/* Items Count */}
+                                <div className="text-white font-bold text-lg">
+                                    {getTotalItems(cart || [])} items
+                                </div>
                             </div>
 
-                            {/* Items Count */}
-                            <div className="text-white font-bold text-lg">
-                                {getTotalItems(cart || [])}
-                            </div>
+
+
+
+
 
                             {/* Total Price */}
-                            <div className="text-white font-bold text-sm">
+                            <div className="text-black bg-white px-2 py-1 rounded-xl  font-bold text-sm">
                                 ${getTotalPrice(cart || []).toFixed(2)}
                             </div>
                         </div>

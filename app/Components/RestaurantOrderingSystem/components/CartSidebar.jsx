@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import { ShoppingCart, Plus, Minus, Trash2, X } from 'lucide-react';
+import { ShoppingCart, Plus, Minus, Trash2, X, MapPin, Users } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useRestaurantStore } from '../store/restaurantStore';
 
-const CartSidebar = () => {
+const CartSidebar = ({ showTableInfo = false }) => {
     const router = useRouter();
     const {
         cart,
+        orderDetails,
         sidebarOpen,
         setSidebarOpen,
         updateQuantity,
         getTotalItems,
         getTotalPrice
     } = useRestaurantStore();
-
-    // Debug logging
-    console.log('CartSidebar render:', { sidebarOpen, cartLength: cart?.length });
 
     const removeItem = (itemId) => {
         updateQuantity(itemId, 0);
@@ -26,6 +24,21 @@ const CartSidebar = () => {
         setSidebarOpen(false);
         router.push('/checkout');
     };
+
+    // Hide sidebar when table change modal opens
+    useEffect(() => {
+        const handleTableModalOpen = () => {
+            setSidebarOpen(false);
+        };
+
+        window.addEventListener('openTableModal', handleTableModalOpen);
+        window.addEventListener('openInitialTableModal', handleTableModalOpen);
+
+        return () => {
+            window.removeEventListener('openTableModal', handleTableModalOpen);
+            window.removeEventListener('openInitialTableModal', handleTableModalOpen);
+        };
+    }, [setSidebarOpen]);
 
     return (
         <Menu
@@ -58,7 +71,7 @@ const CartSidebar = () => {
                     boxShadow: '-5px 0 25px rgba(0,0,0,0.15)',
                     borderLeft: '1px solid rgba(251, 146, 60, 0.1)',
                     height: '100vh',
-                    width: '380px',
+                    width: '400px',
                     position: 'absolute',
                     right: 0,
                     top: 0
@@ -113,6 +126,37 @@ const CartSidebar = () => {
                     </button>
                 </div>
             </div>
+
+            {/* Table Info Section - Only show on dine-in page */}
+            {showTableInfo && (
+                <div className="bg-white border-b mx-8 border-gray-200 py-5 ">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4 text-sm text-gray-600">
+                            <div className="flex items-center space-x-2">
+                                <MapPin size={16} className="text-orange-500" />
+                                <span className="font-medium text-gray-900">
+                                    {orderDetails.tableNumber ? `Table ${orderDetails.tableNumber}` : 'No table selected'}
+                                </span>
+                            </div>
+                            {orderDetails.name && (
+                                <div className="flex items-center space-x-2">
+                                    <Users size={16} className="text-orange-500" />
+                                    <span className="text-gray-600">{orderDetails.name}</span>
+                                </div>
+                            )}
+                        </div>
+                        <button
+                            onClick={() => {
+                                // Dispatch event to open table modal
+                                window.dispatchEvent(new CustomEvent('openTableModal'));
+                            }}
+                            className="text-orange-500 hover:text-orange-600 text-sm font-medium px-3 py-1 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer"
+                        >
+                            Change
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Cart Items */}
             <div className="flex-1 overflow-y-auto">
@@ -188,7 +232,7 @@ const CartSidebar = () => {
 
             {/* Footer */}
             {cart.length > 0 && (
-                <div className="bg-white  p-6">
+                <div className="bg-white  p-6 md:mr-5 mb-10 md:mb-2">
                     <div className="bg-gradient-to-r from-orange-50 to-red-50 p-4 mb-4">
                         <div className="flex justify-between items-center text-gray-800 mb-2">
                             <span className="font-semibold">Subtotal</span>
@@ -207,7 +251,7 @@ const CartSidebar = () => {
 
                         <button
                             onClick={handleCheckout}
-                            className=" mb-8 w-90 bg-gradient-to-r from-orange-500 to-red-500 text-white  p-3 rounded-xl  font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 cursor-pointer relative overflow-hidden"
+                            className=" mb-8 w-90 bg-gradient-to-r from-orange-500 to-red-500 text-white  p-3 rounded-lg  font-semibold hover:shadow-lg transform hover:scale-102 transition-all duration-200 cursor-pointer relative overflow-hidden"
                         >
                             <span className="relative z-10 flex items-center justify-center space-x-2">
                                 <ShoppingCart size={20} />
