@@ -37,6 +37,7 @@ module.exports = {
         "rt-heading": ["var(--rt-heading-font)"],
         "rt-menu": ["var(--rt-menu-font)"],
         barlow: ["var(--font-barlow-condensed)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
     },
   },

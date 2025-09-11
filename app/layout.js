@@ -1,15 +1,36 @@
-import { Geist, Geist_Mono, Oswald, Quicksand, Barlow_Condensed } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Oswald,
+  Quicksand,
+  Barlow_Condensed,
+  Bangers,
+  Inter,
+} from "next/font/google";
 import "./globals.css";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
+const bangers = Bangers({
+  subsets: ["latin"],
+  weight: "400", // Bangers only has a single weight (400)
+  variable: "--font-bangers",
+  display: "swap",
+});
+
+// Register Inter
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-barlow-condensed", // gives you a CSS variable
 });
 
@@ -44,7 +65,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${barlowCondensed.variable} ${oswald.variable} ${quicksand.variable} antialiased`}
+        className={`${bangers.variable} ${inter.variable} ${geistSans.variable} ${geistMono.variable} ${barlowCondensed.variable} ${oswald.variable} ${quicksand.variable} antialiased`}
       >
         {children}
       </body>

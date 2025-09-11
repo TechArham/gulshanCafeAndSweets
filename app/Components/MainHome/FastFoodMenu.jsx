@@ -62,10 +62,10 @@ const FastFoodMenu = () => {
       <div className="max-w-[1600px] mx-auto py-24">
         {/* Header */}
         <div className="text-center mx-auto mb-8">
-          <div className="text-orange-500 font-semibold text-sm md:text-base mb-2 tracking-wider uppercase">
+          <div className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-2 ">
             Menu Card
           </div>
-          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-6">
+          <h1 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
             OUR FAST FOODS <span className="text-red-500">MENU CARD</span>
           </h1>
 
@@ -84,8 +84,8 @@ const FastFoodMenu = () => {
             <Image
               src="/vagitable.jpg"
               alt="vegetable"
-              height={80}
-              width={80}
+              height={800} // increased intrinsic resolution
+              width={800}
               className="w-full h-full object-cover"
             />
           </div>
@@ -152,15 +152,16 @@ const FastFoodMenu = () => {
             </div>
           </div>
 
-          <div className="w-full h-full overflow-hidden rounded-tr-full rounded-b-full col-span-3">
-            <Image
-              src="/vagitable.jpg"
-              alt="vegetable"
-              height={80}
-              width={80}
-              className="w-full h-full object-cover"
-            />
-          </div>
+<div className="w-full h-full overflow-hidden rounded-tr-full rounded-b-full col-span-3">
+  <Image
+    src="/Chef.png"
+    alt="vegetable"
+    height={800}   // higher intrinsic resolution
+    width={800}
+    className="w-full h-full object-cover"
+  />
+</div>
+
         </div>
       </div>
     </div>

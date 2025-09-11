@@ -96,10 +96,10 @@ const FastFoodCategorySlider = () => {
       <div className="max-w-[1500px] mx-auto bg-white ">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-12">
-          <p className="text-orange-500 font-bold italic text-sm sm:text-base uppercase tracking-wider mb-2">
+          <p className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-2">
             FOOD CATEGORY
           </p>
-          <h2 className="barlow-condensed-bold text-2xl sm:text-3xl md:text-5xl leading-[59px]  tracking-tighter font-bold text-[#121212] mb-4 md:mb-6">
+          <h2 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8 mb-4 md:mb-6">
             BROWSE FAST FOODS <span className="text-red-600">CATEGORY</span>
           </h2>
           <Image

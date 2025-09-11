@@ -1,211 +1,296 @@
-import React from 'react';
+"use client";
+import React from "react";
+import {
+  Clock,
+  Facebook,
+  Twitter,
+  Linkedin,
+  MessageCircle,
+} from "lucide-react";
 import Image from "next/image";
-import { MapPin, Mail, Phone, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 
-export default function Footer() {
-  const instagramPosts = [
-    '/fish.jpg',
-    '/swtte.jpg',
-    '/kalojam.jpg',
-    '/swtte.jpg',
-    '/tanduri.jpg',
-    '/kalojam.jpg',
-    '/swtte.jpg',
-    '/tanduri.jpg',
-    '/fish.jpg',
+import { useState, useEffect } from "react";
+
+const Footer = () => {
+  // Floting image
+  const [floatingVeggies, setFloatingVeggies] = useState([]);
+
+  const vegetables = [
+    { image: "/images/imgi_84_footer-1-5.png" },
+    { image: "/images/imgi_77_footer-1-1.png" },
+    { image: "/images/imgi_83_footer-1-4.png" },
+    { image: "/images/imgi_81_footer-1-3.png" },
   ];
 
+  useEffect(() => {
+    const positions = [
+      { x: 0, y: 70 }, // left side
+      { x: 0, y: 0 }, // left side top
+      { x: 85, y: 70 }, // right side
+      { x: 85, y: 0 }, // right side top
+    ];
+
+    const initialVeggies = vegetables.map((veg, i) => ({
+      id: i,
+      veggie: veg.image,
+      x: positions[i].x,
+      y: positions[i].y,
+      scale: 0.8 + Math.random() * 0.4,
+      animationDuration: 1.2 + Math.random() * 1.0,
+    }));
+
+    setFloatingVeggies(initialVeggies);
+  }, []);
   return (
-    <footer className="bg-gray-900 text-white relative overflow-hidden px-4">
+    <div className="relative min-h-screen bg-[#072f25] overflow-hidden text-[#6c6c6c]">
+      {/* Floating Vegetables */}
+      {floatingVeggies.map((veggie) => (
+        <div
+          key={veggie.id}
+          className="absolute pointer-events-none opacity-80 hidden sm:block"
+          style={{
+            left: `${veggie.x}%`,
+            top: `${veggie.y}%`,
+            transform: `scale(${veggie.scale})`,
+            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
+          }}
+        >
+          <Image
+            src={veggie.veggie}
+            alt="vegetable"
+            height={300}
+            width={300}
+            className="max-w-[100px] md:max-w-[300px]"
+          />
+        </div>
+      ))}
+      {/* Main footer content */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
+        {/* Logo */}
+        <div className="mb-16">
+          <div className="grid grid-cols-12 items-center gap-10">
+            {/* Left Line */}
+            <div className="col-span-5">
+              <hr className="h-[1px] w-full bg-[#57726b] border-0" />
+            </div>
 
-      <div className="container mx-auto">
+            {/* Logo */}
+            <div className="col-span-2 flex justify-center">
+              <Image
+                src="/logoo.png"
+                alt="title shape"
+                width={200}
+                height={200}
+                className="object-contain"
+              />
+            </div>
 
-        <div className="absolute inset-0 opacity-5">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z"
-              fill="currentColor"
-            />
-          </svg>
+            {/* Right Line */}
+            <div className="col-span-5">
+              <hr className="h-[1px] w-full bg-[#57726b] border-0" />
+            </div>
+          </div>
         </div>
 
-        <div className="relative z-10 container py-12 lg:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 items-start justify-center ">
-            {/* Brand Section */}
-            <div className="space-y-6">
-              <div className="flex items-center">
-                <Image src="/logo.png" height={60} width={60} alt="Logo" />
-              </div>
+        {/* Main content grid */}
+        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16 items-center justify-between">
+          {/* Useful Links */}
+          <div className="">
+            <h3 className="text-white text-xl font-semibold mb-6">
+              Useful Links
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Our History
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Our Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Favorite Place
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Privacy policy
+                </a>
+              </li>
+            </ul>
+          </div>
 
-              <p className="text-gray-400 leading-relaxed -mt-8">
-                Wecome Gulshan Cafe and Sweets. Serving authentic Bangladeshi
-                home-style halal food in Albany, NY.
-              </p>
-
-              {/* Contact Info */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-amber-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-gray-300">
-                      315 Central Avenue , Albany, NY, United States, New York
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-amber-500 flex-shrink-0" />
-                    <a
-                      href="mailto:info@example.com"
-                      className="text-gray-300 hover:text-amber-400 transition-colors"
-                    >
-                      info@gulshancafeny.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-amber-500 flex-shrink-0" />
-                    <a
-                      href="tel:+12345667123"
-                      className="text-gray-300 hover:text-amber-400 transition-colors"
-                    >
-                      +1 838-207-7052
-                    </a>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-amber-500 flex-shrink-0" />
-                    <a
-                      href="tel:+12345678"
-                      className="text-gray-300 hover:text-amber-400 transition-colors"
-                    >
-                      +1 838-207-7052
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-6">
-                Quick links
-              </h4>
-              <ul className="space-y-3">
-                {[
-                  "About Us",
-                  "Menu",
-                  "Blogs",
-                  "FAQ",
-                  "Service",
-                  "Gallery",
-                  "Contact Us",
-                ].map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-amber-400 transition-colors duration-200 flex items-center group"
-                    >
-                      <span className="w-0 group-hover:w-2 h-0.5 bg-amber-400 transition-all duration-200 mr-0 group-hover:mr-2"></span>
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Instagram Gallery */}
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-6">Instagram</h4>
-              <div className="grid grid-cols-3 gap-2">
-                {instagramPosts.map((post, index) => (
-                  <Image
-                    key={index}
-                    src={post}
-                    width={100}
-                    height={100}
-                    alt="Image"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Newsletter */}
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-6">Subscribe</h4>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Serving authentic Bangladeshi home-style halal food in Albany, NY.
-                From traditional dishes to handcrafted sweets, each meal reflects
-                rich heritage and care. Catering available for Weddings, Birthday
-                Party and Events.
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder="Enter Your Email"
-                    className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  />
-                  <button className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-r-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900">
-                    Subscribe
-                  </button>
-                </div>
-
-                {/* Social Media */}
-                <div className="flex space-x-3 pt-2">
-                  {[
-                    { icon: Facebook, href: "#" },
-                    { icon: Twitter, href: "#" },
-                    { icon: Youtube, href: "#" },
-                    { icon: Instagram, href: "#" },
-                  ].map(({ icon: Icon, href }, index) => (
-                    <a
-                      key={index}
-                      href={href}
-                      className="w-10 h-10 bg-gray-800 hover:bg-amber-500 rounded-full flex items-center justify-center transition-colors duration-200 group"
-                    >
-                      <Icon className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-                    </a>
-                  ))}
+          {/* Opening Hours */}
+          <div className="flex flex-col items-center">
+            <div className="border-2 border-gray-600 rounded-2xl p-8 bg-emerald-800/30 backdrop-blur-sm">
+              <div className="flex flex-col items-center space-y-4">
+                <Clock className="w-12 h-12 text-gray-300" />
+                <p className="text-yellow-400 font-semibold">
+                  We're currently open!
+                </p>
+                <div className="text-center space-y-2">
+                  <p className="text-gray-300">
+                    Opening Hours: 8:00AM To 10:00PM
+                  </p>
+                  <p className="text-gray-300">
+                    Opening Hours: 8:00AM To 10:00PM
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-gray-800 mt-12 pt-8">
-            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-              <p className="text-gray-400 text-sm">
-                © Copyright Gulshan cafe and sweets. 2025 All Right Reserved
-              </p>
-              <div className="flex space-x-6">
+          {/* Favorite Menus */}
+          <div className="flex justify-end">
+<div>
+              <h3 className="text-white text-xl font-semibold mb-6">
+              Favorite Menus
+            </h3>
+            <ul className="space-y-3">
+              <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-amber-400 text-sm transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
                 >
-                  Privacy Policy
+                  Burgers
                 </a>
+              </li>
+              <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-amber-400 text-sm transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
                 >
-                  Terms of Service
+                  Crispy Flavors
                 </a>
-              </div>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Breakfast Menu
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Desserts
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Kids Menus
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  Beverages
+                </a>
+              </li>
+            </ul>
+</div>
+          </div>
+        </div>
+
+        {/* Social Media Icons */}
+        <div className="flex space-x-4 mb-12">
+          <div className="w-12 h-12 border border-gray-500 rounded-full flex items-center justify-center hover:border-yellow-400 transition-colors cursor-pointer">
+            <Facebook className="w-5 h-5 text-gray-300 hover:text-yellow-400 transition-colors" />
+          </div>
+          <div className="w-12 h-12 border border-gray-500 rounded-full flex items-center justify-center hover:border-yellow-400 transition-colors cursor-pointer">
+            <Twitter className="w-5 h-5 text-gray-300 hover:text-yellow-400 transition-colors" />
+          </div>
+          <div className="w-12 h-12 border border-gray-500 rounded-full flex items-center justify-center hover:border-yellow-400 transition-colors cursor-pointer">
+            <Linkedin className="w-5 h-5 text-gray-300 hover:text-yellow-400 transition-colors" />
+          </div>
+          <div className="w-12 h-12 border border-gray-500 rounded-full flex items-center justify-center hover:border-yellow-400 transition-colors cursor-pointer">
+            <MessageCircle className="w-5 h-5 text-gray-300 hover:text-yellow-400 transition-colors" />
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t max-w-6xl border-gray-600 pt-8 w-full">
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+            <p className="text-gray-300">
+              Copyright © 2025 <span className="text-yellow-400">Barab</span>{" "}
+              All Rights Reserved.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <span className="text-gray-400">•</span>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
+              >
+                Terms & Condition
+              </a>
+              <span className="text-gray-400">•</span>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
+              >
+                Support policy
+              </a>
             </div>
           </div>
         </div>
       </div>
-      {/* Background Pattern */}
-    </footer>
+`      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          100% {
+            transform: translateY(-15px); /* noticeable shake */
+          }
+        }
+      `}</style>`
+    </div>
   );
-}
+};
+
+export default Footer;

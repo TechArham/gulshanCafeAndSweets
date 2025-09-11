@@ -8,7 +8,7 @@ const About = () => {
           {/* Left side - Food Image */}
           <div className="relative order-2 lg:order-1">
             <Image
-              src="/about_1_1.png"
+              src="/Is+Breakfast+Important-removebg-preview.png"
               alt="vegetable"
               width={580}
               height={580}
@@ -23,19 +23,19 @@ const About = () => {
           <div className="order-1 lg:order-2 text-center lg:text-left">
             {/* Badge */}
             <div className="inline-block mb-6">
-              <span className=" text-orange-600 italic rounded-full text-xs font-bold uppercase tracking-wide">
+              <span className=" text-[#ff9924] tracking-widest font-medium font-bangers italic">
                 About Our Restaurant
               </span>
             </div>
 
             {/* Main heading */}
-            <h2 className="text-4xl md:text-5xl uppercase barlow-condensed-bold text-gray-900 mb-8">
+            <h2 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
               We invite you to visit our Fast food{" "}
               <span className="text-red-600">RESTAURANT</span>
             </h2>
 
             {/* Description */}
-            <p className="text-gray-600 text-md leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-[#6c6c6c] font-inter text-md leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
               At the heart of our kitchen are bold flavors, high-quality
               ingredients, and a commitment to consistency. From juicy burgers,
               crispy fries, and cheesy pizzas to spicy wraps and refreshing
@@ -45,7 +45,7 @@ const About = () => {
 
             {/* Owner info */}
             <div className="mb-5">
-              <h3 className="text-xl font-extrabold text-gray-900 mb-2">
+              <h3 className="text-black leading-tight text-2xl font-barlow mb-2 font-bold">
                 Parvez Hossain Imon
               </h3>
               <p className="text-gray-500 text-md">Restaurant Owner</p>

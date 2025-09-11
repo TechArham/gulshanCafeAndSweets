@@ -5,17 +5,27 @@ import FastFoodCategorySlider from '../Components/MainHome/FastFoodCategorySlide
 import DeliciousFastFoods from '../Components/MainHome/DeliciousFastFoods';
 import FastFoodMenu from '../Components/MainHome/FastFoodMenu';
 import NewsAndBlogs from '../Components/MainHome/NewsAndBlogs/NewsAndBlogs';
+import FoodGallerySlider from '../Components/MainHome/FoodGallerySlider';
+import CTA from '../Components/MainHome/CTA';
+import TestimonialsSection from '../Components/MainHome/TestimonialsSection';
+import YoutubeVideo from '../Components/MainHome/YoutubeVideo';
+import Footer from '../Components/Common/Footer';
 
 const page = () => {
     return (
       <div>
         <PizzaSlider />
-        <About/>
+        <About />
         <FastFoodCategorySlider />
         <DeliciousFastFoods />
         <FastFoodMenu />
-        <NewsAndBlogs/>
-        {/* <FoodCategorySlider/> */}
+        <NewsAndBlogs />
+        <FoodGallerySlider />
+        <CTA />
+        <TestimonialsSection />
+        
+        <YoutubeVideo/>
+        <Footer />
       </div>
     );
 };

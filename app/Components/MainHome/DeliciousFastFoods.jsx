@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 const DeliciousFastFoods = () => {
   const foodItems = [
     {
@@ -43,13 +43,21 @@ const DeliciousFastFoods = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <p className="text-orange-500 font-semibold text-sm sm:text-base uppercase tracking-wider mb-3">
+          <p className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-3">
             OUR FAST FOODS
           </p>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-8">
+          <h2 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
             OUR DELICIOUS FAST <span className="text-red-600">FOODS</span>
           </h2>
+
+                    <Image
+            src="/title-shape.png"
+            alt="title shape"
+            width={290} // natural width
+            height={24} // natural height
+            className="object-contain text-center mx-auto"
+          />
         </div>
         {/* Food Items Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -89,9 +97,7 @@ const DeliciousFastFoods = () => {
             </div>
           ))}
         </div>
-
       </div>
-
     </section>
   );
 };
