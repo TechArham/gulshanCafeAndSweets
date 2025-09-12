@@ -67,33 +67,34 @@ const Footer = () => {
       {/* Main footer content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
         {/* Logo */}
-        <div className="mb-16">
-          <div className="grid grid-cols-12 items-center gap-10">
+        <div className="mb-16 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-10">
             {/* Left Line */}
-            <div className="col-span-5">
+            <div className="hidden md:block md:col-span-5">
               <hr className="h-[1px] w-full bg-[#57726b] border-0" />
             </div>
 
             {/* Logo */}
-            <div className="col-span-2 flex justify-center">
+            <div className="col-span-1 md:col-span-2 flex justify-center">
               <Image
                 src="/logoo.png"
                 alt="title shape"
                 width={200}
                 height={200}
-                className="object-contain"
+                sizes="(max-width: 768px) 140px, 200px"
+                className="object-contain w-[140px] h-auto md:w-[200px]"
               />
             </div>
 
             {/* Right Line */}
-            <div className="col-span-5">
+            <div className="hidden md:block md:col-span-5">
               <hr className="h-[1px] w-full bg-[#57726b] border-0" />
             </div>
           </div>
         </div>
 
         {/* Main content grid */}
-        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16 items-center justify-between">
+        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-16 items-start lg:items-center justify-between text-center lg:text-left">
           {/* Useful Links */}
           <div className="">
             <h3 className="text-white text-xl font-semibold mb-6">
@@ -172,62 +173,62 @@ const Footer = () => {
           </div>
 
           {/* Favorite Menus */}
-          <div className="flex justify-end">
-<div>
+          <div className="flex justify-center lg:justify-end">
+            <div>
               <h3 className="text-white text-xl font-semibold mb-6">
-              Favorite Menus
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Burgers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Crispy Flavors
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Breakfast Menu
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Desserts
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Kids Menus
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Beverages
-                </a>
-              </li>
-            </ul>
-</div>
+                Favorite Menus
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    Burgers
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    Crispy Flavors
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    Breakfast Menu
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    Desserts
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    Kids Menus
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    Beverages
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -249,7 +250,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t max-w-6xl border-gray-600 pt-8 w-full">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+          <div className="flex flex-col lg:flex-row justify-between items-center text-center space-y-4 lg:space-y-0">
             <p className="text-gray-300">
               Copyright © 2025 <span className="text-yellow-400">Barab</span>{" "}
               All Rights Reserved.
@@ -279,7 +280,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-`      <style jsx>{`
+      <style jsx>{`
         @keyframes float {
           0% {
             transform: translateY(0px);
@@ -288,7 +289,7 @@ const Footer = () => {
             transform: translateY(-15px); /* noticeable shake */
           }
         }
-      `}</style>`
+      `}</style>
     </div>
   );
 };

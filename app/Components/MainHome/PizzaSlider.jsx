@@ -57,14 +57,14 @@ const PizzaSlider = () => {
 
   const vegetables = [
     { image: "/tomato.png" },
-    { image: "/1720-removebg-preview.png" },
+    { image: "/images/imgi_28_about-shape-1.2.png" },
     { image: "/sm-tomatto.png" },
-    { image: "/leaf.png" },
+    { image: "/images/imgi_69_blog-1-2.png" },
   ];
 
   useEffect(() => {
     const positions = [
-      { x: 25, y: 20 }, // left side
+      { x: 25, y: 70 }, // left side
       { x: 2, y: 2 },
       { x: 90, y: 70 }, // right side
       { x: 70, y: 20 }, // right side

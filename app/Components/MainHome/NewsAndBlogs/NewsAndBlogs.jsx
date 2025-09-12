@@ -53,14 +53,14 @@ const NewsAndBlogs = () => {
       id: 6,
       title: "Is Fast Food Getting Healthier? Here’s What We’re Doing",
       category: "Fast Food",
-      image: "/about-us-image.png",
+      image: "/images/imgi_52_gallery_1_4.png",
       date: "Sep 3, 2025",
     },
     {
       id: 7,
       title: "Is Fast Food Getting Healthier? Here’s What We’re Doing",
       category: "Fast Food",
-      image: "/about-us-image.png",
+      image: "/images/imgi_52_gallery_1_4.png",
       date: "Sep 2, 2025",
     },
   ];
@@ -86,20 +86,21 @@ const NewsAndBlogs = () => {
 
   return (
     <div className="bg-[#f7f2e2]">
-      <div className="max-w-[1500px] mx-auto bg-[#f7f2e2] py-24">
-        {/* Heading */}
-        <div className="text-center mb-8 md:mb-12">
-          <p className="text-orange-500 font-bold italic text-sm sm:text-base uppercase tracking-wider mb-2">
+      <div className="max-w-[1500px] mx-auto bg-[#f7f2e2] py-24 px-5">
+        {/* Header */}
+        <div className="text-center mx-auto mb-8">
+          <div className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-2 ">
             FOOD CATEGORY
-          </p>
-          <h2 className="barlow-condensed-bold text-2xl sm:text-3xl md:text-5xl leading-[59px] tracking-tighter font-bold text-[#121212] mb-4 md:mb-6">
-            BROWSE FAST FOODS <span className="text-red-600">CATEGORY</span>
-          </h2>
+          </div>
+          <h1 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
+            BROWSE FAST FOODS <span className="text-red-500">CATEGORY</span>
+          </h1>
+
           <Image
             src="/title-shape.png"
             alt="title shape"
-            width={290}
-            height={24}
+            width={290} // natural width
+            height={24} // natural height
             className="object-contain text-center mx-auto"
           />
         </div>
@@ -110,38 +111,38 @@ const NewsAndBlogs = () => {
           <button
             ref={prevRef}
             aria-label="Previous"
-            className="absolute top-1/2 -left-16 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
+            className="absolute top-1/2 left-0 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
           >
             <ArrowLeft className="w-6 h-6 text-white" />
           </button>
           <button
             ref={nextRef}
             aria-label="Next"
-            className="absolute top-1/2 -right-16 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
+            className="absolute top-1/2 right-0 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
           >
             <ArrowRight className="w-6 h-6 text-white" />
           </button>
 
-<Swiper
-  onInit={(swiper) => {
-    swiperRef.current = swiper;
-    initNav(swiper);
-  }}
-  slidesPerView={1}
-  spaceBetween={30}
-  loop={true}
-  autoplay={{
-    delay: 3000,
-    disableOnInteraction: false,
-  }}
-  speed={1000} // 👈 smooth transition (1000ms = 1s)
-  breakpoints={{
-    768: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 },
-  }}
-  modules={[Navigation, Autoplay]}
-  className="bg-[#f7f2e2]"
->
+          <Swiper
+            onInit={(swiper) => {
+              swiperRef.current = swiper;
+              initNav(swiper);
+            }}
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            speed={1000} // 👈 smooth transition (1000ms = 1s)
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            modules={[Navigation, Autoplay]}
+            className="bg-[#f7f2e2]"
+          >
             {blogs.map((blog) => (
               <SwiperSlide key={blog.id}>
                 <div className="bg-[#f7f2e2] text-left group hover:cursor-pointer pb-2">
@@ -176,7 +177,10 @@ const NewsAndBlogs = () => {
                     </h2>
 
                     {/* Button */}
-                    <Link href='/' className="text-left bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md">
+                    <Link
+                      href="/"
+                      className="text-left bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md"
+                    >
                       Read More
                     </Link>
                   </div>

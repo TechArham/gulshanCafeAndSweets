@@ -12,7 +12,16 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const navItems = [
-    { name: "Home", href: "/", hasDropdown: false },
+    {
+      name: "Home",
+      href: "/home",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Home 1", href: "/home-one" },
+        { name: "Home 2", href: "/home-two" },
+        { name: "Home 3", href: "/home-three" },
+      ],
+    },
     { name: "Menu", href: "/menu", hasDropdown: false },
     {
       name: "Order",

@@ -18,19 +18,18 @@ const YoutubeVideo = () => {
           {/* Content Grid */}
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Side - Video/Image */}
-            <div className="relative col-span-7">
+            <div className="relative col-span-12 lg:col-span-7">
               <div className="relative overflow-hidden group rounded-3xl py-5">
                 {/* Restaurant Interior Image */}
-                <div className="rounded-3xl">
+                <div className="video-container">
                   <iframe
-                    width="770"
-                    height="615"
+                    className="youtube"
                     src="https://www.youtube.com/embed/unRjyl1SoEU?si=cMH3a-wlsu13e2vV"
                     title="YouTube video player"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                   ></iframe>
                 </div>
 
@@ -38,13 +37,13 @@ const YoutubeVideo = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button
                     onClick={handlePlayClick}
-                    className="w-20 h-20 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-2xl hover:bg-opacity-100 transition-all duration-300 hover:scale-110 group"
+                    className="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-2xl hover:bg-opacity-100 transition-all duration-300 hover:scale-110 group"
                   >
                     {isPlaying ? (
                       <div className="w-6 h-6 bg-green-500 rounded-sm"></div>
                     ) : (
                       <Play
-                        className="w-8 h-8 text-green-500 ml-1"
+                        className="w-6 h-6 sm:w-8 sm:h-8 text-green-500 ml-1"
                         fill="currentColor"
                       />
                     )}
@@ -54,17 +53,17 @@ const YoutubeVideo = () => {
             </div>
 
             {/* Right Side - Content */}
-            <div className="text-white z-[999]  col-span-5">
+            <div className="text-white z-[999]  col-span-12 lg:col-span-5">
               <div className="text-center mx-auto mb-8">
                 <div className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-2">
                   Menu Card
                 </div>
-                <h1 className="text-white font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
+                <h1 className="text-white font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl uppercase font-barlow mb-8">
                   OUR FAST FOODS MENU CARD
                 </h1>
 
                 <Image
-                  src="/imgi_36_title-shape2.png"
+                  src="/images/imgi_36_title-shape2.png"
                   alt="title shape"
                   width={290}
                   height={24}
@@ -109,7 +108,7 @@ const YoutubeVideo = () => {
       </div>
 
       {/* Scroll to Top */}
-      <button className="fixed bottom-8 right-8 w-12 h-12 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 group">
+      <button className="fixed bottom-8 right-8 w-10 h-10 sm:w-12 sm:h-12 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 group">
         <ArrowUp className="w-6 h-6 group-hover:transform group-hover:-translate-y-1 transition-transform duration-300" />
       </button>
 
@@ -121,7 +120,7 @@ const YoutubeVideo = () => {
           height: 100%;
           margin: 20px 0;
           background: #3f9065;
-          border-radius: 50% / 10%;
+          border-radius: 53% / 12%;
           color: white;
           text-align: center;
           text-indent: 0.1em;
@@ -135,6 +134,22 @@ const YoutubeVideo = () => {
           left: -5%;
           background: inherit;
           border-radius: 5% / 50%;
+        }
+        .video-container {
+          position: relative;
+          width: 100%;
+          padding-top: 56.25%;
+          overflow: hidden;
+          border-radius: 53% / 12%;
+        }
+        .youtube {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
+          border-radius: inherit;
         }
       `}</style>
     </section>

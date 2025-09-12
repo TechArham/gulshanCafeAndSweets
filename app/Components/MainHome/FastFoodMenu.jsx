@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 const FastFoodMenu = () => {
@@ -77,10 +77,10 @@ const FastFoodMenu = () => {
             className="object-contain text-center mx-auto"
           />
         </div>
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
+        <div className="grid lg:grid-cols-12 lg:gap-3 xl:gap-8 items-center">
           {/* Left Side - Food Images */}
 
-          <div className="w-full h-full overflow-hidden rounded-t-full rounded-bl-full col-span-3">
+          <div className="w-full h-full overflow-hidden rounded-t-full rounded-bl-full col-span-3  hidden lg:block">
             <Image
               src="/vagitable.jpg"
               alt="vegetable"
@@ -152,16 +152,15 @@ const FastFoodMenu = () => {
             </div>
           </div>
 
-<div className="w-full h-full overflow-hidden rounded-tr-full rounded-b-full col-span-3">
-  <Image
-    src="/Chef.png"
-    alt="vegetable"
-    height={800}   // higher intrinsic resolution
-    width={800}
-    className="w-full h-full object-cover"
-  />
-</div>
-
+          <div className="w-full h-full overflow-hidden rounded-tr-full rounded-b-full col-span-3 hidden lg:block">
+            <Image
+              src="/Chef.png"
+              alt="vegetable"
+              height={800} // higher intrinsic resolution
+              width={800}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>

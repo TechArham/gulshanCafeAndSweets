@@ -55,7 +55,7 @@ const CTA = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-between gap-8 lg:gap-16">
             {/* Left Content */}
             <div className="flex-1 text-center lg:text-left relative z-20">
-              <h2 className="text-white font-extrabold leading-tight text-4xl sm:text-5xl uppercase font-barlow">
+              <h2 className="text-white font-extrabold leading-tight text-3xl md:text-5xl uppercase font-barlow">
                 SUBSCRIBE TO OUR NEWSLETTER &<br />
                 GET <span className="text-red-600">20% OFF</span>{" "}
                 <span className="text-red-600">FAST FOOD ORDER</span>
@@ -77,7 +77,7 @@ const CTA = () => {
                 </button>
               </div>
             </div>
-            <div className="flex justify-end items-start relative z-20">
+            <div className="lg:flex justify-end items-start relative z-20 sm:hidden">
               <Image
                 src="/images/imgi_76_cta-1-img.png"
                 alt="vegetable"
