@@ -1,12 +1,12 @@
 "use client";
-import HomeHeader from "../Components/Home/HomeHeader";
-import RestaurantMenu from "../Components/Home/RestaurantMenu";
-import OurGallery from "../Components/Home/OurGallery";
-import ComingSoonSection from "../Components/Home/ComingSoonSection";
-import Testimonial from "../Components/Home/Testimonial";
-import LatestNews from "../Components/Home/LatestNews";
+import HomeHeader from "../Components/HomeTwo/HomeHeader";
+import RestaurantMenu from "../Components/HomeTwo/RestaurantMenu";
+import OurGallery from "../Components/HomeTwo/OurGallery";
+import ComingSoonSection from "../Components/HomeTwo/ComingSoonSection";
+import Testimonial from "../Components/HomeTwo/Testimonial";
+import LatestNews from "../Components/HomeTwo/LatestNews";
 import Footer from "../Components/Common/Footer";
-import FoodTab from "../Components/Home/FoodTab";
+import FoodTab from "../Components/HomeTwo/FoodTab";
 import Navbar from "../Components/Common/Navbar";
 // import Topbar from "./Components/Common/Topbar";
 export default function Home() {

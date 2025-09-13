@@ -6,7 +6,7 @@ import Footer from "../Components/Common/Footer";
 import AboutHeader from "../Components/About/AboutHeader";
 import Navbar from "../Components/Common/Navbar";
 import Counter from "../Components/Common/Counter";
-import Testimonial from "../Components/Home/Testimonial";
+import Testimonial from "../Components/HomeTwo/Testimonial";
 
 const page = () => {
   return (

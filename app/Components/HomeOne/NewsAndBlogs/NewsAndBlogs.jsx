@@ -70,18 +70,12 @@ const NewsAndBlogs = () => {
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
 
-  const initNav = (swiper) => {
-    if (!swiper || !prevRef.current || !nextRef.current) return;
+  const setPrevRef = (el) => {
+    prevRef.current = el;
+  };
 
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
-
-    try {
-      if (swiper.navigation) swiper.navigation.destroy();
-    } catch (e) {}
-
-    swiper.navigation.init();
-    swiper.navigation.update();
+  const setNextRef = (el) => {
+    nextRef.current = el;
   };
 
   return (
@@ -109,14 +103,14 @@ const NewsAndBlogs = () => {
         <div className="py-10 relative">
           {/* Navigation Buttons */}
           <button
-            ref={prevRef}
+            ref={setPrevRef}
             aria-label="Previous"
             className="absolute top-1/2 left-0 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
           >
             <ArrowLeft className="w-6 h-6 text-white" />
           </button>
           <button
-            ref={nextRef}
+            ref={setNextRef}
             aria-label="Next"
             className="absolute top-1/2 right-0 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
           >
@@ -124,9 +118,8 @@ const NewsAndBlogs = () => {
           </button>
 
           <Swiper
-            onInit={(swiper) => {
+            onSwiper={(swiper) => {
               swiperRef.current = swiper;
-              initNav(swiper);
             }}
             slidesPerView={1}
             spaceBetween={30}
@@ -139,6 +132,10 @@ const NewsAndBlogs = () => {
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
+            }}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
             }}
             modules={[Navigation, Autoplay]}
             className="bg-[#f7f2e2]"

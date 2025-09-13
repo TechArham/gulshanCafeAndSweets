@@ -1,14 +1,14 @@
 import React from 'react';
-import PizzaSlider from '../Components/MainHome/PizzaSlider';
-import About from '../Components/MainHome/About';
-import FastFoodCategorySlider from '../Components/MainHome/FastFoodCategorySlider';
-import DeliciousFastFoods from '../Components/MainHome/DeliciousFastFoods';
-import FastFoodMenu from '../Components/MainHome/FastFoodMenu';
-import NewsAndBlogs from '../Components/MainHome/NewsAndBlogs/NewsAndBlogs';
-// import FoodGallerySlider from '../Components/MainHome/FoodGallerySlider';
-import CTA from '../Components/MainHome/CTA';
-import TestimonialsSection from '../Components/MainHome/TestimonialsSection';
-import YoutubeVideo from '../Components/MainHome/YoutubeVideo';
+import PizzaSlider from '../Components/HomeOne/PizzaSlider';
+import About from '../Components/HomeOne/About';
+import FastFoodCategorySlider from '../Components/HomeOne/FastFoodCategorySlider';
+import DeliciousFastFoods from '../Components/HomeOne/DeliciousFastFoods';
+import FastFoodMenu from '../Components/HomeOne/FastFoodMenu';
+import NewsAndBlogs from '../Components/HomeOne/NewsAndBlogs/NewsAndBlogs';
+// import FoodGallerySlider from '../Components/HomeOne/FoodGallerySlider';
+import CTA from "../Components/HomeOne/CTA";
+import TestimonialsSection from '../Components/HomeOne/TestimonialsSection';
+import YoutubeVideo from '../Components/HomeOne/YoutubeVideo';
 import Footer from '../Components/Common/Footer';
 import Navbar from '../Components/Common/Navbar';
 

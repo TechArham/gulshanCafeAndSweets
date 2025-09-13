@@ -66,29 +66,12 @@ const FastFoodCategorySlider = () => {
     },
   ];
 
-  const initNav = (swiper) => {
-    if (!swiper || !prevRef.current || !nextRef.current) return;
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
-
-    try {
-      if (swiper.navigation) swiper.navigation.destroy();
-    } catch (e) {}
-
-    swiper.navigation.init();
-    swiper.navigation.update();
-  };
-
   const setPrevRef = (el) => {
     prevRef.current = el;
-    if (swiperRef.current && prevRef.current && nextRef.current)
-      initNav(swiperRef.current);
   };
 
   const setNextRef = (el) => {
     nextRef.current = el;
-    if (swiperRef.current && prevRef.current && nextRef.current)
-      initNav(swiperRef.current);
   };
 
   return (
@@ -137,7 +120,10 @@ const FastFoodCategorySlider = () => {
             modules={[Navigation]}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
-              if (prevRef.current && nextRef.current) initNav(swiper);
+            }}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
             }}
             breakpoints={{
               768: {

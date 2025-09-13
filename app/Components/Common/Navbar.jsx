@@ -10,11 +10,12 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [isClient, setIsClient] = useState(false);
 
   const navItems = [
     {
       name: "Home",
-      href: "/home",
+      href: "/home-one",
       hasDropdown: true,
       dropdownItems: [
         { name: "Home 1", href: "/home-one" },
@@ -37,6 +38,7 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
+    setIsClient(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -57,7 +59,9 @@ const Navbar = () => {
       {/* Navbar */}
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
-          isScrolled ? "bg-black/90 shadow-lg" : "bg-black/80 shadow-sm"
+          isClient && isScrolled
+            ? "bg-black/90 shadow-lg"
+            : "bg-black/80 shadow-sm"
         }`}
       >
         <div className="px-4 sm:px-6 md:px-10 xl:px-20 h-20 flex items-center justify-between">
