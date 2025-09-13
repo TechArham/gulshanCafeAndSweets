@@ -4,37 +4,35 @@ const DeliciousFastFoods = () => {
   const foodItems = [
     {
       id: 1,
-      name: "Delicious Black Burger",
+      name: "Chiken Curry",
       price: "$26.00",
       description:
         "At the heart of our kitchen are bold flavors, high-quality ingredients",
-      image: "/about-us-image.png",
+      image: "/Image2-ss1-h1.webp",
     },
     {
       id: 2,
-      name: "Fiery Beef Stack",
+      name: "Special Misty",
       price: "$20.00",
       description:
-        "At the heart of our kitchen are bold flavors, high-quality ingredients",
-      image: "21.png",
+        "Traditional Bengali sweet, rich in flavor and made with love.",
+      image: "misty.webp",
     },
     {
       id: 3,
-      name: "Golden Crispy Fries",
+      name: "Tehari",
       price: "$16.00",
       description:
         "At the heart of our kitchen are bold flavors, high-quality ingredients",
-      image:
-        "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&h=400&fit=crop&crop=center",
+      image: "Screenshot_26.png",
     },
     {
       id: 4,
-      name: "Tangy Grilled Sandwich",
+      name: "Hot Coffee",
       price: "$36.00",
       description:
-        "At the heart of our kitchen are bold flavors, high-quality ingredients",
-      image:
-        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&crop=center",
+        "Special Hot Coffee",
+      image: "1c7ee4a7-5823-4052-93e7-3f2ac113c9fc.png",
     },
   ];
 
@@ -44,14 +42,14 @@ const DeliciousFastFoods = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <p className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-3">
-            OUR FAST FOODS
+            OUR popular dishes
           </p>
 
           <h2 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
-            OUR DELICIOUS FAST <span className="text-red-600">FOODS</span>
+            OUR most <span className="text-red-600">popular dishes</span>
           </h2>
 
-                    <Image
+          <Image
             src="/title-shape.png"
             alt="title shape"
             width={290} // natural width

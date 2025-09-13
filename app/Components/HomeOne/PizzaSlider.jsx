@@ -108,8 +108,8 @@ const PizzaSlider = () => {
           </div>
         ))}
         <div className="text-center mb-8 md:mb-12">
-          <p className="text-yellow-400 tracking-widest font-semibold font-bangers italic">
-            WELCOME TO BARAB FOOD
+          <p className="text-yellow-400 tracking-widest uppercase font-semibold font-bangers italic text-xl">
+            WELCOME TO Bangladeshi Restaurant
           </p>
           <h3 className="text-white font-extrabold leading-tight text-4xl sm:text-5xl md:text-8xl uppercase font-barlow">
             gulshan cafe and sweets

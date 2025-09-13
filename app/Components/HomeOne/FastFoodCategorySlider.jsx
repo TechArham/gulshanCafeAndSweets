@@ -18,51 +18,45 @@ const FastFoodCategorySlider = () => {
   const categories = [
     {
       id: 1,
-      name: "FBox Meals",
+      name: "vegetable",
       items: "22 Items Available",
-      image: "/about-us-image.png",
+      image: "/vagis.png",
     },
     {
       id: 2,
-      name: "Combo Foods",
+      name: "bread and rice",
       items: "20 Items Available",
-      image: "/about-us-image.png",
+      image: "/rice-item.png",
     },
     {
       id: 3,
-      name: "Dominos Pizza",
+      name: "misty",
       items: "25 Items Available",
-      image: "/about-us-image.png",
+      image: "/misty.png",
     },
     {
       id: 4,
-      name: "Grill Chicken",
+      name: "dessert and drinks",
       items: "22 Items Available",
-      image: "/about-us-image.png",
+      image: "/drink.png",
     },
     {
       id: 5,
-      name: "Delicious Burger",
+      name: "halal chinese",
       items: "23 Items Available",
-      image: "/about-us-image.png",
+      image: "/chinese.png",
     },
     {
       id: 6,
-      name: "French Fries",
+      name: "breakfast combo",
       items: "15 Items Available",
-      image: "/about-us-image.png",
+      image: "/breakfast.png",
     },
     {
       id: 7,
-      name: "Hot Wings",
+      name: "lunch & dinner combo",
       items: "18 Items Available",
-      image: "/about-us-image.png",
-    },
-    {
-      id: 8,
-      name: "Pasta Special",
-      items: "12 Items Available",
-      image: "/about-us-image.png",
+      image: "/lunch.png",
     },
   ];
 
@@ -83,7 +77,7 @@ const FastFoodCategorySlider = () => {
             FOOD CATEGORY
           </div>
           <h1 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
-            BROWSE FAST FOODS <span className="text-red-500">CATEGORY</span>
+            BROWSE OUR FOOD <span className="text-red-500">categories</span>
           </h1>
 
           <Image
@@ -143,17 +137,17 @@ const FastFoodCategorySlider = () => {
           >
             {categories.map((category) => (
               <SwiperSlide key={category.id}>
-                <div className="aspect-square bg-[#f7f2e2] w-full py-10 flex items-center justify-center group cursor-pointer hover:bg-[#3f9065] transition-colors duration-500 rounded-t-full p-4">
+                <div className="aspect-square bg-[#f7f2e2] w-full py-12 flex items-center justify-center group cursor-pointer hover:bg-[#3f9065] transition-colors duration-500 rounded-t-full p-4">
                   <div className="text-center">
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mx-auto mb-2 md:mb-3">
+                    <div className="relative w-16 h-16 md:w-20 md:h-20  mx-auto mb-2 md:mb-3">
                       <Image
                         src={category.image}
                         alt={category.name}
                         fill
-                        className="object-contain rounded-full group-hover:rotate-12 transition-transform duration-500"
+                        className="object-contain group-hover:rotate-12 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-1 md:mb-2 group-hover:text-white transition-colors duration-500 line-clamp-1">
+                    <h3 className="text-base capitalize md:text-lg lg:text-xl font-bold text-gray-800 mb-1 md:mb-2 group-hover:text-white transition-colors duration-500 line-clamp-1">
                       {category.name}
                     </h3>
                     <p className="text-xs md:text-sm text-gray-500 group-hover:text-white transition-colors duration-500">

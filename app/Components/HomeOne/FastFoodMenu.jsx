@@ -7,211 +7,70 @@ const FastFoodMenu = () => {
 
   // Menu data for each tab
 const menuData = {
-  "Event Creating": [
-    {
-      id: 1,
-      name: "Grilled Salmon with Dill Sauce",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 40,
-      image: "/Beef-Fried-Rice.jpg",
-    },
-    {
-      id: 2,
-      name: "Roast Beef with Vegetable",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 60,
-      image: "/chicken.jpg",
-    },
-    {
-      id: 3,
-      name: "Marrakesh Vegetarian Curry",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 50,
-      image: "/Chicken-Chow-Mein-1.jpg",
-    },
-    {
-      id: 4,
-      name: "Spicy Vegan Potato Curry",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 50,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 5,
-      name: "Apple Pie with Cream",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 80,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 6,
-      name: "Fried Chicken Special",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 40,
-      image: "/chicken.jpg",
-    },
-    {
-      id: 7,
-      name: "Low Carb Salad",
-      description: "Fresh avocado, greens, olive oil",
-      price: 30,
-      image: "/Beef-Fried-Rice.jpg",
-    },
+  Vegetable: [
+    { id: 1, name: "Mix Vegetable", price: 6, image: "/vagitable.jpg" },
+    { id: 2, name: "Chana Daal", price: 6, image: "/vagitable.jpg" },
+    { id: 3, name: "Aloo Bhaji", price: 6, image: "/vagitable.jpg" },
+    { id: 4, name: "Shak Bhaji", price: 6, image: "/vagitable.jpg" },
+    { id: 5, name: "Cabbage Bhaji", price: 6, image: "/vagitable.jpg" },
+    { id: 6, name: "Daal", price: 4, image: "/vagitable.jpg" },
+    { id: 7, name: "Begun Vaja (1p)", price: 2, image: "/vagitable.jpg" },
+    { id: 8, name: "Aloo Bhorta", price: 2, image: "/vagitable.jpg" },
+    { id: 9, name: "Shutki Bhorta", price: 3, image: "/vagitable.jpg" },
   ],
-  "Meal Plans": [
-    {
-      id: 8,
-      name: "Healthy Morning Oats",
-      description: "Banana, honey, almond milk",
-      price: 25,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 9,
-      name: "Grilled Chicken Wrap",
-      description: "Whole wheat, lettuce, light mayo",
-      price: 35,
-      image: "/chicken.jpg",
-    },
-    {
-      id: 10,
-      name: "Marrakesh Vegetarian Curry",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 50,
-      image: "/Chicken-Chow-Mein-1.jpg",
-    },
-    {
-      id: 11,
-      name: "Spicy Vegan Potato Curry",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 50,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 12,
-      name: "Fruit & Nut Salad",
-      description: "Mixed greens, nuts, fresh fruit",
-      price: 40,
-      image: "/Beef-Fried-Rice.jpg",
-    },
-    {
-      id: 13,
-      name: "Salmon Rice Bowl",
-      description: "Brown rice, grilled salmon, veggies",
-      price: 55,
-      image: "/Chicken-Chow-Mein-1.jpg",
-    },
-    {
-      id: 14,
-      name: "Veggie Omelette",
-      description: "Spinach, bell peppers, cheese",
-      price: 30,
-      image: "/vagitable.jpg",
-    },
+
+  "Bread and Rice": [
+    { id: 16, name: "Naan Bread", price: 2, image: "/Beef-Fried-Rice.jpg" },
+    { id: 17, name: "Garlic Naan", price: 3, image: "/Beef-Fried-Rice.jpg" },
+    { id: 18, name: "Onion Khulsa", price: 3, image: "/Beef-Fried-Rice.jpg" },
+    { id: 19, name: "Khima Naan", price: 5, image: "/Beef-Fried-Rice.jpg" },
+    { id: 20, name: "Porota", price: 2, image: "/Beef-Fried-Rice.jpg" },
+    { id: 21, name: "Ruti", price: 1.5, image: "/Beef-Fried-Rice.jpg" },
+    { id: 22, name: "Chapathi Rooti", price: 2, image: "/Beef-Fried-Rice.jpg" },
+    { id: 23, name: "White Rice", price: 2, image: "/Beef-Fried-Rice.jpg" },
+    { id: 24, name: "Polao", price: 3, image: "/Beef-Fried-Rice.jpg" },
   ],
-  "Food Delivery": [
-    {
-      id: 15,
-      name: "Cheese Burger Combo",
-      description: "Beef patty, cheese, fries, coke",
-      price: 45,
-      image: "/chicken.jpg",
-    },
-    {
-      id: 16,
-      name: "Apple Pie with Cream",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 80,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 17,
-      name: "Fried Chicken Special",
-      description: "Candied Jerusalem artichokes, truffle",
-      price: 40,
-      image: "/chicken.jpg",
-    },
-    {
-      id: 18,
-      name: "Pepperoni Pizza",
-      description: "Cheese, pepperoni, tomato sauce",
-      price: 65,
-      image: "/Beef-Fried-Rice.jpg",
-    },
-    {
-      id: 19,
-      name: "Beef Fried Rice",
-      description: "Stir fried rice with beef & veggies",
-      price: 50,
-      image: "/Beef-Fried-Rice.jpg",
-    },
-    {
-      id: 20,
-      name: "Veggie Chow Mein",
-      description: "Noodles with fresh vegetables",
-      price: 45,
-      image: "/Chicken-Chow-Mein-1.jpg",
-    },
-    {
-      id: 21,
-      name: "BBQ Chicken Pizza",
-      description: "BBQ sauce, chicken, onions",
-      price: 70,
-      image: "/chicken.jpg",
-    },
+
+  Misty: [
+    { id: 25, name: "Rosogullah", price: 8, image: "/chicken.jpg" },
+    { id: 26, name: "Balu Shahi", price: 8, image: "/chicken.jpg" },
+    { id: 27, name: "Kalo Jam", price: 8, image: "/chicken.jpg" },
+    { id: 28, name: "Golap Jam", price: 8, image: "/chicken.jpg" },
+    { id: 29, name: "Panthua", price: 8, image: "/chicken.jpg" },
+    { id: 30, name: "Kacha Gullah", price: 9, image: "/chicken.jpg" },
+    { id: 31, name: "Borbi Sondesh", price: 9, image: "/chicken.jpg" },
+    { id: 32, name: "Gurer Sondesh", price: 9, image: "/chicken.jpg" },
+    { id: 33, name: "Chom Chom", price: 8, image: "/chicken.jpg" },
   ],
-  "Diet Plans": [
+
+  "Dessert and Drinks": [
+    { id: 37, name: "Firni", price: "3/5", image: "/Chicken-Chow-Mein-1.jpg" },
     {
-      id: 22,
-      name: "Low Carb Salad",
-      description: "Fresh avocado, greens, olive oil",
-      price: 30,
-      image: "/Beef-Fried-Rice.jpg",
-    },
-    {
-      id: 23,
-      name: "Protein Power Bowl",
-      description: "Quinoa, grilled chicken, spinach",
-      price: 45,
+      id: 38,
+      name: "Rice Pudding",
+      price: 3,
       image: "/Chicken-Chow-Mein-1.jpg",
     },
     {
-      id: 24,
-      name: "Keto Egg Muffins",
-      description: "Egg, cheese, spinach, mushrooms",
-      price: 35,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 25,
-      name: "Green Detox Smoothie",
-      description: "Spinach, cucumber, green apple",
-      price: 25,
-      image: "/vagitable.jpg",
-    },
-    {
-      id: 26,
-      name: "Grilled Fish & Veggies",
-      description: "Steamed broccoli, grilled fish",
-      price: 55,
-      image: "/Beef-Fried-Rice.jpg",
-    },
-    {
-      id: 27,
-      name: "Tofu Stir Fry",
-      description: "Tofu, vegetables, soy sauce",
-      price: 40,
+      id: 39,
+      name: "Egg Pudding 1pc",
+      price: 3,
       image: "/Chicken-Chow-Mein-1.jpg",
     },
+    { id: 40, name: "Custard", price: 4, image: "/Chicken-Chow-Mein-1.jpg" },
+    { id: 41, name: "Faloa Daa", price: 6, image: "/Chicken-Chow-Mein-1.jpg" },
+    { id: 42, name: "Milk Semai", price: 4, image: "/Chicken-Chow-Mein-1.jpg" },
     {
-      id: 28,
-      name: "Chia Pudding",
-      description: "Chia seeds, almond milk, berries",
-      price: 20,
-      image: "/vagitable.jpg",
+      id: 43,
+      name: "Mango Lacci",
+      price: 5,
+      image: "/Chicken-Chow-Mein-1.jpg",
     },
+    { id: 44, name: "Semai", price: 3, image: "/Chicken-Chow-Mein-1.jpg" },
+    { id: 45, name: "Deshi Doi", price: 5, image: "/Chicken-Chow-Mein-1.jpg" },
   ],
 };
+
 
 
   const tabs = Object.keys(menuData);
@@ -225,7 +84,7 @@ const menuData = {
             Menu Card
           </div>
           <h1 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
-            OUR FAST FOODS <span className="text-red-500">MENU CARD</span>
+            OUR FOODS <span className="text-red-500">MENU CARD</span>
           </h1>
 
           <Image
@@ -253,7 +112,7 @@ const menuData = {
           <div className="col-span-6">
             <div className="p-4 md:p-6 w-full">
               {/* Navigation Tabs */}
-              <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+              <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-3">
                 {tabs.map((tab, index) => (
                   <button
                     key={index}
@@ -274,7 +133,7 @@ const menuData = {
                 {menuData[tabs[activeTab]].map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center gap-4 p-3 rounded-xl hover:cursor-pointer transition-all duration-300 group"
+                    className="flex items-center gap-4 px-3 py-2 rounded-xl hover:cursor-pointer transition-all duration-300 group"
                   >
                     {/* Item Image */}
                     <div>
