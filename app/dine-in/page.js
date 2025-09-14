@@ -5,11 +5,9 @@ import DineInPage from '../Components/RestaurantOrderingSystem/pages/DineInPage'
 
 export default function DineIn() {
   return (
-    <div className="min-h-screen bg-gray-50">
-
+    <>
       <Navbar />
       <DineInPage />
-   
-    </div>
+    </>
   );
 }

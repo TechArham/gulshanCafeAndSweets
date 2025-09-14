@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Users, MapPin, X, ShoppingCart, Phone } from "lucide-react";
+import { X, ShoppingCart, Phone } from "lucide-react";
 import { useRestaurantStore } from "../store/restaurantStore";
 
 // Import components
 import CategoryFilter from "../components/CategoryFilter";
 import MenuGrid from "../components/MenuGrid";
-import DineInCart from "../components/DineInCart";
+import CartSidebar from "../components/CartSidebar";
 import OnboardingModal from "../components/OnboardingModal";
 
 // Import data and utilities
@@ -41,6 +41,7 @@ const DineInPage = () => {
     getTotalPrice,
     orderDetails,
     updateOrderDetails,
+    setOrderSource,
   } = useRestaurantStore();
 
   const categoryRefs = useRef({});
@@ -55,6 +56,11 @@ const DineInPage = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Track source of add-to-cart actions from this page
+  useEffect(() => {
+    setOrderSource("dine-in");
+  }, [setOrderSource]);
 
   // Show onboarding for new users
   useEffect(() => {
@@ -114,7 +120,7 @@ const DineInPage = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <CategoryFilter showTableInfo={true} />
-      <DineInCart />
+      <CartSidebar />
 
       <div
         className={`min-h-screen container mx-auto flex ${
@@ -130,6 +136,7 @@ const DineInPage = () => {
             sidebarOpen={sidebarOpen}
             addToCart={addToCart}
             categoryRefs={categoryRefs}
+            cardType="horizontal"
           />
         </div>
 
@@ -252,3 +259,5 @@ const DineInPage = () => {
 };
 
 export default DineInPage;
+
+
