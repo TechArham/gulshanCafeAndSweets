@@ -10,18 +10,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --rt-body-font: var(--font-barlow-condensed), sans-serif;
-  --rt-heading-font: var(--font-barlow-condensed), sans-serif;
-  --rt-menu-font: var(--font-barlow-condensed), sans-serif;
+  --rt-body-font: "Quicksand", sans-serif;
+  --rt-heading-font: "Quicksand", sans-serif;
+  --rt-menu-font: "Quicksand", sans-serif;
 }
-
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-barlow-condensed);
-  --font-mono: var(--font-barlow-condensed);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-quicksand: var(--font-quicksand);
   --font-barlow-condensed: var(--font-barlow-condensed);
+  /* Tailwind token aliases mapped to Next Font variables */
+  --font-barlow: var(--font-barlow-condensed), sans-serif;
+  --font-bangers: var(--font-bangers), cursive;
+  --font-inter: var(--font-inter), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,60 +38,79 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-barlow-condensed), sans-serif;
-}
-
-/* Font utility classes */
-.font-barlow-condensed {
-  font-family: var(--font-barlow-condensed), sans-serif;
-}
-
-/* Ensure Barlow Condensed is applied globally */
-* {
-  font-family: var(--font-barlow-condensed), sans-serif;
-}
-
-/* Force Barlow Condensed on all elements */
-html,
-body,
-div,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-button,
-input,
-textarea,
-select {
-  font-family: var(--font-barlow-condensed), sans-serif !important;
-}
-
-.font-rt-body {
   font-family: var(--rt-body-font);
-}
-
-.font-rt-heading {
-  font-family: var(--rt-heading-font);
-}
-
-.font-rt-menu {
-  font-family: var(--rt-menu-font);
 }
 
 /* Hide scrollbar for category filter */
 .scrollbar-hide {
   -ms-overflow-style: none;
-  /* Internet Explorer 10+ */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-  /* Safari and Chrome */
 }
+
+.shapeCss {
+  border-radius: 35% 31% 35% 31% / 90% 90% 90% 81%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wave {
+  --size: 30px; /* smaller wave size */
+  --m: 1.5;
+  --p: calc(var(--m) * var(--size));
+  --R: calc(var(--size) * sqrt(var(--m) * var(--m) + 1));
+  
+  height: 100px; /* adjust container height if needed */
+  margin: 10px 0;
+  mask:
+    radial-gradient(var(--R) at left 50% var(--d,top) calc(var(--size) + var(--p)), #000 99%, #0000 101%) 
+      calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
+    radial-gradient(var(--R) at left 50% var(--d,top) calc(-1*var(--p)), #0000 99%, #000 101%) 
+      left 50% var(--d,top) var(--size)/calc(4*var(--size)) 100% repeat-x;
+  
+  background: linear-gradient(90deg, #f1c40f, #ff9924);
+}
+
+
+
+
+
+
+
+
+
+    /* .tv {
+      position: relative;
+      width: full;
+      height: full;
+      margin: 20px 0;
+      background: #3f9065;
+      border-radius: 50% / 10%;
+      color: white;
+      text-align: center;
+      text-indent: .1em;
+    }
+    .tv:before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      right: -5%;
+      left: -5%;
+      background: inherit;
+      border-radius: 5% / 50%;
+    } */

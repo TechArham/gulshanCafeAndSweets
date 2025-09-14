@@ -1,59 +1,10 @@
-'use client'
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const ComingSoonSection = () => {
 
-    const [floatingVeggies, setFloatingVeggies] = useState([]);
-  
-    const vegetables = [
-      { image: "/26.png" },
-      { image: "/chili.png" },
-      { image: "/sm-tomatto.png" },
-      { image: "/tomato.png" },
-    ];
-  
-    useEffect(() => {
-      // Create only 3 fixed veggies
-      const positions = [
-        { x: 12, y: 70 }, // left side
-        { x: 2, y: 20 }, // left side
-        { x: 90, y: 40 }, // right side
-        { x: 70, y: 8 }, // right side
-      ];
-  
-      const initialVeggies = vegetables.map((veg, i) => ({
-        id: i,
-        veggie: veg.image,
-        x: positions[i].x,
-        y: positions[i].y,
-        rotation: Math.random() * 360,
-        scale: 0.8 + Math.random() * 0.4,
-        animationDuration: 3 + Math.random() * 4,
-      }));
-  
-      setFloatingVeggies(initialVeggies);
-    }, []);
-  
-
-
   return (
     <div className="relative bg-black min-h-screen overflow-hidden">
-      {/* Floating Vegetables */}
-      {floatingVeggies.map((veggie) => (
-        <div
-          key={veggie.id}
-          className="absolute pointer-events-none opacity-80"
-          style={{
-            left: `${veggie.x}%`,
-            top: `${veggie.y}%`,
-            transform: `rotate(${veggie.rotation}deg) scale(${veggie.scale})`,
-            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
-          }}
-        >
-          <Image src={veggie.veggie} alt="vegetable" height={60} width={60} />
-        </div>
-      ))}
       {/* Animated Stars Background */}
       <div className="absolute inset-0">
         {[...Array(100)].map((_, i) => (
@@ -70,9 +21,10 @@ const ComingSoonSection = () => {
         ))}
       </div>
 
+
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
-        <div className="grid lg:grid-cols-2 gap-12 items-center container">
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left Side - Burger Image */}
           <div className="relative flex justify-center lg:justify-end">
             {/* Burger */}
@@ -123,7 +75,7 @@ const ComingSoonSection = () => {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl  font-extrabold text-white leading-tight">
                 DELICIOUS
                 <br />
-                BURGER{" "}
+                BURGER {' '}
                 <span className="bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
                   FOOD
                 </span>
@@ -176,29 +128,6 @@ const ComingSoonSection = () => {
         </svg>
       </button>
 
-      <style jsx>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          100% {
-            transform: translateY(-20px) rotate(10deg);
-          }
-        }
-
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
-        }
-      `}</style>
     </div>
   );
 };
