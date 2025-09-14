@@ -41,7 +41,7 @@ const DeliciousFastFoods = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <p className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-3">
+          <p className="text-[#ff9924] tracking-widest uppercase font-normal font-bangers text-xl mb-3">
             OUR popular dishes
           </p>
 

@@ -40,10 +40,12 @@ import TestimonialsSection from "./Components/HomeOne/TestimonialsSection";
 import YoutubeVideo from "./Components/HomeOne/YoutubeVideo";
 import Footer from "./Components/Common/Footer";
 import Navbar from "./Components/Common/Navbar";
+import Topbar from "./Components/Common/Topbar";
 
 const page = () => {
   return (
     <div>
+      <Topbar />
       <Navbar />
       <PizzaSlider />
       <About />

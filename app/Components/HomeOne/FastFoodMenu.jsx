@@ -80,7 +80,7 @@ const menuData = {
       <div className="max-w-[1600px] mx-auto py-24">
         {/* Header */}
         <div className="text-center mx-auto mb-8">
-          <div className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-2 ">
+          <div className="text-[#ff9924] tracking-widest uppercase font-normal font-bangers text-xl mb-2 ">
             Menu Card
           </div>
           <h1 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">

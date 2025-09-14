@@ -60,20 +60,20 @@ const Navbar = () => {
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
           isClient && isScrolled
-            ? "bg-black/90 shadow-lg"
-            : "bg-black/80 shadow-sm"
+            ? "bg-white/70 shadow-lg"
+            : "bg-white shadow-sm"
         }`}
       >
-        <div className="px-4 sm:px-6 md:px-10 xl:px-20 h-20 flex items-center justify-between">
+        <div className="px-4 sm:px-6 md:px-10 xl:px-20 h-24 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-6">
             <Link href="/">
               <Image
                 src="/logoo.png"
-                width={160}
-                height={160}
+                width={200}
+                height={200}
                 alt="Logo"
-                className="w-28 h-auto sm:w-32 md:w-36"
+                className="w-28 h-auto sm:w-32 md:w-56"
               />
             </Link>
           </div>
@@ -84,7 +84,7 @@ const Navbar = () => {
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 text-white font-semibold hover:text-red-500 transition-colors duration-200"
+                  className="flex items-center gap-1 text-black font-semibold hover:text-red-500 transition-colors duration-200  font-barlow  leading-tight text-lg"
                 >
                   {item.name}
                   {item.hasDropdown && (
@@ -114,24 +114,20 @@ const Navbar = () => {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-6">
             <div className="flex items-center md:hidden xl:flex gap-3">
-              <IoCallOutline className="text-white text-2xl md:text-3xl" />
-              <p className="text-white text-sm md:text-base">+880 123 456 88</p>
+              <IoCallOutline className="text-black text-xl" />
+              <p className="text-black text-sm md:text-base">+880 123 456 88</p>
             </div>
-            <IoSearch className="text-white text-2xl md:text-3xl cursor-pointer" />
-            <FaCartPlus className="text-white text-2xl md:text-3xl cursor-pointer" />
-            <Link
-              href="/onlineOrder"
-              className="bg-gradient-to-r from-orange-500 to-red-500 px-4 sm:px-6 py-2 sm:py-3 rounded-md font-semibold text-white hover:scale-105 transition-transform duration-200"
-            >
-              🍽️ Order Now
-            </Link>
+
+                          <Link href='/onlineOrder' className="bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                Order Now
+              </Link>
           </div>
 
           {/* Mobile Toggle */}
           <div className="lg:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-white hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+              className="p-2 rounded-md text-black hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -145,7 +141,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-[9999] transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-64 bg-black shadow-2xl z-[9999] transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -211,7 +207,7 @@ const Navbar = () => {
         <div className="mt-auto p-4 border-t">
           <Link
             href="/dine-in"
-            className="block w-full text-center bg-red-500 hover:bg-red-600 text-white py-3 rounded-md font-semibold transition-all duration-200"
+            className="block w-full text-center bg-red-500 hover:bg-red-600 text-black py-3 rounded-md font-semibold transition-all duration-200"
             onClick={closeMobileMenu}
           >
             Book Table

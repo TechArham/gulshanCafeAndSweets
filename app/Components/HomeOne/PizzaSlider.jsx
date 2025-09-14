@@ -1,7 +1,9 @@
 "use client";
-// components/PizzaSlider.jsx
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { MdWheelchairPickup } from "react-icons/md";
+import { MdOutlineRestaurantMenu } from "react-icons/md";
 
 const PizzaSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +69,7 @@ const PizzaSlider = () => {
       { x: 25, y: 70 }, // left side
       { x: 2, y: 2 },
       { x: 90, y: 70 }, // right side
-      { x: 70, y: 20 }, // right side
+      { x: 80, y: 13 }, // right side
     ];
 
     const initialVeggies = vegetables.map((veg, i) => ({
@@ -85,7 +87,7 @@ const PizzaSlider = () => {
 
   return (
     <section className="relative w-full bg-[#072f25] overflow-hidden">
-      <div className="w-full px-4 sm:px-6 lg:px-12 py-10 md:py-16 flex flex-col justify-between min-h-[700px] md:min-h-[820px]">
+      <div className="w-full px-4 sm:px-6 lg:px-12 py-10 md:py-14 flex flex-col justify-between min-h-[700px] md:min-h-[820px]">
         {/* Floating Vegetables */}
         {floatingVeggies.map((veggie) => (
           <div
@@ -107,13 +109,29 @@ const PizzaSlider = () => {
             />
           </div>
         ))}
-        <div className="text-center mb-8 md:mb-12">
-          <p className="text-yellow-400 tracking-widest uppercase font-semibold font-bangers italic text-xl">
+        <div className="text-center mb-3">
+          <p className="text-yellow-400 tracking-widest uppercase font-normal font-bangers text-xl">
             WELCOME TO Bangladeshi Restaurant
           </p>
-          <h3 className="text-white font-extrabold leading-tight text-4xl sm:text-5xl md:text-8xl uppercase font-barlow">
+          <h3 className="text-white font-extrabold leading-tight text-4xl sm:text-5xl md:text-7xl uppercase font-barlow">
             gulshan cafe and sweets
           </h3>
+          <div className="flex items-center justify-center gap-5 pt-5">
+            <Link
+              href="/onlineOrder"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+            >
+              <MdOutlineRestaurantMenu className="text-xl" />
+              <span>View Menu</span>
+            </Link>
+            <Link
+              href="/onlineOrder"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+            >
+              <MdWheelchairPickup className="text-xl" />
+              <span>Pick Up</span>
+            </Link>
+          </div>
         </div>
 
         <div className="relative h-[540px] md:h-[680px]">
