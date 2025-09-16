@@ -56,6 +56,19 @@ body {
 }
 
 
+/* Checkout page: force medium border radius and vertical padding for form fields */
+.checkout-input-rounded input:not([type="checkbox"]):not([type="radio"]),
+.checkout-input-rounded select,
+.checkout-input-rounded textarea {
+  border-radius: 0.375rem !important;
+  /* rounded-md */
+  padding-top: 1rem !important;
+  /* py-4 */
+  padding-bottom: 1rem !important;
+  /* py-4 */
+}
+
+
 
 
 
@@ -69,19 +82,19 @@ body {
 
 
 .wave {
-  --size: 30px; /* smaller wave size */
+  --size: 30px;
+  /* smaller wave size */
   --m: 1.5;
   --p: calc(var(--m) * var(--size));
   --R: calc(var(--size) * sqrt(var(--m) * var(--m) + 1));
-  
-  height: 100px; /* adjust container height if needed */
+
+  height: 100px;
+  /* adjust container height if needed */
   margin: 10px 0;
   mask:
-    radial-gradient(var(--R) at left 50% var(--d,top) calc(var(--size) + var(--p)), #000 99%, #0000 101%) 
-      calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
-    radial-gradient(var(--R) at left 50% var(--d,top) calc(-1*var(--p)), #0000 99%, #000 101%) 
-      left 50% var(--d,top) var(--size)/calc(4*var(--size)) 100% repeat-x;
-  
+    radial-gradient(var(--R) at left 50% var(--d, top) calc(var(--size) + var(--p)), #000 99%, #0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
+    radial-gradient(var(--R) at left 50% var(--d, top) calc(-1*var(--p)), #0000 99%, #000 101%) left 50% var(--d, top) var(--size)/calc(4*var(--size)) 100% repeat-x;
+
   background: linear-gradient(90deg, #f1c40f, #ff9924);
 }
 
@@ -93,7 +106,7 @@ body {
 
 
 
-    /* .tv {
+/* .tv {
       position: relative;
       width: full;
       height: full;

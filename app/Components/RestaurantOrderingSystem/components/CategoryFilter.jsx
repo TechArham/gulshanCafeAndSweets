@@ -246,7 +246,7 @@ const CategoryFilter = ({ showTableInfo = false }) => {
                                         key={category}
                                         onClick={() => setActiveCategory(category)}
                                         className={`px-3 py-2 sm:px-4 sm:py-2.5 lg:px-5 lg:py-3.5 rounded-lg sm:rounded-xl cursor-pointer font-medium sm:font-semibold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center space-x-1.5 sm:space-x-2 ${activeCategory === category
-                                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white transform scale-105'
+                                            ? '  bg-red-500 text-white transform scale-105'
                                             : 'bg-gray-100 text-black hover:bg-gray-200 hover:scale-105'
                                             }`}
                                     >

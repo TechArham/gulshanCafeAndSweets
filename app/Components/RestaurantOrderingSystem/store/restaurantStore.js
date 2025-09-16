@@ -37,6 +37,8 @@ export const useRestaurantStore = create(
             visibleItems: 8,
             itemsPerPage: 8,
             currentPage: 1,
+            // Track source page for order journey
+            orderSource: "",
 
             // Cart actions
             addToCart: (item, category) => {
@@ -140,6 +142,11 @@ export const useRestaurantStore = create(
                 set({ itemsPerPage: count });
             },
 
+            // Tracking actions
+            setOrderSource: (source) => {
+                set({ orderSource: source });
+            },
+
             // Order actions
             submitOrder: () => {
                 const { cart, orderDetails } = get();
@@ -172,6 +179,7 @@ export const useRestaurantStore = create(
                     activeCategory: "SuperDeliciousDeal",
                     itemsPerPage: 8,
                     currentPage: 1,
+                    orderSource: "",
                 });
             },
 
@@ -192,6 +200,7 @@ export const useRestaurantStore = create(
                 cart: state.cart,
                 orderDetails: state.orderDetails,
                 orderId: state.orderId,
+                orderSource: state.orderSource,
             }), // only persist cart and order details
         }
     )

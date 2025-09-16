@@ -36,10 +36,16 @@ const MenuPage = () => {
         setActiveCategory,
         scrollToCategory,
         getTotalItems,
-        getTotalPrice
+        getTotalPrice,
+        setOrderSource
     } = useRestaurantStore();
 
     const categoryRefs = useRef({});
+
+    // Identify order source as menu page
+    useEffect(() => {
+        setOrderSource('menu');
+    }, [setOrderSource]);
 
     // Handle scroll behavior to detect when CategoryFilter is fixed
     useEffect(() => {
