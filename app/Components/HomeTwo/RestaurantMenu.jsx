@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 
+
 import Image from "next/image";
 const RestaurantMenu = () => {
   const [activeCategory, setActiveCategory] = useState("all");
