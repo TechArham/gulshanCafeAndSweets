@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { MdOutlineRestaurantMenu } from "react-icons/md";
 
 const FastFoodMenu = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -117,10 +118,10 @@ const menuData = {
                   <button
                     key={index}
                     onClick={() => setActiveTab(index)}
-                    className={`px-3 md:px-6 py-2 md:py-3 rounded-full font-medium text-xs md:text-sm transition-all duration-300 ${
+                    className={`px-3 md:px-6 py-2 md:py-3 rounded-full font-medium text-xs md:text-sm transition-all duration-300 hover:cursor-pointer ${
                       index === activeTab
-                        ? "bg-red-500 text-white shadow-lg transform scale-105"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        ? "bg-red-500 text-white shadow-lg transform scale-105 font-inter font-semibold text-xl"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200  font-inter font-semibold text-xl"
                     }`}
                   >
                     {tab}
@@ -137,13 +138,7 @@ const menuData = {
                   >
                     {/* Item Image */}
                     <div>
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        height={80}
-                        width={80}
-                        className="w-12 h-12 rounded-lg"
-                      />
+<MdOutlineRestaurantMenu className='text-2xl text-black group-hover:text-red-500 transition-colors duration-300'/>
                     </div>
 
                     {/* Item Details */}
@@ -151,13 +146,10 @@ const menuData = {
                       <h3 className="font-bold text-gray-800 text-lg md:text-xl mb-1 group-hover:text-red-500 transition-colors duration-300">
                         {item.name}
                       </h3>
-                      <p className="text-gray-500 text-sm md:text-base">
-                        {item.description}
-                      </p>
                     </div>
 
                     {/* Dotted Line */}
-                    <div className="hidden sm:flex flex-grow border-b-2 border-dotted border-[#3f9065] mx-4 -mb-5"></div>
+                    <div className="hidden max-w-44 sm:flex flex-grow border-b-2 border-dotted border-[#3f9065] mx-4 -mb-5"></div>
 
                     {/* Price */}
                     <div className="flex-shrink-0">

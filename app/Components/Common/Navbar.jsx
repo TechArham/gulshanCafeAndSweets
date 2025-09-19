@@ -56,7 +56,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Navbar */}
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
           isClient && isScrolled
