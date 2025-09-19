@@ -58,16 +58,17 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Food Image */}
           <div className="relative order-2 lg:order-1">
-            <Image
-              src="/Is+Breakfast+Important-removebg-preview.png"
-              alt="vegetable"
-              width={680}
-              height={680}
-              quality={100}
-              priority
-              className="object-contain"
-              sizes="(max-width: 768px) 150px, 280px" // responsive sharpness
-            />
+            <div className="relative w-full max-w-[680px] h-[680px]">
+              <Image
+                src="/Is+Breakfast+Important-removebg-preview.png"
+                alt="vegetable"
+                fill
+                quality={100}
+                priority
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 680px"
+              />
+            </div>
           </div>
 
           {/* Right side - Content */}
@@ -102,7 +103,10 @@ const About = () => {
 
             {/* CTA Button */}
             <div>
-              <Link href='/' className="bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <Link
+                href="/"
+                className="bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
                 VISIT OUR RESTAURANT
               </Link>
             </div>
