@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 const About = () => {
   // Floting image
   const [floatingVeggies, setFloatingVeggies] = useState([]);
@@ -57,23 +58,24 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Food Image */}
           <div className="relative order-2 lg:order-1">
-            <Image
-              src="/Is+Breakfast+Important-removebg-preview.png"
-              alt="vegetable"
-              width={680}
-              height={680}
-              quality={100}
-              priority
-              className="object-contain"
-              sizes="(max-width: 768px) 150px, 280px" // responsive sharpness
-            />
+            <div className="relative w-full max-w-[680px] h-[680px]">
+              <Image
+                src="/Is+Breakfast+Important-removebg-preview.png"
+                alt="vegetable"
+                fill
+                quality={100}
+                priority
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 680px"
+              />
+            </div>
           </div>
 
           {/* Right side - Content */}
           <div className="order-1 lg:order-2 text-center lg:text-left">
             {/* Badge */}
             <div className="inline-block mb-6">
-              <span className=" text-[#ff9924] tracking-widest font-medium font-bangers italic">
+              <span className="text-[#ff9924] tracking-widest uppercase font-normal font-bangers text-xl">
                 About Our Restaurant
               </span>
             </div>
@@ -93,7 +95,7 @@ const About = () => {
             </p>
 
             {/* Owner info */}
-            <div className="mb-5">
+            <div className="mb-12">
               <h3 className="text-black leading-tight text-2xl font-barlow mb-2 font-bold">
                 Authentic Halal Food
               </h3>
@@ -101,9 +103,12 @@ const About = () => {
 
             {/* CTA Button */}
             <div>
-              <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <Link
+                href="/"
+                className="bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
                 VISIT OUR RESTAURANT
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -111,5 +116,4 @@ const About = () => {
     </section>
   );
 };
-
 export default About;

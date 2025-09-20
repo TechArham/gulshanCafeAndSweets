@@ -1,9 +1,18 @@
 import React from "react";
+import ContactHeader from "../Components/Contact/ContactHeader";
+import ContactForm from "../Components/Contact/ContactForm";
+import RestaurantLocation from "../Components/Contact/RestaurantLocation";
+import RestaurantFooter from "../Components/Contact/RestaurantFooter";
+import Navbar from "../Components/Common/Navbar";
 
 const page = () => {
   return (
     <div>
-      <h1 className=" text-primary text-3xl font-bold">This is contact</h1>
+      <Navbar/>
+<ContactHeader/>
+<ContactForm/>
+<RestaurantLocation/>
+<RestaurantFooter/>
     </div>
   );
 };

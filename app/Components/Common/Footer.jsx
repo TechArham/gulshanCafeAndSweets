@@ -26,8 +26,8 @@ const Footer = () => {
     const positions = [
       { x: 0, y: 70 }, // left side
       { x: 0, y: 0 }, // left side top
-      { x: 85, y: 70 }, // right side
-      { x: 85, y: 0 }, // right side top
+      { x: 86, y: 70 }, // right side
+      { x: 86, y: 0 }, // right side top
     ];
 
     const initialVeggies = vegetables.map((veg, i) => ({
@@ -42,7 +42,7 @@ const Footer = () => {
     setFloatingVeggies(initialVeggies);
   }, []);
   return (
-    <div className="relative min-h-screen bg-[#072f25] overflow-hidden text-[#6c6c6c]">
+    <div className="relative bg-[#072f25] overflow-hidden text-[#6c6c6c]">
       {/* Floating Vegetables */}
       {floatingVeggies.map((veggie) => (
         <div
@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
       ))}
       {/* Main footer content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
+      <div className="relative z-10 flex flex-col items-center justify-center px-8 py-10 lg:py-20">
         {/* Logo */}
         <div className="mb-16 w-full">
           <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-10">
@@ -79,9 +79,9 @@ const Footer = () => {
               <Image
                 src="/logoo.png"
                 alt="title shape"
-                width={200}
-                height={200}
-                sizes="(max-width: 768px) 140px, 200px"
+                width={300}
+                height={300}
+                sizes="(max-width: 768px) 180px, 240px"
                 className="object-contain w-[140px] h-auto md:w-[200px]"
               />
             </div>

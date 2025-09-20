@@ -1,37 +1,30 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 const DeliciousFastFoods = () => {
   const foodItems = [
     {
       id: 1,
       name: "Chiken Curry",
       price: "$26.00",
-      description:
-        "At the heart of our kitchen are bold flavors, high-quality ingredients",
       image: "/Image2-ss1-h1.webp",
     },
     {
       id: 2,
       name: "Special Misty",
       price: "$20.00",
-      description:
-        "Traditional Bengali sweet, rich in flavor and made with love.",
       image: "misty.webp",
     },
     {
       id: 3,
       name: "Tehari",
       price: "$16.00",
-      description:
-        "At the heart of our kitchen are bold flavors, high-quality ingredients",
       image: "Screenshot_26.png",
     },
     {
       id: 4,
       name: "Hot Coffee",
       price: "$36.00",
-      description:
-        "Special Hot Coffee",
       image: "1c7ee4a7-5823-4052-93e7-3f2ac113c9fc.png",
     },
   ];
@@ -41,7 +34,7 @@ const DeliciousFastFoods = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <p className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-3">
+          <p className="text-[#ff9924] tracking-widest uppercase font-normal font-bangers text-xl mb-3">
             OUR popular dishes
           </p>
 
@@ -87,10 +80,11 @@ const DeliciousFastFoods = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 group-hover:text-orange-600 transition-colors duration-300">
                   {item.name}
                 </h3>
-
-                <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-                  {item.description}
-                </p>
+<div className='mt-8 '>
+                <Link href='/menu' className="bg-red-600 rounded-md hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-8 uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                View Menu
+              </Link>
+</div>
               </div>
             </div>
           ))}

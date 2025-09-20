@@ -87,7 +87,7 @@ const FoodCategorySlider = () => {
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="text-orange-500 font-semibold text-sm md:text-base mb-4 tracking-wider uppercase">
+          <div className=" text-[#ff9924] tracking-widest uppercase font-normal font-bangers text-xl mb-4">
             Our Food Gallery
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-8">

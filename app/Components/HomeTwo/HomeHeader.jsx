@@ -88,14 +88,7 @@ const HomeHeader = () => {
       ))}
 
       {/* Hero Section */}
-      <section className="min-h-screen px-4 sm:px-8 lg:px-24 py-10 lg:py-0 relative flex flex-col lg:flex-row items-center justify-between">
-        {/* Background Gradients */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-blue-900/10"></div>
-          <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-amber-500/10 to-transparent"></div>
-          <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-blue-500/10 to-transparent"></div>
-        </div>
-
+      <section className="min-h-screen px-5 max-w-[1500px] mx-auto py-10 lg:py-0 relative flex flex-col lg:flex-row items-center justify-between">
         {/* Content */}
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full gap-12">
           {/* Left Content */}
