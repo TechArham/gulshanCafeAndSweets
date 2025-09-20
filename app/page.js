@@ -18,18 +18,17 @@ const page = () => {
   return (
     <div>
       <Topbar />
-      <Navbar />
-      <PizzaSlider />
-      <About />
-      <FastFoodCategorySlider />
-      <DeliciousFastFoods />
-      <FastFoodMenu />
-      <NewsAndBlogs />
-      {/* <FoodGallerySlider /> */}
-      <CTA />
-      <TestimonialsSection />
-      <YoutubeVideo />
-      <Footer />
+        <Navbar/>
+        <PizzaSlider />
+        <About />
+        <FastFoodCategorySlider />
+        <DeliciousFastFoods />
+        <FastFoodMenu />
+        <CTA />
+        <TestimonialsSection />
+        <NewsAndBlogs />
+        <YoutubeVideo/>
+        <Footer />
     </div>
   );
 };

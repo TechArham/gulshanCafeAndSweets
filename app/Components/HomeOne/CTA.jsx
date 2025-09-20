@@ -26,7 +26,7 @@ const CTA = () => {
     setFloatingVeggies(initialVeggies);
   }, []);
   return (
-    <section className="relative overflow-hidden bg-[#f7f2e2]">
+    <section className="relative overflow-hidden bg-white">
       {/* Floating Vegetables */}
       {floatingVeggies.map((veggie) => (
         <div

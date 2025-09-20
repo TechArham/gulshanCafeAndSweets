@@ -21,10 +21,9 @@ const page = () => {
         <FastFoodCategorySlider />
         <DeliciousFastFoods />
         <FastFoodMenu />
-        <NewsAndBlogs />
-        {/* <FoodGallerySlider /> */}
         <CTA />
         <TestimonialsSection />
+        <NewsAndBlogs />
         <YoutubeVideo/>
         <Footer />
       </div>
