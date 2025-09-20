@@ -32,7 +32,7 @@ const About = () => {
     setFloatingVeggies(initialVeggies);
   }, []);
   return (
-    <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-white pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Floating Vegetables */}
       {floatingVeggies.map((veggie) => (
         <div

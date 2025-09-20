@@ -56,10 +56,10 @@ const YoutubeVideo = () => {
             <div className="text-white z-[999]  col-span-12 lg:col-span-5">
               <div className="text-center mx-auto mb-8">
                 <div className="text-[#ff9924] tracking-widest uppercase font-normal font-bangers text-xl  mb-2">
-                  Menu Card
+                  Visit Our Restuarent
                 </div>
-                <h1 className="text-white font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl uppercase font-barlow mb-8">
-                  OUR FAST FOODS MENU CARD
+                <h1 className="text-white font-extrabold leading-tight text-2xl md:text-3xl lg:text-5xl uppercase font-barlow mb-8">
+                  We Are Open !
                 </h1>
 
                 <Image

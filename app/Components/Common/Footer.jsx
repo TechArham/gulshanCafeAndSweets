@@ -252,7 +252,7 @@ const Footer = () => {
         <div className="border-t max-w-6xl border-gray-600 pt-8 w-full">
           <div className="flex flex-col lg:flex-row justify-between items-center text-center space-y-4 lg:space-y-0">
             <p className="text-gray-300">
-              Copyright © 2025 <span className="text-yellow-400">Barab</span>{" "}
+              Copyright © 2025 <span className="text-yellow-400">Gulshan Cafe And Sweets</span>{" "}
               All Rights Reserved.
             </p>
             <div className="flex space-x-4">

@@ -84,10 +84,10 @@ const NewsAndBlogs = () => {
         {/* Header */}
         <div className="text-center mx-auto mb-8">
           <div className="text-[#ff9924] tracking-widest font-medium font-bangers italic mb-2 ">
-            FOOD CATEGORY
+            Our Blogs
           </div>
           <h1 className="text-black font-extrabold leading-tight text-4xl md:text-5xl uppercase font-barlow mb-8">
-            BROWSE FAST FOODS <span className="text-red-500">CATEGORY</span>
+            Our News And <span className="text-red-500">Blogs</span>
           </h1>
 
           <Image
