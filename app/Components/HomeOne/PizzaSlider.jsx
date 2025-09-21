@@ -87,7 +87,7 @@ const PizzaSlider = () => {
 
   return (
     <section className="relative w-full bg-[#072f25] overflow-hidden">
-      <div className="w-full px-4 sm:px-6 lg:px-12 py-10 md:py-14 flex flex-col justify-between min-h-[700px] md:min-h-[820px]">
+      <div className="w-full px-4 sm:px-6 lg:px-12 py-14 flex flex-col justify-between min-h-[600px] md:min-h-[820px]">
         {/* Floating Vegetables */}
         {floatingVeggies.map((veggie) => (
           <div
@@ -110,10 +110,10 @@ const PizzaSlider = () => {
           </div>
         ))}
         <div className="text-center mb-3">
-          <p className="text-yellow-400 tracking-widest uppercase font-normal font-bangers text-xl">
+          <p className="text-yellow-400 tracking-widest uppercase font-normal font-bangers text-md md:text-xl">
             WELCOME TO Bangladeshi Restaurant
           </p>
-          <h3 className="text-white font-extrabold leading-tight text-4xl sm:text-5xl md:text-7xl uppercase font-barlow">
+          <h3 className="text-white font-bold md:font-extrabold leading-tight text-4xl sm:text-5xl md:text-7xl uppercase font-barlow">
             gulshan cafe and sweets
           </h3>
           <div className="flex items-center justify-center gap-5 pt-5">
@@ -134,7 +134,7 @@ const PizzaSlider = () => {
           </div>
         </div>
 
-        <div className="relative h-[540px] md:h-[680px]">
+        <div className="relative h-[350px] md:h-[680px]">
           {pizzas.map((pizza, idx) => {
             const position =
               idx === visibleIds[1]
@@ -170,7 +170,7 @@ const PizzaSlider = () => {
                 style={{ transform: transformByPos[position] }}
               >
                 <div
-                  className={`relative rounded-full shadow-2xl bg-black/5 h-[420px] w-[420px] md:h-[600px] md:w-[600px]`}
+                  className={`relative rounded-full shadow-2xl bg-black/5 h-[300px] w-[300px] md:h-[600px] md:w-[600px]`}
                 >
                   <Image
                     src={pizza.image}

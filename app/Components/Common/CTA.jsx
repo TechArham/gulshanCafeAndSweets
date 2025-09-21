@@ -7,7 +7,7 @@ const CTA = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/call-2.png" // Change to your background image
+            src="/pngtree-chicken-biryani-.png" // Change to your background image
             alt="Banner"
             fill
             className="object-cover"

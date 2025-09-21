@@ -58,7 +58,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Food Image */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative w-full max-w-[680px] h-[680px]">
+            <div className="relative w-full max-w-[680px] h-[400px] md:h-[680px]">
               <Image
                 src="/Is+Breakfast+Important-removebg-preview.png"
                 alt="vegetable"

@@ -14,7 +14,7 @@ const YoutubeVideo = () => {
     <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Main Container with Curved Design */}
       <div className="max-w-[1500px] mx-auto">
-        <div className="relative tv p-8 sm:p-12 lg:p-16 shadow-2xl">
+        <div className="relative tv py-16 px-4 md:px-8 lg:px-16 shadow-2xl">
           {/* Content Grid */}
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Side - Video/Image */}

@@ -1,10 +1,9 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown,ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { IoCallOutline } from "react-icons/io5";
 import Link from "next/link";
-
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -95,7 +94,7 @@ const Navbar = () => {
       <nav
         className={`sticky top-0 z-50 transition-all duration-500 backdrop-blur-md ${
           isClient && isScrolled
-            ? "bg-white/70 shadow-lg"
+            ? "bg-white shadow-lg"
             : "bg-white shadow-sm"
         }`}
       >
@@ -112,7 +111,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-12">
+          <div className="hidden lg:flex items-center gap-16">
             {/* Home Dropdown */}
             <div
               className="relative"
@@ -215,6 +214,7 @@ const Navbar = () => {
               <IoCallOutline className="text-black text-xl" />
               <p className="text-black text-sm md:text-base">+880 123 456 88</p>
             </div>
+            <ShoppingCart  className="text-black text-xl" />
 
             <Link
               href="/onlineOrder"

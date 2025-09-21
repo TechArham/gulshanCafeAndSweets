@@ -2,8 +2,9 @@ import React from "react";
 import ContactHeader from "../Components/Contact/ContactHeader";
 import ContactForm from "../Components/Contact/ContactForm";
 import RestaurantLocation from "../Components/Contact/RestaurantLocation";
-import RestaurantFooter from "../Components/Contact/RestaurantFooter";
+// import RestaurantFooter from "../Components/Contact/RestaurantFooter";
 import Navbar from "../Components/Common/Navbar";
+import Footer from "../Components/Common/Footer";
 
 const page = () => {
   return (
@@ -12,7 +13,8 @@ const page = () => {
 <ContactHeader/>
 <ContactForm/>
 <RestaurantLocation/>
-<RestaurantFooter/>
+{/* <RestaurantFooter/> */}
+<Footer/>
     </div>
   );
 };
