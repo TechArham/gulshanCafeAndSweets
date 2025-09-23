@@ -93,9 +93,7 @@ const Navbar = () => {
       {/* Navbar */}
       <nav
         className={`sticky top-0 z-50 transition-all duration-500 backdrop-blur-md ${
-          isClient && isScrolled
-            ? "bg-white shadow-lg"
-            : "bg-white shadow-sm"
+          isClient && isScrolled ? "bg-white shadow-lg" : "bg-white shadow-sm"
         }`}
       >
         <div className="px-4 sm:px-6 md:px-10 xl:px-20 h-24 flex items-center justify-between">
@@ -214,7 +212,7 @@ const Navbar = () => {
               <IoCallOutline className="text-black text-xl" />
               <p className="text-black text-sm md:text-base">+880 123 456 88</p>
             </div>
-            <ShoppingCart  className="text-black text-xl" />
+            <ShoppingCart className="text-black text-xl" />
 
             <Link
               href="/onlineOrder"
