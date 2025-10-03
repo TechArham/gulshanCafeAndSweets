@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { X, ShoppingCart, Phone } from "lucide-react";
+import { X, ShoppingCart, Phone, PersonStanding } from "lucide-react";
 import { useRestaurantStore } from "../store/restaurantStore";
 
 // Import components
@@ -176,7 +176,7 @@ const DineInPage = () => {
         <div className="fixed inset-0    backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl border border-gray-300 p-6 w-full max-w-md">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-black">
+              <h3 className="text-black font-semibold leading-tight text-xl md:text-2xl uppercase font-barlow">
                 Select Your Table
               </h3>
               <button
@@ -191,13 +191,18 @@ const DineInPage = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Customer Name (Optional)
               </label>
-              <input
-                type="text"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="Enter your name"
-                className="w-full px-3 py-2 border border-gray-300 focus-within:border-orange-500 outline-none rounded-lg focus:ring-1 text-black focus:ring-orange-500 focus:border-orange-500"
-              />
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <PersonStanding size={20} className="text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  placeholder="Enter your name"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 focus-within:border-orange-500 outline-none rounded-lg focus:ring-1 text-black focus:ring-orange-500 focus:border-orange-500"
+                />
+              </div>
             </div>
 
             <div className="mb-4">
@@ -242,7 +247,7 @@ const DineInPage = () => {
             <button
               onClick={handleNameSubmit}
               disabled={!tableNumber || !phoneNumber.trim()}
-              className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-red-600 rounded-md hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 w-full uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Continue to Menu
             </button>

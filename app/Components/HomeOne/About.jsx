@@ -105,7 +105,7 @@ const About = () => {
             <div>
               <Link
                 href="/"
-                className="bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-red-600 rounded-md hover:cursor-pointer hover:bg-red-700 text-white font-bold py-4 px-8 uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 VISIT OUR RESTAURANT
               </Link>

@@ -118,15 +118,15 @@ const PizzaSlider = () => {
           </h3>
           <div className="flex items-center justify-center gap-5 pt-5">
             <Link
-              href="/onlineOrder"
-              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+              href="/menu"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               <MdOutlineRestaurantMenu className="text-xl" />
               <span>View Menu</span>
             </Link>
             <Link
               href="/onlineOrder"
-              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-none uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               <MdWheelchairPickup className="text-xl" />
               <span>Pick Up</span>

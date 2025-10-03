@@ -53,7 +53,7 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "Dine-in", href: "/dine-in" },
-        { name: "Online Order", href: "/onlineOrder" },
+        { name: "Online Order", href: "/menu" },
       ],
     },
     { name: "Catering", href: "/catering" },
