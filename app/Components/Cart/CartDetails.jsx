@@ -162,9 +162,7 @@ export default function CartDetails() {
                               parseInt(e.target.value) || 1
                             )
                           }
-                          className="w-16 px-2 py-1 border border-gray-300 rounded text-center 
-                 text-gray-800 placeholder-gray-*00
-                 focus:outline-none focus:ring-2 focus:ring-gray-800"
+                          className="w-16 px-2 py-1 border border-gray-300 rounded text-center text-gray-800 placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-800"
                         />
                       </div>
                     </div>
@@ -200,7 +198,7 @@ export default function CartDetails() {
                       onChange={(e) =>
                         updateQuantity(item.id, parseInt(e.target.value) || 1)
                       }
-                      className="w-16 px-2 py-1 border border-gray-300 rounded text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-16  text-gray-800 placeholder-gray-700 px-2 py-1 border border-gray-300 rounded text-center focus:outline-none focus:ring-2 focus:ring-red-700"
                     />
                   </div>
 

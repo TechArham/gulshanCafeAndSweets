@@ -183,7 +183,7 @@ const Navbar = () => {
                     Dine-in
                   </Link>
                   <Link
-                    href="/onlineOrder"
+                    href="/menu"
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-red-500"
                   >
                     Online Order
@@ -216,7 +216,7 @@ const Navbar = () => {
 
             <Link
               href="/onlineOrder"
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 uppercase tracking-wide text-sm transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               Order Now
             </Link>
