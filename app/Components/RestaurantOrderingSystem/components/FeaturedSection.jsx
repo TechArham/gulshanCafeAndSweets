@@ -1,7 +1,26 @@
-import React from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaShoppingCart, FaCheck } from "react-icons/fa";
+import Image from "next/image";
+const FeaturedSection = ({
+  item,
+  category,
+  categoryDisplayNames,
+  onAddToCart,
+  promotionalBanner = "$5.00 OFF UPTO $50.00",
+  showPromotionalBanner = true,
+  rating = 4.8,
+  showRating = true,
+  buttonText = "View options",
+}) => {
 
-const FeaturedSection = () => {
+      const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    onAddToCart(item, category);
+    setIsAdded(true);
+    // Reset the success state after 2 seconds
+    setTimeout(() => setIsAdded(false), 2000);
+  };
     const breakfastItems = [
         {
             id: 1,
@@ -71,81 +90,95 @@ const FeaturedSection = () => {
     ];
 
     const renderItemCard = (item) => (
-
-
-        <div key={item.id} className="bg-white border  transition-all duration-200 hover:outline hover:outline-red-500 border-gray-300 p-4 flex items-center rounded-lg shadow-sm overflow-hidden">
-            {/* Image */}
-            <div className="  h-28 w-28 overflow-hidden">
-                <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full   rounded-xl  object-cover"
-                />
-            </div>
-
-            {/* Content */}
-            <div className=" px-5 ">
-                {/* Name */}
-                <h3 className="text-xl  font-bold text-black mb-2">
-                    {item.name}
-                </h3>
-
-                {/* Price */}
-                <div className="flex items-center space-x-2 mb-4">
-                    {item.priceRange ? (
-                        <span className="text-xl font-bold text-black">
-                            ${item.priceRange}
-                        </span>
-                    ) : (
-                        <>
-                            <span className="text-xl font-bold text-black">
-                                ${item.discountedPrice}
-                            </span>
-                            <span className="text-lg text-gray-400 line-through">
-                                ${item.originalPrice}
-                            </span>
-                        </>
-                    )}
-                </div>
-
-                {/* Order Button */}
-                <button
-
-                    className=" cursor-pointer flex items-center justify-center space-x-2 bg-white border border-red-500 text-red-500 px-5  py-1.5  rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 font-semibold"
-                >
-
-                    <FaShoppingCart className='w-4 h-4' />
-
-                    <span className=' text-sm'>Order Now</span>
-                </button>
-            </div>
+      <div
+        key={item.id}
+        className="bg-white border  flex-col md:flex-row gap-3   transition-all duration-200 hover:outline hover:outline-red-500 border-gray-300 p-4 flex items-center rounded-lg shadow-sm overflow-hidden"
+      >
+        {/* Image */}
+        <div className="h-28 w-28 overflow-hidden">
+          <Image
+            width={112}
+            height={112}
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full rounded-xl object-cover"
+          />
         </div>
+
+        {/* Content */}
+        <div className="px-5 text-center md:text-left flex-1 ">
+          {/* Name */}
+          <h3 className="text-xl  font-bold text-black mb-2">{item.name}</h3>
+
+          {/* Price */}
+          <div className="flex items-center justify-center md:justify-start space-x-2 mb-4">
+            {item.priceRange ? (
+              <span className="text-xl font-bold text-black">
+                ${item.priceRange}
+              </span>
+            ) : (
+              <>
+                <span className="text-xl font-bold text-black">
+                  ${item.discountedPrice}
+                </span>
+                <span className="text-lg text-gray-400 line-through">
+                  ${item.originalPrice}
+                </span>
+              </>
+            )}
+          </div>
+
+          {/* Order Button */}
+          <div className="flex items-center justify-center md:justify-start">
+            <button
+              onClick={handleAddToCart}
+              className={`cursor-pointer flex items-center justify-center space-x-2 px-5 py-1.5 rounded-full transition-all duration-300 font-semibold ${
+                isAdded
+                  ? "bg-green-500 border border-green-500 text-white"
+                  : "bg-white border border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+              }`}
+            >
+              {isAdded ? (
+                <>
+                  <FaCheck className="w-4 h-4" />
+                  <span className="text-sm">Added!</span>
+                </>
+              ) : (
+                <>
+                  <FaShoppingCart className="w-4 h-4" />
+                  <span className="text-sm">Add To Cart</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
     );
 
     return (
-        <div className="bg-white py-16">
-            <div className="container mx-auto px-4">
-                {/* Breakfast Section */}
-                <div className="mb-16">
-                    <h2 className="text-4xl font-bold text-black text-center mb-10">
-                        Breakfast
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {breakfastItems.map(renderItemCard)}
-                    </div>
-                </div>
-
-                {/* Lunch Section */}
-                <div>
-                    <h2 className="text-4xl font-bold text-black text-center mb-8">
-                        Lunch
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {lunchItems.map(renderItemCard)}
-                    </div>
-                </div>
+      <div className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          {/* Breakfast Section */}
+          <div className="mb-16">
+            <h2 className="text-4xl font-bold text-black text-center mb-10">
+              Breakfast
+            </h2>
+            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {breakfastItems.map(renderItemCard)}
             </div>
+          </div>
+
+          {/* Lunch Section */}
+          <div>
+            <h2 className="text-4xl font-bold text-black text-center mb-8">
+              Lunch
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {lunchItems.map(renderItemCard)}
+            </div>
+          </div>
         </div>
+      </div>
     );
 };
 
