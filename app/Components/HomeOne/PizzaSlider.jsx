@@ -86,7 +86,7 @@ const PizzaSlider = () => {
   }, []);
 
   return (
-    <section className="relative w-full bg-[#072f25] overflow-hidden">
+    <section id='home' className="relative w-full bg-[#072f25] overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-12 py-14 flex flex-col justify-between min-h-[600px] md:min-h-[820px]">
         {/* Floating Vegetables */}
         {floatingVeggies.map((veggie) => (

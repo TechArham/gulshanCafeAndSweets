@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Play, ArrowUp } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
 const YoutubeVideo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -108,9 +108,9 @@ const YoutubeVideo = () => {
       </div>
 
       {/* Scroll to Top */}
-      <button className="fixed bottom-8 right-8 w-10 h-10 sm:w-12 sm:h-12 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 group">
+      <Link href='#home'  className="fixed bottom-8 right-8 w-10 h-10 sm:w-12 sm:h-12 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 group">
         <ArrowUp className="w-6 h-6 group-hover:transform group-hover:-translate-y-1 transition-transform duration-300" />
-      </button>
+      </Link>
 
       {/* Custom CSS for .tv */}
       <style jsx>{`

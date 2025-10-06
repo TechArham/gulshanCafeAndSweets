@@ -26,13 +26,13 @@ const CTA = () => {
             {/* Middle Buttons */}
             <div className="flex justify-center gap-3 md:gap-5 items-center">
               <Link
-                href="/"
+                href="/catering"
                 className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-3 md:px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
                 Catering
               </Link>
               <Link
-                href="/"
+                href="/onlineOrder"
                 className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-3 md:px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
                 Online Order
