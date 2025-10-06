@@ -36,6 +36,8 @@ const CheckoutHeader = () => {
           </div>
         </div>
       </div>
+
+      
     </section>
   );
 };
