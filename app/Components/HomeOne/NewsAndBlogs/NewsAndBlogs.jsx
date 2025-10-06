@@ -102,24 +102,31 @@ const NewsAndBlogs = () => {
         {/* Swiper with custom nav */}
         <div className="py-10 relative">
           {/* Navigation Buttons */}
-          <button
-            ref={setPrevRef}
-            aria-label="Previous"
-            className="absolute top-1/2 left-0 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
-          >
-            <ArrowLeft className="w-6 h-6 text-white" />
-          </button>
-          <button
-            ref={setNextRef}
-            aria-label="Next"
-            className="absolute top-1/2 right-0 -translate-y-1/2 z-20 bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700"
-          >
-            <ArrowRight className="w-6 h-6 text-white" />
-          </button>
+          <div className="absolute inset-x-0 bottom-0 flex justify-center gap-4 z-20">
+            <button
+              ref={setPrevRef}
+              aria-label="Previous"
+              className="bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700  hover:cursor-pointer"
+            >
+              <ArrowLeft className="w-6 h-6 text-white" />
+            </button>
+            <button
+              ref={setNextRef}
+              aria-label="Next"
+              className="bg-red-600 p-3 rounded-full shadow-md hover:bg-red-700 hover:cursor-pointer"
+            >
+              <ArrowRight className="w-6 h-6 text-white" />
+            </button>
+          </div>
 
           <Swiper
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
+            }}
+            onBeforeInit={(swiper) => {
+              // 👇 This ensures Swiper gets the actual button elements
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
             }}
             slidesPerView={1}
             spaceBetween={30}
@@ -128,7 +135,7 @@ const NewsAndBlogs = () => {
               delay: 3000,
               disableOnInteraction: false,
             }}
-            speed={1000} // 👈 smooth transition (1000ms = 1s)
+            speed={1000}
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
@@ -142,7 +149,7 @@ const NewsAndBlogs = () => {
           >
             {blogs.map((blog) => (
               <SwiperSlide key={blog.id}>
-                <div className="bg-[#f7f2e2] text-left group hover:cursor-pointer pb-2">
+                <div className="bg-[#f7f2e2] text-left group hover:cursor-pointer pb-10">
                   {/* Image */}
                   <div className="h-[300px] w-full rounded-2xl overflow-hidden">
                     <Image

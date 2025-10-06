@@ -1508,7 +1508,6 @@ const CateringFlow = () => {
                 >
                    Confirm Order & Pay ${advancePayment.toFixed(2)}
                 </button>
-
                 <p className="text-sm text-gray-500 mt-4 text-center font-medium">
                   ✨ By confirming, you agree to our terms of service and
                   cancellation policy ✨

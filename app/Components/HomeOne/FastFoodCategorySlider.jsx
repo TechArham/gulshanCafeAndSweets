@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Navigation } from "swiper/modules";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "./styles.css";
@@ -28,12 +27,7 @@ const FastFoodCategorySlider = () => {
       items: "20 Items Available",
       image: "/rice-item.png",
     },
-    {
-      id: 3,
-      name: "misty",
-      items: "25 Items Available",
-      image: "/misty.png",
-    },
+    { id: 3, name: "misty", items: "25 Items Available", image: "/misty.png" },
     {
       id: 4,
       name: "dessert and drinks",
@@ -60,16 +54,8 @@ const FastFoodCategorySlider = () => {
     },
   ];
 
-  const setPrevRef = (el) => {
-    prevRef.current = el;
-  };
-
-  const setNextRef = (el) => {
-    nextRef.current = el;
-  };
-
   return (
-    <div className="bg-white py-24">
+    <div className="bg-white py-24 ">
       <div className="max-w-[1500px] mx-auto bg-white ">
         {/* Header */}
         <div className="text-center mx-auto mb-8">
@@ -83,63 +69,80 @@ const FastFoodCategorySlider = () => {
           <Image
             src="/title-shape.png"
             alt="title shape"
-            width={290} // natural width
-            height={24} // natural height
+            width={290}
+            height={24}
             className="object-contain text-center mx-auto"
           />
         </div>
 
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            ref={setPrevRef}
-            aria-label="Previous"
-            className="absolute top-1/2 hover:cursor-pointer left-0  -translate-y-1/2 z-20 bg-red-600 p-2 md:p-3 rounded-full shadow-md hover:bg-red-700"
-          >
-            <ArrowLeft className="w-6 h-6 text-white" />
-          </button>
-          <button
-            ref={setNextRef}
-            aria-label="Next"
-            className="absolute top-1/2  hover:cursor-pointer right-0 -translate-y-1/2 z-20 bg-red-600 p-2 md:p-3 rounded-full shadow-md hover:bg-red-700"
-          >
-            <ArrowRight className="w-6 h-6 text-white" />
-          </button>
+        <div className="py-10 px-4 relative">
+          {/* Navigation Buttons - bottom center */}
+          <div className="absolute inset-x-0 bottom-0 flex justify-center gap-4 z-20">
+            <button
+              ref={prevRef}
+              aria-label="Previous"
+              className="bg-red-600 p-2 md:p-3 rounded-full shadow-md hover:bg-red-700 pointer-events-auto hover:cursor-pointer"
+            >
+              <ArrowLeft className="w-6 h-6 text-white" />
+            </button>
+            <button
+              ref={nextRef}
+              aria-label="Next"
+              className="bg-red-600 p-2 md:p-3 rounded-full shadow-md hover:bg-red-700 pointer-events-auto hover:cursor-pointer"
+            >
+              <ArrowRight className="w-6 h-6 text-white" />
+            </button>
+          </div>
 
-          {/* Slider */}
           <Swiper
             slidesPerView={2}
             spaceBetween={16}
-            loop={true} // ✅ Infinite loop
+            loop={true}
             modules={[Navigation]}
             onSwiper={(swiper) => {
+              // keep reference
               swiperRef.current = swiper;
+
+              // small delay ensures DOM refs (prevRef/nextRef) are attached
+              setTimeout(() => {
+                if (!swiperRef.current) return;
+                const s = swiperRef.current;
+                if (prevRef.current && nextRef.current) {
+                  // attach DOM elements
+                  s.params.navigation.prevEl = prevRef.current;
+                  s.params.navigation.nextEl = nextRef.current;
+
+                  // re-init navigation (destroy first to be safe)
+                  try {
+                    if (s.navigation) s.navigation.destroy();
+                  } catch (e) {
+                    /* ignore */
+                  }
+                  try {
+                    s.navigation.init();
+                    s.navigation.update();
+                  } catch (e) {
+                    /* ignore */
+                  }
+                }
+              }, 0);
             }}
             navigation={{
               prevEl: prevRef.current,
               nextEl: nextRef.current,
             }}
             breakpoints={{
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 24,
-              },
-              1280: {
-                slidesPerView: 6,
-                spaceBetween: 30,
-              },
+              768: { slidesPerView: 3, spaceBetween: 20 },
+              1024: { slidesPerView: 4, spaceBetween: 24 },
+              1280: { slidesPerView: 6, spaceBetween: 30 },
             }}
             className="mySwiper"
           >
             {categories.map((category) => (
-              <SwiperSlide key={category.id}>
+              <SwiperSlide key={category.id} className="pb-10">
                 <div className="aspect-square bg-[#f7f2e2] w-full py-12 flex items-center justify-center group cursor-pointer hover:bg-[#3f9065] transition-colors duration-500 rounded-t-full p-4">
                   <div className="text-center">
-                    <div className="relative w-16 h-16 md:w-20 md:h-20  mx-auto mb-2 md:mb-3">
+                    <div className="relative w-16 h-16 md:w-20 md:h-20 mx-auto mb-2 md:mb-3">
                       <Image
                         src={category.image}
                         alt={category.name}

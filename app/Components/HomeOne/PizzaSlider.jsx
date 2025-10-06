@@ -116,17 +116,17 @@ const PizzaSlider = () => {
           <h3 className="text-white font-bold md:font-extrabold leading-tight text-4xl sm:text-5xl md:text-7xl uppercase font-barlow">
             gulshan cafe and sweets
           </h3>
-          <div className="flex items-center justify-center gap-5 pt-5">
+          <div className="flex items-center justify-center gap-3 md:gap-5 pt-5">
             <Link
               href="/menu"
-              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-3 md:px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               <MdOutlineRestaurantMenu className="text-xl" />
               <span>View Menu</span>
             </Link>
             <Link
               href="/onlineOrder"
-              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-3 md:px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               <MdWheelchairPickup className="text-xl" />
               <span>Pick Up</span>
@@ -170,7 +170,7 @@ const PizzaSlider = () => {
                 style={{ transform: transformByPos[position] }}
               >
                 <div
-                  className={`relative rounded-full shadow-2xl bg-black/5 h-[300px] w-[300px] md:h-[600px] md:w-[600px]`}
+                  className={`relative rounded-full shadow-2xl bg-black/5 h-[250px] w-[250px] md:h-[600px] md:w-[600px]`}
                 >
                   <Image
                     src={pizza.image}
