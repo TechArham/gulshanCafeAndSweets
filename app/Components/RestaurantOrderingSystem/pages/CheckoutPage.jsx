@@ -304,13 +304,12 @@ const CheckoutPage = () => {
           <div className="flex flex-wrap gap-4 sm:space-x-4 sm:flex-nowrap">
             {/* Delivery Option */}
             <div
-    className={`flex-1 min-w-[250px] px-5 py-4 rounded-md border cursor-pointer transition-all duration-200 ${
-      orderType === "delivery"
-        ? "border-red-500 bg-red-50"
-        : "border-gray-200 bg-gray-50"
-    }`}
-    onClick={() => setOrderType("delivery")}
-  
+              className={`flex-1 min-w-[250px] px-5 py-4 rounded-md border cursor-pointer transition-all duration-200 ${
+                orderType === "delivery"
+                  ? "border-red-500 bg-red-50"
+                  : "border-gray-200 bg-gray-50"
+              }`}
+              onClick={() => setOrderType("delivery")}
             >
               <div className="flex items-center space-x-3 ">
                 <label className="inline-flex items-center gap-4 cursor-pointer">
@@ -388,12 +387,12 @@ const CheckoutPage = () => {
 
             {/* Pickup Option - same design as Delivery Option */}
             <div
-    className={`flex-1 min-w-[250px] px-5 py-4 rounded-md border cursor-pointer transition-all duration-200 ${
-      orderType === "pickup"
-        ? "border-red-500 bg-red-50"
-        : "border-gray-200 bg-gray-50"
-    }`}
-    onClick={() => setOrderType("pickup")}
+              className={`flex-1 min-w-[250px] px-5 py-4 rounded-md border cursor-pointer transition-all duration-200 ${
+                orderType === "pickup"
+                  ? "border-red-500 bg-red-50"
+                  : "border-gray-200 bg-gray-50"
+              }`}
+              onClick={() => setOrderType("pickup")}
             >
               <div className="flex items-center space-x-3">
                 <label className="inline-flex items-center gap-4 cursor-pointer">
@@ -486,220 +485,245 @@ const CheckoutPage = () => {
 
         {/* Address Sections: Billing and Shipping side by side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-<div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-8">
-  <div className="flex flex-col md:flex-row justify-start items-start gap-4 mb-6">
-    <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-2xl mr-4">
-      <CreditCard className="text-white" size={24} />
-    </div>
-    <div>
-      <h3 className="text-xl font-bold text-gray-800">Billing Address</h3>
-      <p className="text-gray-500">Enter your billing information</p>
-    </div>
-  </div>
+          <div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-8">
+            <div className="flex flex-col md:flex-row justify-start items-start gap-4 mb-6">
+              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-2xl mr-4">
+                <CreditCard className="text-white" size={24} />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-800">
+                  Billing Address
+                </h3>
+                <p className="text-gray-500">Enter your billing information</p>
+              </div>
+            </div>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {/* Full Name */}
-    <div className="w-full">
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        Full Name *
-      </label>
-      <div className="relative group">
-        <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-          <User
-            className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
-            size={20}
-          />
-        </span>
-        <input
-          type="text"
-          value={orderDetails.name || ""}
-          onChange={(e) =>
-            handleBillingPersonalInfoChange("name", e.target.value)
-          }
-          placeholder="Enter your full name"
-          className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-            formErrors.name ? "border-red-300 bg-red-50" : "border-gray-200"
-          }`}
-        />
-        {formErrors.name && (
-          <p className="text-red-500 text-sm mt-2">{formErrors.name}</p>
-        )}
-      </div>
-    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Full Name */}
+              <div className="w-full">
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Full Name *
+                </label>
+                <div className="relative group">
+                  <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <User
+                      className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                      size={20}
+                    />
+                  </span>
+                  <input
+                    type="text"
+                    value={orderDetails.name || ""}
+                    onChange={(e) =>
+                      handleBillingPersonalInfoChange("name", e.target.value)
+                    }
+                    placeholder="Enter your full name"
+                    className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                      formErrors.name
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
+                    }`}
+                  />
+                  {formErrors.name && (
+                    <p className="text-red-500 text-sm mt-2">
+                      {formErrors.name}
+                    </p>
+                  )}
+                </div>
+              </div>
 
-    {/* Phone Number */}
-    <div className="w-full">
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        Phone Number *
-      </label>
-      <div className="relative group">
-        <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-          <Phone
-            className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
-            size={20}
-          />
-        </span>
-        <input
-          type="tel"
-          value={orderDetails.phone || ""}
-          onChange={(e) =>
-            handleBillingPersonalInfoChange("phone", e.target.value)
-          }
-          placeholder="Enter your phone number"
-          className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-            formErrors.phone ? "border-red-300 bg-red-50" : "border-gray-200"
-          }`}
-        />
-        {formErrors.phone && (
-          <p className="text-red-500 text-sm mt-2">{formErrors.phone}</p>
-        )}
-      </div>
-    </div>
+              {/* Phone Number */}
+              <div className="w-full">
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Phone Number *
+                </label>
+                <div className="relative group">
+                  <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <Phone
+                      className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                      size={20}
+                    />
+                  </span>
+                  <input
+                    type="tel"
+                    value={orderDetails.phone || ""}
+                    onChange={(e) =>
+                      handleBillingPersonalInfoChange("phone", e.target.value)
+                    }
+                    placeholder="Enter your phone number"
+                    className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                      formErrors.phone
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
+                    }`}
+                  />
+                  {formErrors.phone && (
+                    <p className="text-red-500 text-sm mt-2">
+                      {formErrors.phone}
+                    </p>
+                  )}
+                </div>
+              </div>
 
-    {/* Email - full width */}
-    <div className="col-span-1 md:col-span-2">
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        Email Address *
-      </label>
-      <div className="relative group">
-        <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-          <Mail
-            className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
-            size={20}
-          />
-        </span>
-        <input
-          type="email"
-          value={orderDetails.email || ""}
-          onChange={(e) =>
-            handleBillingPersonalInfoChange("email", e.target.value)
-          }
-          placeholder="Enter your email address"
-          className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-            formErrors.email ? "border-red-300 bg-red-50" : "border-gray-200"
-          }`}
-        />
-        {formErrors.email && (
-          <p className="text-red-500 text-sm mt-2">{formErrors.email}</p>
-        )}
-      </div>
-    </div>
+              {/* Email - full width */}
+              <div className="col-span-1 md:col-span-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Email Address *
+                </label>
+                <div className="relative group">
+                  <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <Mail
+                      className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                      size={20}
+                    />
+                  </span>
+                  <input
+                    type="email"
+                    value={orderDetails.email || ""}
+                    onChange={(e) =>
+                      handleBillingPersonalInfoChange("email", e.target.value)
+                    }
+                    placeholder="Enter your email address"
+                    className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                      formErrors.email
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
+                    }`}
+                  />
+                  {formErrors.email && (
+                    <p className="text-red-500 text-sm mt-2">
+                      {formErrors.email}
+                    </p>
+                  )}
+                </div>
+              </div>
 
-    {/* Street Address - full width */}
-    <div className="col-span-1 md:col-span-2">
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        Street Address *
-      </label>
-      <div className="relative group">
-        <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-          <MapPin
-            className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
-            size={20}
-          />
-        </span>
-        <input
-          type="text"
-          value={orderDetails.billingAddress?.street || ""}
-          onChange={(e) => handleBillingAddressChange("street", e.target.value)}
-          placeholder="Enter street address"
-          className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-            formErrors.billingStreet
-              ? "border-red-300 bg-red-50"
-              : "border-gray-200"
-          }`}
-        />
-        {formErrors.billingStreet && (
-          <p className="text-red-500 text-sm mt-2">
-            {formErrors.billingStreet}
-          </p>
-        )}
-      </div>
-    </div>
+              {/* Street Address - full width */}
+              <div className="col-span-1 md:col-span-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Street Address *
+                </label>
+                <div className="relative group">
+                  <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <MapPin
+                      className="text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                      size={20}
+                    />
+                  </span>
+                  <input
+                    type="text"
+                    value={orderDetails.billingAddress?.street || ""}
+                    onChange={(e) =>
+                      handleBillingAddressChange("street", e.target.value)
+                    }
+                    placeholder="Enter street address"
+                    className={`w-full pl-12 pr-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                      formErrors.billingStreet
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
+                    }`}
+                  />
+                  {formErrors.billingStreet && (
+                    <p className="text-red-500 text-sm mt-2">
+                      {formErrors.billingStreet}
+                    </p>
+                  )}
+                </div>
+              </div>
 
-    {/* City */}
-    <div>
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        City *
-      </label>
-      <input
-        type="text"
-        value={orderDetails.billingAddress?.city || ""}
-        onChange={(e) => handleBillingAddressChange("city", e.target.value)}
-        placeholder="Enter city"
-        className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-          formErrors.billingCity
-            ? "border-red-300 bg-red-50"
-            : "border-gray-200"
-        }`}
-      />
-      {formErrors.billingCity && (
-        <p className="text-red-500 text-sm mt-2">{formErrors.billingCity}</p>
-      )}
-    </div>
+              {/* City */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  City *
+                </label>
+                <input
+                  type="text"
+                  value={orderDetails.billingAddress?.city || ""}
+                  onChange={(e) =>
+                    handleBillingAddressChange("city", e.target.value)
+                  }
+                  placeholder="Enter city"
+                  className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                    formErrors.billingCity
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-200"
+                  }`}
+                />
+                {formErrors.billingCity && (
+                  <p className="text-red-500 text-sm mt-2">
+                    {formErrors.billingCity}
+                  </p>
+                )}
+              </div>
 
-    {/* State */}
-    <div>
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        State *
-      </label>
-      <select
-        value={orderDetails.billingAddress?.state || ""}
-        onChange={(e) => handleBillingAddressChange("state", e.target.value)}
-        className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-          formErrors.billingState
-            ? "border-red-300 bg-red-50"
-            : "border-gray-200"
-        }`}
-      >
-        <option value="">Select State</option>
-        {/* state options */}
-        <option value="CA">California</option>
-        <option value="NY">New York</option>
-        {/* ... rest of states ... */}
-      </select>
-      {formErrors.billingState && (
-        <p className="text-red-500 text-sm mt-2">
-          {formErrors.billingState}
-        </p>
-      )}
-    </div>
+              {/* State */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  State *
+                </label>
+                <select
+                  value={orderDetails.billingAddress?.state || ""}
+                  onChange={(e) =>
+                    handleBillingAddressChange("state", e.target.value)
+                  }
+                  className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                    formErrors.billingState
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-200"
+                  }`}
+                >
+                  <option value="">Select State</option>
+                  {/* state options */}
+                  <option value="CA">California</option>
+                  <option value="NY">New York</option>
+                  {/* ... rest of states ... */}
+                </select>
+                {formErrors.billingState && (
+                  <p className="text-red-500 text-sm mt-2">
+                    {formErrors.billingState}
+                  </p>
+                )}
+              </div>
 
-    {/* ZIP */}
-    <div>
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        ZIP Code *
-      </label>
-      <input
-        type="text"
-        value={orderDetails.billingAddress?.zipCode || ""}
-        onChange={(e) => handleBillingAddressChange("zipCode", e.target.value)}
-        placeholder="Enter ZIP code"
-        className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
-          formErrors.billingZip
-            ? "border-red-300 bg-red-50"
-            : "border-gray-200"
-        }`}
-      />
-      {formErrors.billingZip && (
-        <p className="text-red-500 text-sm mt-2">{formErrors.billingZip}</p>
-      )}
-    </div>
+              {/* ZIP */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  ZIP Code *
+                </label>
+                <input
+                  type="text"
+                  value={orderDetails.billingAddress?.zipCode || ""}
+                  onChange={(e) =>
+                    handleBillingAddressChange("zipCode", e.target.value)
+                  }
+                  placeholder="Enter ZIP code"
+                  className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-black ${
+                    formErrors.billingZip
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-200"
+                  }`}
+                />
+                {formErrors.billingZip && (
+                  <p className="text-red-500 text-sm mt-2">
+                    {formErrors.billingZip}
+                  </p>
+                )}
+              </div>
 
-    {/* Country */}
-    <div>
-      <label className="block text-sm font-semibold text-gray-700 mb-3">
-        Country
-      </label>
-      <input
-        type="text"
-        value={orderDetails.billingAddress?.country || "USA"}
-        disabled
-        className="w-full px-4 py-4 bg-gray-100 border-2 rounded-2xl text-gray-500 cursor-not-allowed"
-      />
-    </div>
-  </div>
-</div>
-
+              {/* Country */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Country
+                </label>
+                <input
+                  type="text"
+                  value={orderDetails.billingAddress?.country || "USA"}
+                  disabled
+                  className="w-full px-4 py-4 bg-gray-100 border-2 rounded-2xl text-gray-500 cursor-not-allowed"
+                />
+              </div>
+            </div>
+          </div>
 
           {/* Shipping Address Section */}
           <div className="bg-white rounded-2xl border border-gray-200 px-4 md:px-8 py-8">
@@ -1250,18 +1274,19 @@ const CheckoutPage = () => {
                 {cart.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center gap-4 p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-lg transition-shadow"
+                    className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-lg transition-shadow"
                   >
                     {/* Product Image */}
-                    <div className="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border border-gray-200 bg-white flex items-center justify-center">
+                    <div className="flex-shrink-0 w-full sm:w-20 h-40 sm:h-20 rounded-xl overflow-hidden border border-gray-200 bg-white flex items-center justify-center">
                       <img
                         src={item.image || "/images/food-placeholder.png"}
                         alt={item.name}
                         className="object-cover w-full h-full"
                       />
                     </div>
+
                     {/* Product Info */}
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 w-full">
                       <h5 className="font-semibold text-gray-900 text-lg truncate">
                         {item.name}
                       </h5>
@@ -1275,9 +1300,10 @@ const CheckoutPage = () => {
                         ${item.price.toFixed(2)} each
                       </p>
                     </div>
+
                     {/* Price */}
-                    <div className="text-right min-w-[80px]">
-                      <p className="text-xl font-bold text-orange-600">
+                    <div className="text-left sm:text-right min-w-[80px] w-full sm:w-auto">
+                      <p className="text-lg sm:text-xl font-bold text-orange-600">
                         ${(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
