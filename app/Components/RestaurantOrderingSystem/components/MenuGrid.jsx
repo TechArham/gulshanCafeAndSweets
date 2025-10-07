@@ -52,9 +52,10 @@ const MenuGrid = ({
             ref={(el) => (categoryRefs.current[category] = el)}
             className="mb-6 sm:mb-8 lg:mb-12"
           >
-            <h2 className=" text-3xl lg:text-4xl font-bold text-gray-800 mb-2 py-6 sm:py-8 lg:py-10 first:mt-0 flex items-center justify-center text-center px-4">
+            <h2 className="text-black font-bold leading-tight text-4xl md:text-5xl uppercase font-barlow mb:5 lg:mb-10 text-center mx-auto">
               {categoryDisplayNames?.[category] || category}
             </h2>
+            
 
             {/* Grid with responsive columns */}
             <div

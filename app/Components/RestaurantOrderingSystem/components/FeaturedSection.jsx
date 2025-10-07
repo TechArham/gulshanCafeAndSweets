@@ -160,7 +160,8 @@ const FeaturedSection = ({
         <div className="container mx-auto px-4">
           {/* Breakfast Section */}
           <div className="mb-16">
-            <h2 className="text-4xl font-bold text-black text-center mb-10">
+
+            <h2 className="text-black font-bold leading-tight text-4xl md:text-5xl uppercase font-barlow mb:5 lg:mb-10 text-center mx-auto">
               Breakfast
             </h2>
             <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -170,7 +171,7 @@ const FeaturedSection = ({
 
           {/* Lunch Section */}
           <div>
-            <h2 className="text-4xl font-bold text-black text-center mb-8">
+            <h2 className="text-black font-bold leading-tight text-4xl md:text-5xl uppercase font-barlow mb:5 lg:mb-10 text-center mx-auto">
               Lunch
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
