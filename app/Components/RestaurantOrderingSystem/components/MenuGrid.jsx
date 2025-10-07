@@ -55,7 +55,6 @@ const MenuGrid = ({
             <h2 className="text-black font-bold leading-tight text-4xl md:text-5xl uppercase font-barlow mb:5 lg:mb-10 text-center mx-auto">
               {categoryDisplayNames?.[category] || category}
             </h2>
-            
 
             {/* Grid with responsive columns */}
             <div

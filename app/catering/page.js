@@ -409,7 +409,7 @@ const CateringFlow = () => {
         <div className="max-w-7xl mx-auto px-4 py-8 relative z-10">
           <div className="flex items-center justify-center mb-4">
             <Sparkles className="w-8 h-8 text-yellow-300 mr-3 animate-spin" />
-            <h1 className="text-white font-bold leading-tight text-3xl md:text-4xl md:text-5xl uppercase font-barlow mb-3 text-center mx-auto">
+            <h1 className="text-white font-bold leading-tight text-3xl md:text-4xl uppercase font-barlow mb-3 text-center mx-auto">
               Premium Catering Experience
             </h1>
             <Sparkles className="w-8 h-8 text-yellow-300 ml-3 animate-spin" />
@@ -491,7 +491,7 @@ const CateringFlow = () => {
                   <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mr-4">
                     <Sparkles className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className=" text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
+                  <h2 className=" text-black font-bold leading-tight text-4xl md:text-4xl uppercase font-barlow bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
                     Select Your Dream Menu
                   </h2>
                 </div>
@@ -1506,7 +1506,7 @@ const CateringFlow = () => {
                   onClick={confirmOrder}
                   className={`w-full mt-8 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white py-4 px-6 rounded-2xl font-bold text-xl  shadow-2xl flex items-center justify-center cursor-pointer`}
                 >
-                   Confirm Order & Pay ${advancePayment.toFixed(2)}
+                  Confirm Order & Pay ${advancePayment.toFixed(2)}
                 </button>
                 <p className="text-sm text-gray-500 mt-4 text-center font-medium">
                   ✨ By confirming, you agree to our terms of service and
