@@ -1,19 +1,19 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown,ShoppingCart } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { IoCallOutline } from "react-icons/io5";
 import Link from "next/link";
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isClient, setIsClient] = useState(false);
   const [isHomeDropdownOpen, setIsHomeDropdownOpen] = useState(false);
-
   const timeoutRef = useRef(null);
 
-  // Home page demo data
+  // Home pages
   const homePages = [
     {
       id: 1,
@@ -25,15 +25,13 @@ const Navbar = () => {
       id: 2,
       title: "Home Page Two",
       route: "/home-two",
-      image:
-        "/home-two.png",
+      image: "/home-two.png",
     },
     {
       id: 3,
       title: "Home Page Three",
       route: "/home-three",
-      image:
-        "/home-three.png",
+      image: "/home-three.png",
     },
   ];
 
@@ -68,7 +66,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mobile toggles
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+  }, [isMobileMenuOpen]);
+
+  // Toggle handlers
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
@@ -77,7 +80,7 @@ const Navbar = () => {
   const toggleDropdown = (name) =>
     setOpenDropdown(openDropdown === name ? null : name);
 
-  // Hover logic for Home dropdown (desktop)
+  // Hover for Home dropdown (desktop)
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setIsHomeDropdownOpen(true);
@@ -98,7 +101,7 @@ const Navbar = () => {
       >
         <div className="px-4 sm:px-6 md:px-10 xl:px-20 h-24 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/">
+          <Link href="/" onClick={closeMobileMenu}>
             <Image
               src="/logoo.png"
               width={200}
@@ -116,10 +119,10 @@ const Navbar = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <button className="flex items-center hover:cursor-pointer gap-1 text-black font-semibold hover:text-red-500 transition-colors duration-500 font-barlow text-lg">
+              <button className="flex items-center gap-1 text-black font-semibold hover:text-red-500 transition-colors font-barlow text-lg">
                 Home
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-500 ${
+                  className={`h-4 w-4 transition-transform ${
                     isHomeDropdownOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -127,7 +130,7 @@ const Navbar = () => {
 
               {/* Mega menu */}
               <div
-                className={`absolute left-0 mt-2 w-[1200px] bg-white rounded-md shadow-lg border transition-all duration-500 ease-in-out ${
+                className={`absolute left-0 mt-2 w-[1000px] bg-white rounded-md shadow-lg border transition-all duration-500 ${
                   isHomeDropdownOpen
                     ? "opacity-100 visible translate-y-0"
                     : "opacity-0 invisible -translate-y-2"
@@ -145,10 +148,10 @@ const Navbar = () => {
                           <img
                             src={page.image}
                             alt={page.title}
-                            className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </div>
-                        <h3 className="text-black mt-2 font-medium leading-tight text-xl  uppercase font-barlow group-hover:text-red-500 transition-colors">
+                        <h3 className="text-black mt-2 font-medium leading-tight text-xl uppercase font-barlow group-hover:text-red-500 transition-colors">
                           {page.title}
                         </h3>
                       </Link>
@@ -158,7 +161,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Other menu items */}
+            {/* Other links */}
             <Link
               href="/menu"
               className="text-black font-semibold hover:text-red-500 transition-colors font-barlow text-lg"
@@ -167,14 +170,11 @@ const Navbar = () => {
             </Link>
 
             <div className="relative group">
-              <Link
-                href="/order"
-                className="flex items-center gap-1 text-black font-semibold hover:text-red-500 transition-colors font-barlow text-lg"
-              >
+              <button className="flex items-center gap-1 text-black font-semibold hover:text-red-500 transition-colors font-barlow text-lg">
                 Order
                 <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
-              </Link>
-              <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+              </button>
+              <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
                 <div className="py-2">
                   <Link
                     href="/dine-in"
@@ -198,6 +198,7 @@ const Navbar = () => {
             >
               Catering
             </Link>
+
             <Link
               href="/contact"
               className="text-black font-semibold hover:text-red-500 transition-colors font-barlow text-lg"
@@ -208,15 +209,14 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-6">
-            <div className="flex items-center md:hidden xl:flex gap-3">
+            <div className="flex items-center gap-3">
               <IoCallOutline className="text-black text-xl" />
               <p className="text-black text-sm md:text-base">+880 123 456 88</p>
             </div>
             <ShoppingCart className="text-black text-xl" />
-
             <Link
               href="/onlineOrder"
-              className="flex items-center gap-2 bg-red-600 hover:cursor-pointer hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md uppercase tracking-wide text-sm transition-colors shadow-lg"
             >
               Order Now
             </Link>
@@ -240,16 +240,16 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-[9999] transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-[9999] transition-transform duration-300 ease-in-out transform ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b">
-          <Link href="/">
+          <Link href="/" onClick={closeMobileMenu}>
             <Image
               src="/logoo.png"
-              width={190}
-              height={180}
+              width={180}
+              height={160}
               alt="Logo"
               className="w-36 h-auto"
             />
@@ -262,49 +262,56 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Nav Items */}
-        <div className="flex flex-col mt-4 px-4 gap-2">
+        {/* Mobile Nav */}
+        <div className="flex flex-col mt-4 px-4 gap-2 overflow-y-auto h-[calc(100%-150px)]">
           {navItems.map((item) => (
             <div key={item.name} className="flex flex-col">
-              <button
-                onClick={() =>
-                  item.hasDropdown
-                    ? toggleDropdown(item.name)
-                    : closeMobileMenu()
-                }
-                className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-red-500 hover:bg-gray-100 rounded-md transition-all"
-              >
-                {item.name}
-                {item.hasDropdown && (
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      openDropdown === item.name ? "rotate-180" : ""
-                    }`}
-                  />
-                )}
-              </button>
+              {/* If item has dropdown, render a toggle button */}
+              {item.hasDropdown ? (
+                <>
+                  <button
+                    onClick={() => toggleDropdown(item.name)}
+                    className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-red-500 hover:bg-gray-100 rounded-md transition-all"
+                  >
+                    {item.name}
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        openDropdown === item.name ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
 
-              {/* Dropdown for mobile */}
-              {item.hasDropdown && openDropdown === item.name && (
-                <div className="flex flex-col ml-4 mt-1 gap-1">
-                  {item.dropdownItems.map((sub) => (
-                    <Link
-                      key={sub.name}
-                      href={sub.href}
-                      className="px-3 py-2 text-gray-600 hover:text-red-500 hover:bg-gray-100 rounded-md"
-                      onClick={closeMobileMenu}
-                    >
-                      {sub.name}
-                    </Link>
-                  ))}
-                </div>
+                  {openDropdown === item.name && (
+                    <div className="flex flex-col ml-4 mt-1 gap-1">
+                      {item.dropdownItems.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          className="px-3 py-2 text-gray-600 hover:text-red-500 hover:bg-gray-100 rounded-md"
+                          onClick={closeMobileMenu}
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                /* If item is a regular link, render Link so navigation works */
+                <Link
+                  href={item.href || "#"}
+                  className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-red-500 hover:bg-gray-100 rounded-md transition-all"
+                  onClick={closeMobileMenu}
+                >
+                  {item.name}
+                </Link>
               )}
             </div>
           ))}
         </div>
 
         {/* Mobile CTA */}
-        <div className="mt-auto p-4 border-t">
+        <div className="p-4 border-t">
           <Link
             href="/dine-in"
             className="block w-full text-center bg-red-500 hover:bg-red-600 text-white py-3 rounded-md font-semibold"
@@ -317,8 +324,10 @@ const Navbar = () => {
 
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 z-[9998] transition-opacity duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+          isMobileMenuOpen
+            ? "opacity-100 visible z-[9998]"
+            : "opacity-0 invisible z-[-1]"
         }`}
         onClick={closeMobileMenu}
       ></div>
